@@ -1,0 +1,582 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090b18">
+<title>MIRRORA — Create Your Reality</title>
+<style>
+:root {
+  --bg:#090b18; --panel:#121629; --line:#292e48;
+  --text:#f5f6ff; --muted:#a0a7c2; --cyan:#75f0ff;
+  --purple:#b49aff; --pink:#ff8bd4;
+}
+*{box-sizing:border-box}
+body {
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Inter,system-ui,-apple-system,sans-serif;
+  background-image:radial-gradient(ellipse at 10% 0%,#30205766,transparent 35%),
+  radial-gradient(ellipse at 95% 30%,#07516b30,transparent 30%);
+}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible{
+  outline:2px solid var(--cyan);outline-offset:3px
+}
+header {
+  display:flex;align-items:center;justify-content:space-between;
+  padding:17px 5%;border-bottom:1px solid var(--line);
+  position:sticky;top:0;background:#090b18ed;backdrop-filter:blur(18px);
+  z-index:5;gap:14px
+}
+.brand{display:flex;align-items:center;gap:11px}
+.logo {
+  width:43px;height:43px;border-radius:15px;display:grid;
+  place-items:center;font-size:23px;color:#101020;
+  background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));
+  box-shadow:0 0 25px #8e82ff33
+}
+.brand h1{font-size:19px;letter-spacing:2px;margin:0}
+.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:1.5px;margin-top:3px}
+.header-tag{color:var(--muted);font-size:12px}
+main{max-width:1180px;margin:auto;padding:42px 20px 60px}
+.hero{text-align:center;max-width:760px;margin:0 auto 35px}
+.eyebrow{
+  display:inline-block;border:1px solid #49416f;background:#211b3b;
+  color:#d0c4ff;border-radius:30px;padding:7px 13px;font-size:11px;
+  letter-spacing:1.4px
+}
+.hero h2{font-size:clamp(35px,7vw,65px);line-height:1.04;letter-spacing:-2px;margin:22px 0 15px}
+.gradient{
+  background:linear-gradient(95deg,var(--cyan),var(--purple),var(--pink));
+  -webkit-background-clip:text;background-clip:text;color:transparent
+}
+.hero p{color:var(--muted);line-height:1.8;margin:auto;max-width:590px;font-size:14px}
+.layout{display:grid;grid-template-columns:340px minmax(0,1fr);gap:20px;align-items:start}
+.panel{
+  background:#111528eF;border:1px solid var(--line);border-radius:20px;
+  padding:21px;min-width:0
+}
+.panel h3{font-size:15px;margin:0 0 19px}
+.label{display:block;font-size:12px;color:#c8cce0;margin:17px 0 8px}
+textarea,input[type=text]{
+  width:100%;background:#0b0e1c;border:1px solid #303650;
+  border-radius:11px;padding:12px;color:white;resize:vertical
+}
+textarea{min-height:88px;line-height:1.6}
+input[type=file]{width:100%;font-size:12px;color:var(--muted)}
+.upload{
+  display:block;padding:15px;border:1px dashed #51577b;
+  border-radius:12px;background:#0b0e1c;text-align:center
+}
+.upload strong{display:block;margin-bottom:5px;font-size:13px}
+.upload span{color:var(--muted);font-size:11px}
+.presets{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.preset{
+  padding:11px 8px;border:1px solid #333953;background:#0c1020;
+  border-radius:11px;color:#e6e8f5;font-size:12px
+}
+.preset.active{border-color:var(--cyan);background:#17303b}
+.preset span{display:block;font-size:21px;margin-bottom:5px}
+.primary,.secondary{
+  width:100%;padding:13px;border:0;border-radius:11px;font-weight:750;
+  transition:transform .15s,opacity .15s
+}
+.primary{
+  margin-top:21px;color:#101020;
+  background:linear-gradient(100deg,var(--cyan),#b3a1ff,var(--pink))
+}
+.secondary{background:#222741;color:white;border:1px solid #343b58}
+.primary:hover,.secondary:hover{transform:translateY(-1px)}
+.primary:disabled{opacity:.5;cursor:wait}
+.note{color:var(--muted);font-size:11px;line-height:1.7;margin:13px 0 0}
+.stage-top{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:15px}
+.stage-top h3{margin:0;font-size:15px}
+.status{font-size:10px;color:var(--cyan);letter-spacing:1px}
+.canvas-wrap{
+  overflow:hidden;border:1px solid #343854;border-radius:16px;
+  background:#070a15;position:relative
+}
+canvas{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain}
+.canvas-placeholder{
+  aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:25px;
+  background:radial-gradient(ellipse at 50% 65%,#453072 0%,#17162f 38%,#080b18 75%);
+  position:relative;overflow:hidden
+}
+.placeholder-orb{
+  width:125px;height:125px;border-radius:50%;margin:0 auto 22px;
+  background:radial-gradient(circle at 35% 30%,#fff 0%,#8bf1ff 9%,#9a7bff 35%,#422e80 67%,#11152d 74%);
+  box-shadow:0 0 45px #8d7dff8a,0 0 100px #57e4ff26;
+  animation:float 4s ease-in-out infinite
+}
+@keyframes float{50%{transform:translateY(-10px)}}
+.placeholder-content{position:relative;z-index:1}
+.placeholder-content h4{margin:0 0 8px;font-size:22px}
+.placeholder-content p{margin:0;color:#b3bad4;font-size:12px;line-height:1.7}
+.output-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:13px}
+.section-title{margin:27px 0 12px;display:flex;justify-content:space-between;align-items:center}
+.section-title h3{font-size:14px;margin:0}
+.section-title span{font-size:11px;color:var(--muted)}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.gallery-card{
+  min-width:0;border:1px solid var(--line);background:#0b0e1c;
+  border-radius:11px;overflow:hidden
+}
+.gallery-card img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.gallery-card button{
+  width:100%;padding:9px 3px;background:none;color:#cdd3ee;
+  border:0;font-size:11px
+}
+.empty{font-size:12px;color:var(--muted);padding:20px 0}
+footer{
+  text-align:center;border-top:1px solid var(--line);padding:25px 15px;
+  color:var(--muted);font-size:11px;line-height:1.9
+}
+.toast{color:var(--cyan);font-size:12px;min-height:18px;margin-top:10px}
+@media(max-width:800px){
+  main{padding:30px 14px 45px}
+  .layout{grid-template-columns:1fr}
+  .hero h2{letter-spacing:-1.3px}
+  header{padding:13px 16px}
+}
+@media(max-width:420px){
+  .header-tag{display:none}
+  .panel{padding:16px}
+  .output-actions{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <div class="logo" aria-hidden="true">◈</div>
+    <div>
+      <h1>MIRRORA</h1>
+      <small>MADE IN MIAN ABDULLAH</small>
+    </div>
+  </div>
+  <div class="header-tag">YOUR IMAGINATION, REIMAGINED</div>
+</header>
+
+<main>
+  <section class="hero">
+    <span class="eyebrow">✦ A NEW DIGITAL EXPERIENCE</span>
+    <h2>Imagine it.<br><span class="gradient">Create another reality.</span></h2>
+    <p>Apna idea likho, apni photo upload karo, aur apni digital creation banao. Tumhari imagination, tumhara universe.</p>
+  </section>
+
+  <section class="layout">
+    <div class="panel">
+      <h3>✦ Create your reality</h3>
+
+      <label class="label" for="idea">Tumhari imagination</label>
+      <textarea id="idea" maxlength="180" placeholder="Example: A glowing city floating above the clouds..."></textarea>
+
+      <label class="label" for="photo">Apni photo upload karo (optional)</label>
+      <label class="upload" for="photo">
+        <strong>＋ Choose your image</strong>
+        <span>JPG, PNG, WebP · Image stays in your browser</span>
+      </label>
+      <input id="photo" type="file" accept="image/png,image/jpeg,image/webp" style="margin-top:10px">
+
+      <label class="label">Choose your universe</label>
+      <div class="presets">
+        <button class="preset active" data-style="cosmic"><span>🌌</span>Cosmic</button>
+        <button class="preset" data-style="dream"><span>🪄</span>Dream World</button>
+        <button class="preset" data-style="cyber"><span>🌃</span>Cyber City</button>
+        <button class="preset" data-style="crystal"><span>💎</span>Crystal World</button>
+      </div>
+
+      <label class="label" for="caption">Creation ka title</label>
+      <input type="text" id="caption" maxlength="55" placeholder="My first universe">
+
+      <button class="primary" id="create">✦ CREATE MY REALITY</button>
+      <p class="note">Version 1 creative engine: creates procedural artwork and applies visual effects to your photo. Ye abhi AI image generator nahi hai. Advanced AI generation future mein connect ki ja sakti hai.</p>
+    </div>
+
+    <div class="panel">
+      <div class="stage-top">
+        <h3>Your creation</h3>
+        <span class="status" id="status">READY TO CREATE</span>
+      </div>
+
+      <div class="canvas-wrap" id="canvasWrap">
+        <div class="canvas-placeholder" id="placeholder">
+          <div class="placeholder-content">
+            <div class="placeholder-orb"></div>
+            <h4>Your world starts here.</h4>
+            <p>Apna idea likho aur Create My Reality dabao.</p>
+          </div>
+        </div>
+        <canvas id="art" width="1200" height="900" hidden aria-label="Your generated digital artwork"></canvas>
+      </div>
+
+      <div class="output-actions">
+        <button class="secondary" id="download" disabled>↓ Download artwork</button>
+        <button class="secondary" id="share" disabled>↗ Share creation</button>
+      </div>
+      <div class="toast" id="message" role="status" aria-live="polite"></div>
+
+      <div class="section-title">
+        <h3>✧ My creations</h3>
+        <span id="count">0 saved</span>
+      </div>
+      <div id="gallery" class="gallery"></div>
+      <p class="note">Recent creations are saved locally in this browser when storage is available. They are not automatically published online or shared with other users.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  MIRRORA · MADE IN MIAN ABDULLAH<br>
+  Create responsibly. Share your imagination with the world.
+</footer>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const canvas = $("art");
+  const ctx = canvas.getContext("2d");
+  const photoInput = $("photo");
+  const ideaInput = $("idea");
+  const captionInput = $("caption");
+  const createButton = $("create");
+  const message = $("message");
+
+  let selectedStyle = "cosmic";
+  let uploadedImage = null;
+  let hasArtwork = false;
+  let currentTitle = "My first universe";
+  let creations = [];
+
+  const palettes = {
+    cosmic: ["#080b24", "#37216d", "#5bdff5", "#b79aff"],
+    dream: ["#21153c", "#a04e9c", "#ffb9db", "#ffd7a4"],
+    cyber: ["#050e20", "#073e56", "#00ffd0", "#ed53ff"],
+    crystal: ["#081d36", "#235c83", "#b2f8ff", "#a3a0ff"]
+  };
+
+  document.querySelectorAll(".preset").forEach(button => {
+    button.addEventListener("click", () => {
+      selectedStyle = button.dataset.style;
+      document.querySelectorAll(".preset").forEach(b =>
+        b.classList.toggle("active", b === button)
+      );
+      notify("Style selected: " + button.textContent.trim());
+    });
+  });
+
+  photoInput.addEventListener("change", () => {
+    const file = photoInput.files && photoInput.files[0];
+    if (!file) {
+      uploadedImage = null;
+      return;
+    }
+    if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
+      notify("Please choose a JPG, PNG or WebP image.");
+      photoInput.value = "";
+      return;
+    }
+    if (file.size > 12 * 1024 * 1024) {
+      notify("Image 12 MB se chhoti honi chahiye.");
+      photoInput.value = "";
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const image = new Image();
+      image.onload = () => {
+        uploadedImage = image;
+        notify("Photo ready. Ab Create My Reality dabao.");
+      };
+      image.onerror = () => notify("Image load nahi hui. Doosri image try karo.");
+      image.src = reader.result;
+    };
+    reader.onerror = () => notify("Image read nahi ho saki.");
+    reader.readAsDataURL(file);
+  });
+
+  function notify(text) {
+    message.textContent = text;
+  }
+
+  function drawCover(image) {
+    const scale = Math.max(canvas.width / image.width, canvas.height / image.height);
+    const w = image.width * scale;
+    const h = image.height * scale;
+    ctx.drawImage(image, (canvas.width-w)/2, (canvas.height-h)/2, w, h);
+  }
+
+  function drawBackground(palette) {
+    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    gradient.addColorStop(0, palette[0]);
+    gradient.addColorStop(0.55, palette[1]);
+    gradient.addColorStop(1, palette[0]);
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    for (let i=0; i<150; i++) {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const r = Math.random() * 2.2 + 0.4;
+      ctx.globalAlpha = Math.random() * 0.7 + 0.2;
+      ctx.fillStyle = i % 3 === 0 ? palette[2] : "#ffffff";
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0, Math.PI*2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+
+    const glow = ctx.createRadialGradient(600, 420, 20, 600, 420, 330);
+    glow.addColorStop(0, palette[2] + "99");
+    glow.addColorStop(0.35, palette[3] + "55");
+    glow.addColorStop(1, palette[0] + "00");
+    ctx.fillStyle = glow;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Draw a fictional glowing planet.
+    const planet = ctx.createRadialGradient(510, 300, 20, 600, 410, 205);
+    planet.addColorStop(0, "#ffffff");
+    planet.addColorStop(0.08, palette[2]);
+    planet.addColorStop(0.48, palette[3]);
+    planet.addColorStop(0.85, palette[1]);
+    planet.addColorStop(1, palette[0]);
+    ctx.save();
+    ctx.shadowColor = palette[2];
+    ctx.shadowBlur = 55;
+    ctx.fillStyle = planet;
+    ctx.beginPath();
+    ctx.arc(600, 410, 190, 0, Math.PI*2);
+    ctx.fill();
+    ctx.restore();
+
+    ctx.save();
+    ctx.translate(600, 410);
+    ctx.rotate(-0.28);
+    ctx.strokeStyle = palette[2] + "cc";
+    ctx.lineWidth = 7;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, 275, 70, 0, 0, Math.PI*2);
+    ctx.stroke();
+    ctx.restore();
+
+    // Atmospheric glow at the bottom.
+    const ground = ctx.createLinearGradient(0, 630, 0, 900);
+    ground.addColorStop(0, palette[1] + "00");
+    ground.addColorStop(1, palette[0] + "ee");
+    ctx.fillStyle = ground;
+    ctx.fillRect(0, 600, canvas.width, 300);
+  }
+
+  function drawArtwork() {
+    const palette = palettes[selectedStyle];
+    const filter = {
+      cosmic: "saturate(1.3) contrast(1.08)",
+      dream: "saturate(1.2) hue-rotate(-12deg) brightness(1.08)",
+      cyber: "saturate(1.8) contrast(1.18) hue-rotate(18deg)",
+      crystal: "saturate(1.35) brightness(1.12) hue-rotate(12deg)"
+    }[selectedStyle];
+
+    if (uploadedImage) {
+      ctx.save();
+      ctx.filter = filter;
+      drawCover(uploadedImage);
+      ctx.restore();
+
+      // Dark gradient keeps the text readable.
+      const shade = ctx.createLinearGradient(0, 350, 0, 900);
+      shade.addColorStop(0, "#05071900");
+      shade.addColorStop(1, "#050719eF");
+      ctx.fillStyle = shade;
+      ctx.fillRect(0, 0, 1200, 900);
+    } else {
+      drawBackground(palette);
+    }
+
+    const title = currentTitle;
+    ctx.save();
+    ctx.textAlign = "center";
+    ctx.shadowColor = palette[2];
+    ctx.shadowBlur = 18;
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "bold 48px system-ui, sans-serif";
+
+    // Wrap the title to fit the artwork.
+    const words = title.split(/\s+/);
+    let line = "";
+    const lines = [];
+    for (const word of words) {
+      const test = line ? line + " " + word : word;
+      if (ctx.measureText(test).width > 950 && line) {
+        lines.push(line);
+        line = word;
+      } else line = test;
+    }
+    if (line) lines.push(line);
+    const visibleLines = lines.slice(0, 2);
+    const baseY = uploadedImage ? 725 : 720;
+    visibleLines.forEach((txt, i) => {
+      ctx.fillText(txt, 600, baseY + i*58, 960);
+    });
+
+    ctx.shadowBlur = 0;
+    ctx.fillStyle = palette[2];
+    ctx.font = "bold 19px system-ui, sans-serif";
+    ctx.fillText("MIRRORA  ✦  MADE IN MIAN ABDULLAH", 600, 835, 1100);
+    ctx.restore();
+  }
+
+  function showArtwork() {
+    $("placeholder").hidden = true;
+    canvas.hidden = false;
+    $("download").disabled = false;
+    $("share").disabled = false;
+    hasArtwork = true;
+  }
+
+  function saveCreation() {
+    // Small compressed thumbnails reduce local browser storage use.
+    try {
+      const thumbnail = document.createElement("canvas");
+      thumbnail.width = 240;
+      thumbnail.height = 180;
+      thumbnail.getContext("2d").drawImage(canvas, 0, 0, 240, 180);
+      const item = {
+        title: currentTitle,
+        style: selectedStyle,
+        image: thumbnail.toDataURL("image/jpeg", 0.65),
+        created: Date.now()
+      };
+      creations.unshift(item);
+      creations = creations.slice(0, 6);
+      try {
+        localStorage.setItem("mirrora-creations-v1", JSON.stringify(creations));
+      } catch (_) {
+        // Keep this session usable even if storage is full or unavailable.
+      }
+      renderGallery();
+    } catch (_) {
+      notify("Artwork ban gaya, lekin gallery mein save nahi ho saka.");
+    }
+  }
+
+  function renderGallery() {
+    $("count").textContent = creations.length + " saved";
+    const gallery = $("gallery");
+    gallery.replaceChildren();
+
+    if (!creations.length) {
+      const empty = document.createElement("div");
+      empty.className = "empty";
+      empty.textContent = "Abhi koi creation nahi. Apni pehli duniya banao!";
+      gallery.appendChild(empty);
+      return;
+    }
+
+    creations.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "gallery-card";
+      const img = document.createElement("img");
+      img.src = item.image;
+      img.alt = item.title;
+      const button = document.createElement("button");
+      button.textContent = "↗ " + item.title;
+      button.title = "Create this style again";
+      button.addEventListener("click", () => {
+        currentTitle = item.title;
+        captionInput.value = item.title;
+        selectedStyle = item.style;
+        document.querySelectorAll(".preset").forEach(b =>
+          b.classList.toggle("active", b.dataset.style === selectedStyle)
+        );
+        uploadedImage = null;
+        photoInput.value = "";
+        drawArtwork();
+        showArtwork();
+        notify("Saved style loaded. Create it again or change your idea.");
+      });
+      card.append(img, button);
+      gallery.appendChild(card);
+    });
+  }
+
+  createButton.addEventListener("click", () => {
+    createButton.disabled = true;
+    createButton.textContent = "CREATING YOUR WORLD...";
+    $("status").textContent = "CREATING";
+    try {
+      currentTitle = captionInput.value.trim() ||
+        ideaInput.value.trim().slice(0, 55) || "My first universe";
+      drawArtwork();
+      showArtwork();
+      saveCreation();
+      $("status").textContent = "CREATION READY";
+      notify("Tumhari creation tayyar hai! Download ya share karo.");
+    } catch (error) {
+      console.error(error);
+      notify("Creation nahi ban saki. Doosra style ya image try karo.");
+      $("status").textContent = "TRY AGAIN";
+    } finally {
+      createButton.disabled = false;
+      createButton.textContent = "✦ CREATE MY REALITY";
+    }
+  });
+
+  $("download").addEventListener("click", () => {
+    if (!hasArtwork) return;
+    canvas.toBlob(blob => {
+      if (!blob) {
+        notify("Download nahi ho saka. Dobara try karo.");
+        return;
+      }
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "MIRRORA-creation.png";
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1500);
+      notify("Artwork download ho rahi hai.");
+    }, "image/png");
+  });
+
+  $("share").addEventListener("click", async () => {
+    if (!hasArtwork) return;
+    try {
+      const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
+      if (!blob) throw new Error("Image export failed");
+      const file = new File([blob], "MIRRORA-creation.png", {type:"image/png"});
+      if (navigator.share && navigator.canShare && navigator.canShare({files:[file]})) {
+        await navigator.share({
+          title: currentTitle + " — MIRRORA",
+          text: "Check out my digital creation!",
+          files: [file]
+        });
+        notify("Share menu opened.");
+      } else {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "MIRRORA-creation.png";
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1500);
+        notify("Image downloaded. Ab ise kisi bhi app par share kar sakte ho.");
+      }
+    } catch (error) {
+      if (error.name !== "AbortError") notify("Sharing available nahi thi. Download button use karo.");
+    }
+  });
+
+  try {
+    const saved = JSON.parse(localStorage.getItem("mirrora-creations-v1") || "[]");
+    if (Array.isArray(saved)) {
+      creations = saved.filter(x => x && typeof x.image === "string").slice(0,6);
+    }
+  } catch (_) {}
+  renderGallery();
+})();
+</script>
+</body>
+</html>
