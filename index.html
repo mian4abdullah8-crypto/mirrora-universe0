@@ -4,579 +4,624 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#090b18">
-<title>MIRRORA — Create Your Reality</title>
+<meta name="theme-color" content="#080816">
+<meta name="description" content="MIRRORA — Imagine it. Create another reality. Make digital art from your imagination and photos.">
+<title>MIRRORA — Create Another Reality</title>
 <style>
-:root {
-  --bg:#090b18; --panel:#121629; --line:#292e48;
-  --text:#f5f6ff; --muted:#a0a7c2; --cyan:#75f0ff;
-  --purple:#b49aff; --pink:#ff8bd4;
+:root{
+ --bg:#080816;--panel:#111125;--panel2:#17172e;--line:#292747;
+ --text:#f8f7ff;--muted:#aaa9c5;--purple:#9b5cff;--blue:#38c9ff;
+ --pink:#f45bda;--radius:22px;
 }
 *{box-sizing:border-box}
-body {
-  margin:0;background:var(--bg);color:var(--text);
-  font-family:Inter,system-ui,-apple-system,sans-serif;
-  background-image:radial-gradient(ellipse at 10% 0%,#30205766,transparent 35%),
-  radial-gradient(ellipse at 95% 30%,#07516b30,transparent 30%);
-}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{margin:0;background:var(--bg);color:var(--text);
+ font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
 button,input,textarea{font:inherit}
 button{cursor:pointer}
-button:focus-visible,input:focus-visible,textarea:focus-visible{
-  outline:2px solid var(--cyan);outline-offset:3px
+a{color:inherit;text-decoration:none}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
+ outline:2px solid var(--blue);outline-offset:3px}
+::selection{background:#8b5cf6;color:white}
+.topbar{height:76px;display:flex;align-items:center;justify-content:space-between;
+ padding:0 5%;border-bottom:1px solid #ffffff12;position:sticky;top:0;
+ z-index:10;background:#080816eF;backdrop-filter:blur(20px);gap:18px}
+.brand{display:flex;align-items:center;gap:11px;min-width:max-content}
+.brand-mark{width:45px;height:45px;display:grid;place-items:center;border-radius:15px;
+ background:linear-gradient(140deg,#8c42ff,#2c9cff);box-shadow:0 0 28px #7545ff55}
+.brand-mark svg{width:32px;height:32px}
+.brand-name{font-size:21px;font-weight:900;letter-spacing:2px}
+.brand-sub{font-size:10px;color:#a9a7c7;letter-spacing:.6px;margin-top:3px}
+.nav{display:flex;align-items:center;gap:6px}
+.nav a{font-size:13px;color:#c8c6df;padding:11px 13px;border-radius:12px}
+.nav a:hover,.nav a.active{background:#9b5cff20;color:white}
+.btn{border:0;border-radius:13px;padding:12px 17px;font-weight:750;
+ transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.12)}
+.btn-primary{background:linear-gradient(110deg,#8e45ff,#426dff);color:white;
+ box-shadow:0 8px 26px #7242ff30}
+.btn-outline{border:1px solid #514779;background:#ffffff06;color:white}
+.btn-soft{background:#ffffff0c;color:white;border:1px solid #ffffff12}
+.btn-small{padding:9px 12px;font-size:12px}
+.hero{position:relative;isolation:isolate;overflow:hidden;min-height:590px;
+ display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:75px 6% 65px;gap:30px}
+.hero:before{content:"";position:absolute;inset:0;z-index:-2;
+ background:linear-gradient(90deg,#080816 0%,#080816e8 36%,#08081645 100%),
+ url("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=2000&q=85")
+ center/cover no-repeat}
+.hero:after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+ background:radial-gradient(ellipse at 76% 45%,#773dff30,transparent 43%)}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:9px 13px;
+ border:1px solid #8b68ff45;background:#8b5cf616;border-radius:99px;
+ color:#d8c8ff;font-size:11px;letter-spacing:1.2px;font-weight:800}
+.dot{width:7px;height:7px;background:#56f3cd;border-radius:50%;box-shadow:0 0 12px #56f3cd}
+h1{font-size:clamp(46px,7vw,83px);line-height:.99;letter-spacing:-4px;
+ margin:25px 0 20px;font-weight:950}
+.gradient-text{background:linear-gradient(100deg,#fff 4%,#c6a4ff 42%,#50d8ff 85%);
+ -webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:#c0bfd6;line-height:1.8;font-size:15px;max-width:510px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0}
+.hero-note{color:#9998b4;font-size:11px;line-height:1.6}
+.hero-art{position:relative;min-height:390px;display:flex;align-items:center;justify-content:center}
+.orbit{width:min(100%,410px);aspect-ratio:1;border-radius:50%;
+ display:grid;place-items:center;position:relative;
+ background:radial-gradient(circle at 50% 44%,#a97cff65,#5632ad22 35%,transparent 68%);
 }
-header {
-  display:flex;align-items:center;justify-content:space-between;
-  padding:17px 5%;border-bottom:1px solid var(--line);
-  position:sticky;top:0;background:#090b18ed;backdrop-filter:blur(18px);
-  z-index:5;gap:14px
+.orbit:before,.orbit:after{content:"";position:absolute;border:1px solid #ad8aff55;
+ border-radius:50%;inset:7%;transform:rotate(-27deg) scaleY(.48)}
+.orbit:after{inset:0;transform:rotate(52deg) scaleY(.58);border-color:#52d5ff55}
+.portal{width:54%;aspect-ratio:1;border-radius:50%;
+ background:radial-gradient(circle at 40% 32%,#f8e8ff,#ad75ff 15%,#5822c8 43%,#11113c 68%,#02020a 76%);
+ box-shadow:0 0 35px #9255ff90,0 0 100px #5530e94c,inset -15px -15px 35px #02020a;
+ position:relative}
+.portal:after{content:"M";position:absolute;inset:0;display:grid;place-items:center;
+ font-size:clamp(55px,8vw,95px);font-weight:1000;color:#fff;
+ text-shadow:0 0 25px #a68dff}
+.float-chip{position:absolute;background:#12122beF;border:1px solid #ffffff24;
+ border-radius:15px;padding:13px 15px;box-shadow:0 15px 50px #0008;
+ display:flex;align-items:center;gap:10px;font-size:12px}
+.float-chip strong{display:block;font-size:12px}
+.float-chip small{display:block;color:var(--muted);font-size:10px;margin-top:4px}
+.chip-icon{width:35px;height:35px;border-radius:11px;background:#8b5cff25;
+ display:grid;place-items:center;font-size:19px}
+.chip-one{top:12%;left:0}.chip-two{bottom:13%;right:-1%}
+.chip-three{bottom:4%;left:7%}
+.wrap{width:min(1200px,90%);margin:auto}
+.section{padding:62px 0}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:25px}
+.kicker{color:#b69aff;text-transform:uppercase;font-size:10px;font-weight:850;letter-spacing:2px}
+h2{font-size:clamp(25px,4vw,37px);letter-spacing:-1.2px;margin:9px 0}
+.subtext{color:var(--muted);font-size:13px;line-height:1.7}
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.feature{background:linear-gradient(145deg,#17162d,#0e0e20);
+ border:1px solid #ffffff12;border-radius:19px;padding:23px;min-height:185px;
+ transition:.25s}
+.feature:hover{transform:translateY(-4px);border-color:#8b5cff80}
+.feature-icon{width:45px;height:45px;display:grid;place-items:center;
+ border-radius:14px;background:linear-gradient(135deg,#a855f72b,#38bdf81a);
+ font-size:22px;margin-bottom:20px}
+.feature h3{font-size:15px;margin:0 0 9px}
+.feature p{font-size:12px;line-height:1.7;color:var(--muted);margin:0}
+.creator-layout{display:grid;grid-template-columns:.82fr 1.18fr;gap:20px;align-items:start}
+.panel{background:linear-gradient(150deg,#17162d,#0e0e20);
+ border:1px solid #ffffff14;border-radius:var(--radius);padding:23px}
+.panel h3{margin:0 0 7px;font-size:19px}
+.label{display:block;color:#d6d3e9;font-size:12px;font-weight:750;margin:20px 0 9px}
+textarea,input[type=text],input[type=search]{width:100%;border:1px solid #353251;
+ border-radius:12px;background:#080817;color:white;padding:13px;outline:none}
+textarea{resize:vertical;min-height:100px;line-height:1.6}
+textarea:focus,input[type=text]:focus,input[type=search]:focus{border-color:#9464ff}
+.styles{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.style-btn{border:1px solid #34304f;background:#ffffff05;color:#e7e3f9;
+ padding:13px 11px;border-radius:12px;text-align:left;font-size:12px}
+.style-btn span{display:block;font-size:21px;margin-bottom:6px}
+.style-btn.selected{border-color:#9d73ff;background:#8b5cf622}
+.upload-box{display:block;border:1px dashed #62558a;border-radius:14px;
+ padding:18px;text-align:center;color:#c6c0e5;background:#ffffff04;cursor:pointer}
+.upload-box:hover{border-color:#aa86ff;background:#9b5cff0b}
+.upload-box strong{display:block;font-size:12px;margin:6px}
+.upload-box small{font-size:10px;color:var(--muted)}
+input[type=file]{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.creator-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
+.preview{position:relative;min-height:390px;border-radius:17px;overflow:hidden;
+ background:#080817;border:1px solid #ffffff13;display:flex;align-items:center;justify-content:center}
+#artCanvas{display:block;width:100%;height:auto;max-height:600px;object-fit:contain}
+.preview-placeholder{text-align:center;padding:30px;color:#a7a4c4}
+.preview-placeholder .big{font-size:55px;display:block;margin-bottom:15px}
+.preview-placeholder strong{display:block;color:#e9e6fb;margin-bottom:8px}
+.preview-placeholder p{font-size:12px;line-height:1.7}
+.preview-tools{display:flex;justify-content:space-between;align-items:center;
+ gap:10px;margin-top:12px;flex-wrap:wrap}
+.status{color:#a8a5c3;font-size:11px}
+.gallery-toolbar{display:flex;gap:12px;align-items:center}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.art-card{border:1px solid #ffffff14;background:#121226;border-radius:17px;overflow:hidden}
+.art-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#19162d}
+.art-card-info{padding:12px}
+.art-card-info strong{display:block;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.art-card-info small{display:block;color:var(--muted);font-size:10px;margin-top:5px}
+.art-card-info button{margin-top:10px;width:100%}
+.empty-gallery{grid-column:1/-1;text-align:center;border:1px dashed #393352;
+ padding:35px;border-radius:16px;color:var(--muted);font-size:13px}
+.cta{border:1px solid #8d6bff55;border-radius:24px;padding:35px;
+ background:radial-gradient(ellipse at 80% 30%,#6836bc4a,transparent 50%),#131127;
+ display:flex;justify-content:space-between;align-items:center;gap:22px;flex-wrap:wrap}
+.cta h2{margin:0 0 10px}
+.footer{border-top:1px solid #ffffff12;padding:27px 5%;display:flex;justify-content:space-between;
+ align-items:center;gap:14px;flex-wrap:wrap;color:#aaa7c5;font-size:11px}
+.footer strong{color:white}
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);
+ background:#252143;border:1px solid #62549c;color:white;border-radius:12px;
+ padding:13px 18px;font-size:12px;z-index:50;opacity:0;pointer-events:none;transition:.25s;
+ max-width:90%;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.mobile-menu{display:none}
+@media(max-width:900px){
+ .nav{gap:0}.nav a{padding:10px 8px;font-size:11px}
+ .hero{padding:55px 5%;grid-template-columns:1fr 1fr;min-height:530px}
+ h1{letter-spacing:-2px}.features{grid-template-columns:repeat(2,1fr)}
+ .gallery-grid{grid-template-columns:repeat(3,1fr)}
+ .creator-layout{grid-template-columns:1fr 1fr}.chip-three{display:none}
 }
-.brand{display:flex;align-items:center;gap:11px}
-.logo {
-  width:43px;height:43px;border-radius:15px;display:grid;
-  place-items:center;font-size:23px;color:#101020;
-  background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));
-  box-shadow:0 0 25px #8e82ff33
+@media(max-width:650px){
+ .topbar{height:65px;padding:0 4%}.brand-mark{width:39px;height:39px}
+ .brand-name{font-size:17px}.brand-sub{font-size:9px}
+ .nav{display:none;position:absolute;top:65px;left:0;right:0;padding:12px 4%;
+ background:#0c0b1cf9;border-bottom:1px solid #ffffff15;flex-wrap:wrap}
+ .nav.open{display:flex}.nav a{flex:1;text-align:center;min-width:28%}
+ .mobile-menu{display:inline-flex}.topbar>.btn-primary{display:none}
+ .hero{grid-template-columns:1fr;padding:55px 5% 35px;gap:5px}
+ .hero-art{min-height:300px}.orbit{width:min(88%,320px)}
+ .chip-one{left:-1%;top:6%}.chip-two{right:-1%;bottom:6%}
+ .hero:before{background:linear-gradient(180deg,#080816e8,#080816a8),
+ url("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1000&q=80") center/cover}
+ .section{padding:43px 0}.section-head{align-items:start;flex-direction:column}
+ .features{grid-template-columns:repeat(2,1fr);gap:10px}
+ .feature{padding:16px;min-height:170px}.feature-icon{margin-bottom:13px}
+ .creator-layout{grid-template-columns:1fr}.preview{min-height:240px}
+ .gallery-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+ .panel{padding:17px}.cta{padding:24px}.gallery-toolbar{width:100%}
 }
-.brand h1{font-size:19px;letter-spacing:2px;margin:0}
-.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:1.5px;margin-top:3px}
-.header-tag{color:var(--muted);font-size:12px}
-main{max-width:1180px;margin:auto;padding:42px 20px 60px}
-.hero{text-align:center;max-width:760px;margin:0 auto 35px}
-.eyebrow{
-  display:inline-block;border:1px solid #49416f;background:#211b3b;
-  color:#d0c4ff;border-radius:30px;padding:7px 13px;font-size:11px;
-  letter-spacing:1.4px
-}
-.hero h2{font-size:clamp(35px,7vw,65px);line-height:1.04;letter-spacing:-2px;margin:22px 0 15px}
-.gradient{
-  background:linear-gradient(95deg,var(--cyan),var(--purple),var(--pink));
-  -webkit-background-clip:text;background-clip:text;color:transparent
-}
-.hero p{color:var(--muted);line-height:1.8;margin:auto;max-width:590px;font-size:14px}
-.layout{display:grid;grid-template-columns:340px minmax(0,1fr);gap:20px;align-items:start}
-.panel{
-  background:#111528eF;border:1px solid var(--line);border-radius:20px;
-  padding:21px;min-width:0
-}
-.panel h3{font-size:15px;margin:0 0 19px}
-.label{display:block;font-size:12px;color:#c8cce0;margin:17px 0 8px}
-textarea,input[type=text]{
-  width:100%;background:#0b0e1c;border:1px solid #303650;
-  border-radius:11px;padding:12px;color:white;resize:vertical
-}
-textarea{min-height:88px;line-height:1.6}
-input[type=file]{width:100%;font-size:12px;color:var(--muted)}
-.upload{
-  display:block;padding:15px;border:1px dashed #51577b;
-  border-radius:12px;background:#0b0e1c;text-align:center
-}
-.upload strong{display:block;margin-bottom:5px;font-size:13px}
-.upload span{color:var(--muted);font-size:11px}
-.presets{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.preset{
-  padding:11px 8px;border:1px solid #333953;background:#0c1020;
-  border-radius:11px;color:#e6e8f5;font-size:12px
-}
-.preset.active{border-color:var(--cyan);background:#17303b}
-.preset span{display:block;font-size:21px;margin-bottom:5px}
-.primary,.secondary{
-  width:100%;padding:13px;border:0;border-radius:11px;font-weight:750;
-  transition:transform .15s,opacity .15s
-}
-.primary{
-  margin-top:21px;color:#101020;
-  background:linear-gradient(100deg,var(--cyan),#b3a1ff,var(--pink))
-}
-.secondary{background:#222741;color:white;border:1px solid #343b58}
-.primary:hover,.secondary:hover{transform:translateY(-1px)}
-.primary:disabled{opacity:.5;cursor:wait}
-.note{color:var(--muted);font-size:11px;line-height:1.7;margin:13px 0 0}
-.stage-top{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:15px}
-.stage-top h3{margin:0;font-size:15px}
-.status{font-size:10px;color:var(--cyan);letter-spacing:1px}
-.canvas-wrap{
-  overflow:hidden;border:1px solid #343854;border-radius:16px;
-  background:#070a15;position:relative
-}
-canvas{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain}
-.canvas-placeholder{
-  aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;
-  text-align:center;padding:25px;
-  background:radial-gradient(ellipse at 50% 65%,#453072 0%,#17162f 38%,#080b18 75%);
-  position:relative;overflow:hidden
-}
-.placeholder-orb{
-  width:125px;height:125px;border-radius:50%;margin:0 auto 22px;
-  background:radial-gradient(circle at 35% 30%,#fff 0%,#8bf1ff 9%,#9a7bff 35%,#422e80 67%,#11152d 74%);
-  box-shadow:0 0 45px #8d7dff8a,0 0 100px #57e4ff26;
-  animation:float 4s ease-in-out infinite
-}
-@keyframes float{50%{transform:translateY(-10px)}}
-.placeholder-content{position:relative;z-index:1}
-.placeholder-content h4{margin:0 0 8px;font-size:22px}
-.placeholder-content p{margin:0;color:#b3bad4;font-size:12px;line-height:1.7}
-.output-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:13px}
-.section-title{margin:27px 0 12px;display:flex;justify-content:space-between;align-items:center}
-.section-title h3{font-size:14px;margin:0}
-.section-title span{font-size:11px;color:var(--muted)}
-.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.gallery-card{
-  min-width:0;border:1px solid var(--line);background:#0b0e1c;
-  border-radius:11px;overflow:hidden
-}
-.gallery-card img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
-.gallery-card button{
-  width:100%;padding:9px 3px;background:none;color:#cdd3ee;
-  border:0;font-size:11px
-}
-.empty{font-size:12px;color:var(--muted);padding:20px 0}
-footer{
-  text-align:center;border-top:1px solid var(--line);padding:25px 15px;
-  color:var(--muted);font-size:11px;line-height:1.9
-}
-.toast{color:var(--cyan);font-size:12px;min-height:18px;margin-top:10px}
-@media(max-width:800px){
-  main{padding:30px 14px 45px}
-  .layout{grid-template-columns:1fr}
-  .hero h2{letter-spacing:-1.3px}
-  header{padding:13px 16px}
-}
-@media(max-width:420px){
-  .header-tag{display:none}
-  .panel{padding:16px}
-  .output-actions{grid-template-columns:1fr}
-}
+@media(max-width:360px){.features{grid-template-columns:1fr}.gallery-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<header>
-  <div class="brand">
-    <div class="logo" aria-hidden="true">◈</div>
-    <div>
-      <h1>MIRRORA</h1>
-      <small>MADE IN MIAN ABDULLAH</small>
-    </div>
-  </div>
-  <div class="header-tag">YOUR IMAGINATION, REIMAGINED</div>
+<header class="topbar">
+ <a class="brand" href="#home" aria-label="MIRRORA home">
+  <span class="brand-mark">
+   <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+    <path d="M5 30 13 9l7 13 7-13 8 21h-7l-3-9-5 9-5-9-3 9Z"
+     fill="white" stroke="#e4d8ff" stroke-width=".6" stroke-linejoin="round"/>
+   </svg>
+  </span>
+  <span><span class="brand-name">MIRRORA</span><span class="brand-sub" style="display:block">CREATE ANOTHER REALITY</span></span>
+ </a>
+ <nav class="nav" id="nav">
+  <a class="active" href="#home">Home</a>
+  <a href="#create">Create</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#explore">Explore</a>
+ </nav>
+ <button class="btn btn-soft mobile-menu" id="menuBtn" aria-label="Open menu">☰</button>
+ <a class="btn btn-primary" href="#create">✦ Create Now</a>
 </header>
 
 <main>
-  <section class="hero">
-    <span class="eyebrow">✦ A NEW DIGITAL EXPERIENCE</span>
-    <h2>Imagine it.<br><span class="gradient">Create another reality.</span></h2>
-    <p>Apna idea likho, apni photo upload karo, aur apni digital creation banao. Tumhari imagination, tumhara universe.</p>
-  </section>
+<section class="hero" id="home">
+ <div>
+  <span class="eyebrow"><span class="dot"></span> YOUR IMAGINATION, UNLIMITED</span>
+  <h1>Imagine It.<br><span class="gradient-text">Create Another Reality.</span></h1>
+  <p>Turn your ideas and photos into extraordinary visual worlds. Discover creative styles, experiment with your imagination, and make something that feels like you.</p>
+  <div class="hero-actions">
+   <a class="btn btn-primary" href="#create">✧ Start Creating <span>→</span></a>
+   <a class="btn btn-outline" href="#explore">Explore MIRRORA ↓</a>
+  </div>
+  <div class="hero-note">✦ A creative universe by <strong>MIAN ABDULLAH</strong><br>Start free · No account needed for this prototype</div>
+ </div>
+ <div class="hero-art" aria-label="MIRRORA glowing digital portal artwork">
+  <div class="orbit"><div class="portal"></div></div>
+  <div class="float-chip chip-one"><span class="chip-icon">✧</span><span><strong>Dream in colour</strong><small>Make your idea visual</small></span></div>
+  <div class="float-chip chip-two"><span class="chip-icon">◈</span><span><strong>Your own universe</strong><small>Explore your creativity</small></span></div>
+  <div class="float-chip chip-three"><span class="chip-icon">↗</span><span><strong>Save & share</strong><small>Your creation, your style</small></span></div>
+ </div>
+</section>
 
-  <section class="layout">
-    <div class="panel">
-      <h3>✦ Create your reality</h3>
+<section class="section" id="explore">
+ <div class="wrap">
+  <div class="section-head">
+   <div><div class="kicker">Beyond ordinary</div><h2>Your imagination has no limits.</h2>
+   <div class="subtext">A creative toolkit designed to help you see your ideas differently.</div></div>
+  </div>
+  <div class="features">
+   <article class="feature"><div class="feature-icon">🌌</div><h3>Cosmic Worlds</h3><p>Explore dreamy colours, stars and otherworldly visual compositions.</p></article>
+   <article class="feature"><div class="feature-icon">📸</div><h3>Photo Transform</h3><p>Upload your own image and experiment with creative visual treatments.</p></article>
+   <article class="feature"><div class="feature-icon">🎨</div><h3>Creative Studio</h3><p>Try different moods and build artwork inspired by your own ideas.</p></article>
+   <article class="feature"><div class="feature-icon">💾</div><h3>Your Gallery</h3><p>Download creations and keep recent work saved in this browser.</p></article>
+  </div>
+ </div>
+</section>
 
-      <label class="label" for="idea">Tumhari imagination</label>
-      <textarea id="idea" maxlength="180" placeholder="Example: A glowing city floating above the clouds..."></textarea>
-
-      <label class="label" for="photo">Apni photo upload karo (optional)</label>
-      <label class="upload" for="photo">
-        <strong>＋ Choose your image</strong>
-        <span>JPG, PNG, WebP · Image stays in your browser</span>
-      </label>
-      <input id="photo" type="file" accept="image/png,image/jpeg,image/webp" style="margin-top:10px">
-
-      <label class="label">Choose your universe</label>
-      <div class="presets">
-        <button class="preset active" data-style="cosmic"><span>🌌</span>Cosmic</button>
-        <button class="preset" data-style="dream"><span>🪄</span>Dream World</button>
-        <button class="preset" data-style="cyber"><span>🌃</span>Cyber City</button>
-        <button class="preset" data-style="crystal"><span>💎</span>Crystal World</button>
-      </div>
-
-      <label class="label" for="caption">Creation ka title</label>
-      <input type="text" id="caption" maxlength="55" placeholder="My first universe">
-
-      <button class="primary" id="create">✦ CREATE MY REALITY</button>
-      <p class="note">Version 1 creative engine: creates procedural artwork and applies visual effects to your photo. Ye abhi AI image generator nahi hai. Advanced AI generation future mein connect ki ja sakti hai.</p>
+<section class="section" id="create">
+ <div class="wrap">
+  <div class="section-head">
+   <div><div class="kicker">The creation lab</div><h2>Make something extraordinary.</h2>
+   <div class="subtext">Write an idea or add a photo. Then choose your visual mood.</div></div>
+  </div>
+  <div class="creator-layout">
+   <div class="panel">
+    <h3>✦ Your creative vision</h3>
+    <div class="subtext">Describe the world you imagine.</div>
+    <label class="label" for="prompt">YOUR IDEA</label>
+    <textarea id="prompt" maxlength="240" placeholder="A glowing city floating above purple clouds...">A glowing city floating above purple clouds</textarea>
+    <label class="label">CHOOSE A STYLE</label>
+    <div class="styles" id="styles">
+     <button class="style-btn selected" data-style="cosmic"><span>🌌</span>Cosmic Dream</button>
+     <button class="style-btn" data-style="cyber"><span>🌃</span>Cyber City</button>
+     <button class="style-btn" data-style="dream"><span>🌸</span>Dream World</button>
+     <button class="style-btn" data-style="crystal"><span>💎</span>Crystal Realm</button>
     </div>
-
-    <div class="panel">
-      <div class="stage-top">
-        <h3>Your creation</h3>
-        <span class="status" id="status">READY TO CREATE</span>
-      </div>
-
-      <div class="canvas-wrap" id="canvasWrap">
-        <div class="canvas-placeholder" id="placeholder">
-          <div class="placeholder-content">
-            <div class="placeholder-orb"></div>
-            <h4>Your world starts here.</h4>
-            <p>Apna idea likho aur Create My Reality dabao.</p>
-          </div>
-        </div>
-        <canvas id="art" width="1200" height="900" hidden aria-label="Your generated digital artwork"></canvas>
-      </div>
-
-      <div class="output-actions">
-        <button class="secondary" id="download" disabled>↓ Download artwork</button>
-        <button class="secondary" id="share" disabled>↗ Share creation</button>
-      </div>
-      <div class="toast" id="message" role="status" aria-live="polite"></div>
-
-      <div class="section-title">
-        <h3>✧ My creations</h3>
-        <span id="count">0 saved</span>
-      </div>
-      <div id="gallery" class="gallery"></div>
-      <p class="note">Recent creations are saved locally in this browser when storage is available. They are not automatically published online or shared with other users.</p>
+    <label class="label" for="photo">UPLOAD YOUR PHOTO (OPTIONAL)</label>
+    <label class="upload-box" for="photo">
+     <span style="font-size:25px">↥</span>
+     <strong>Choose a photo from your device</strong>
+     <small>JPG, PNG or WebP · Maximum 12 MB</small>
+    </label>
+    <input type="file" id="photo" accept="image/png,image/jpeg,image/webp">
+    <div id="fileName" class="status" style="margin-top:8px">No photo selected. You can create artwork from your idea.</div>
+    <div class="creator-actions">
+     <button class="btn btn-primary" id="createBtn">✦ Create Artwork</button>
+     <button class="btn btn-outline" id="clearBtn">Reset</button>
     </div>
-  </section>
+    <p class="status" style="line-height:1.7;margin-top:14px">This first version uses a local visual engine and photo filters, not a connected AI model.</p>
+   </div>
+   <div class="panel">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:15px">
+     <div><h3>Your creation</h3><div class="subtext">Preview your visual world</div></div>
+     <span class="eyebrow" style="font-size:9px;letter-spacing:.5px">STUDIO 01</span>
+    </div>
+    <div class="preview" id="preview">
+     <div class="preview-placeholder" id="placeholder"><span class="big">✧</span><strong>Your canvas is waiting.</strong><p>Enter an idea, choose a style and select<br>Create Artwork to begin.</p></div>
+     <canvas id="artCanvas" width="900" height="650" hidden></canvas>
+    </div>
+    <div class="preview-tools">
+     <span class="status" id="status" role="status">Ready to create</span>
+     <div style="display:flex;gap:8px">
+      <button class="btn btn-soft btn-small" id="shareBtn">↗ Share</button>
+      <button class="btn btn-primary btn-small" id="downloadBtn" disabled>↓ Download</button>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="gallery">
+ <div class="wrap">
+  <div class="section-head">
+   <div><div class="kicker">Your creative collection</div><h2>My gallery.</h2>
+    <div class="subtext">Creations saved on this device appear here.</div></div>
+   <div class="gallery-toolbar"><input type="search" id="gallerySearch" placeholder="Search your creations..." aria-label="Search gallery" style="max-width:240px"></div>
+  </div>
+  <div class="gallery-grid" id="galleryGrid">
+   <div class="empty-gallery">Your gallery is waiting for its first creation. ✦<br><br><a href="#create" style="color:#c4a6ff">Create your first artwork →</a></div>
+  </div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="wrap">
+  <div class="cta">
+   <div><div class="kicker">This is only the beginning</div><h2>Dream bigger. Create more.</h2>
+    <div class="subtext">Your ideas deserve a world of their own.</div></div>
+   <a href="#create" class="btn btn-primary">Enter the Studio ✦</a>
+  </div>
+ </div>
+</section>
 </main>
 
-<footer>
-  MIRRORA · MADE IN MIAN ABDULLAH<br>
-  Create responsibly. Share your imagination with the world.
+<footer class="footer">
+ <div><strong>MIRRORA</strong> — Imagine It. Create Another Reality.</div>
+ <div>MADE IN MIAN ABDULLAH · <span id="year"></span></div>
+ <div>Creative universe · Phase 1</div>
 </footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
 (() => {
-  const $ = id => document.getElementById(id);
-  const canvas = $("art");
-  const ctx = canvas.getContext("2d");
-  const photoInput = $("photo");
-  const ideaInput = $("idea");
-  const captionInput = $("caption");
-  const createButton = $("create");
-  const message = $("message");
+"use strict";
+const $ = id => document.getElementById(id);
+const canvas = $("artCanvas");
+const ctx = canvas.getContext("2d");
+const photoInput = $("photo");
+const promptInput = $("prompt");
+const status = $("status");
+const toastEl = $("toast");
+let selectedStyle = "cosmic";
+let uploadedImage = null;
+let currentArtwork = "";
+let toastTimer;
 
-  let selectedStyle = "cosmic";
-  let uploadedImage = null;
-  let hasArtwork = false;
-  let currentTitle = "My first universe";
-  let creations = [];
+$("year").textContent = new Date().getFullYear();
 
-  const palettes = {
-    cosmic: ["#080b24", "#37216d", "#5bdff5", "#b79aff"],
-    dream: ["#21153c", "#a04e9c", "#ffb9db", "#ffd7a4"],
-    cyber: ["#050e20", "#073e56", "#00ffd0", "#ed53ff"],
-    crystal: ["#081d36", "#235c83", "#b2f8ff", "#a3a0ff"]
+function toast(message) {
+ toastEl.textContent = message;
+ toastEl.classList.add("show");
+ clearTimeout(toastTimer);
+ toastTimer = setTimeout(() => toastEl.classList.remove("show"), 3000);
+}
+function setStatus(message) { status.textContent = message; }
+
+$("menuBtn").addEventListener("click", () => $("nav").classList.toggle("open"));
+$("nav").querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+ $("nav").classList.remove("open");
+ $("nav").querySelectorAll("a").forEach(link => link.classList.remove("active"));
+ a.classList.add("active");
+}));
+
+$("styles").querySelectorAll(".style-btn").forEach(button => {
+ button.addEventListener("click", () => {
+  selectedStyle = button.dataset.style;
+  $("styles").querySelectorAll(".style-btn").forEach(b => b.classList.toggle("selected", b === button));
+ });
+});
+
+photoInput.addEventListener("change", () => {
+ const file = photoInput.files && photoInput.files[0];
+ uploadedImage = null;
+ if (!file) { $("fileName").textContent = "No photo selected."; return; }
+ if (!["image/jpeg","image/png","image/webp"].includes(file.type)) {
+  photoInput.value = "";
+  $("fileName").textContent = "No photo selected.";
+  toast("Please choose a JPG, PNG or WebP image.");
+  return;
+ }
+ if (file.size > 12 * 1024 * 1024) {
+  photoInput.value = "";
+  $("fileName").textContent = "No photo selected.";
+  toast("Image is too large. Maximum file size is 12 MB.");
+  return;
+ }
+ const reader = new FileReader();
+ reader.onload = () => {
+  const image = new Image();
+  image.onload = () => {
+   uploadedImage = image;
+   $("fileName").textContent = "Selected: " + file.name;
+   toast("Photo ready. Choose Create Artwork.");
   };
+  image.onerror = () => toast("This image could not be opened.");
+  image.src = reader.result;
+ };
+ reader.onerror = () => toast("Could not read that file. Try another photo.");
+ reader.readAsDataURL(file);
+});
 
-  document.querySelectorAll(".preset").forEach(button => {
-    button.addEventListener("click", () => {
-      selectedStyle = button.dataset.style;
-      document.querySelectorAll(".preset").forEach(b =>
-        b.classList.toggle("active", b === button)
-      );
-      notify("Style selected: " + button.textContent.trim());
-    });
-  });
+const palettes = {
+ cosmic: ["#080b2d","#5126a9","#d957ff","#42d8ff"],
+ cyber: ["#09091e","#172b7a","#f23ba7","#30e5ff"],
+ dream: ["#24134e","#7a3a99","#ff9fcf","#ffd4a1"],
+ crystal: ["#061c37","#176f91","#78f5ff","#d9c8ff"]
+};
 
-  photoInput.addEventListener("change", () => {
-    const file = photoInput.files && photoInput.files[0];
-    if (!file) {
-      uploadedImage = null;
-      return;
-    }
-    if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
-      notify("Please choose a JPG, PNG or WebP image.");
-      photoInput.value = "";
-      return;
-    }
-    if (file.size > 12 * 1024 * 1024) {
-      notify("Image 12 MB se chhoti honi chahiye.");
-      photoInput.value = "";
-      return;
-    }
+function seededRandom(seed) {
+ let x = seed || 12345;
+ return () => {
+  x = (x * 1664525 + 1013904223) >>> 0;
+  return x / 4294967296;
+ };
+}
 
-    const reader = new FileReader();
-    reader.onload = () => {
-      const image = new Image();
-      image.onload = () => {
-        uploadedImage = image;
-        notify("Photo ready. Ab Create My Reality dabao.");
-      };
-      image.onerror = () => notify("Image load nahi hui. Doosri image try karo.");
-      image.src = reader.result;
-    };
-    reader.onerror = () => notify("Image read nahi ho saki.");
-    reader.readAsDataURL(file);
-  });
+function drawBackground(style, seedText) {
+ const p = palettes[style] || palettes.cosmic;
+ const seed = Array.from(seedText).reduce((n,c) => n + c.charCodeAt(0), 0) || 1;
+ const random = seededRandom(seed + style.length * 7919);
+ const w = canvas.width, h = canvas.height;
+ const grad = ctx.createLinearGradient(0,0,w,h);
+ grad.addColorStop(0,p[0]); grad.addColorStop(.55,p[1]); grad.addColorStop(1,"#050612");
+ ctx.fillStyle = grad; ctx.fillRect(0,0,w,h);
 
-  function notify(text) {
-    message.textContent = text;
+ for(let i=0;i<6;i++){
+  const x=random()*w, y=random()*h*.8, r=80+random()*190;
+  const glow=ctx.createRadialGradient(x,y,0,x,y,r);
+  glow.addColorStop(0,p[2]+"66"); glow.addColorStop(1,p[2]+"00");
+  ctx.fillStyle=glow; ctx.fillRect(x-r,y-r,r*2,r*2);
+ }
+ // Star field
+ for(let i=0;i<220;i++){
+  const x=random()*w,y=random()*h*.85,r=random()*2+0.3;
+  ctx.globalAlpha=.25+random()*.75;ctx.fillStyle=i%4===0?p[3]:"#ffffff";
+  ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();
+ }
+ ctx.globalAlpha=1;
+
+ // Glowing portal
+ const cx=w*.51,cy=h*.43,r=h*.25;
+ const glow=ctx.createRadialGradient(cx,cy,r*.2,cx,cy,r*1.65);
+ glow.addColorStop(0,p[2]+"88");glow.addColorStop(.6,p[3]+"22");glow.addColorStop(1,p[3]+"00");
+ ctx.fillStyle=glow;ctx.fillRect(cx-r*2,cy-r*2,r*4,r*4);
+
+ ctx.save();ctx.translate(cx,cy);ctx.rotate(-.25);
+ ctx.strokeStyle=p[3]+"aa";ctx.lineWidth=3;
+ ctx.beginPath();ctx.ellipse(0,0,r*1.4,r*.5,0,0,Math.PI*2);ctx.stroke();
+ ctx.strokeStyle=p[2]+"bb";ctx.lineWidth=2;
+ ctx.beginPath();ctx.ellipse(0,0,r*1.15,r*.77,0,0,Math.PI*2);ctx.stroke();
+ ctx.restore();
+
+ const portal=ctx.createRadialGradient(cx-r*.22,cy-r*.3,2,cx,cy,r);
+ portal.addColorStop(0,"#ffffff");portal.addColorStop(.12,p[3]);
+ portal.addColorStop(.4,p[2]);portal.addColorStop(.8,p[1]);portal.addColorStop(1,"#09081e");
+ ctx.fillStyle=portal;ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.fill();
+ ctx.strokeStyle=p[3];ctx.lineWidth=3;ctx.shadowColor=p[3];ctx.shadowBlur=25;
+ ctx.stroke();ctx.shadowBlur=0;
+
+ // Stylized floating terrain silhouettes
+ for(let layer=0;layer<3;layer++){
+  ctx.beginPath();ctx.moveTo(0,h*.72+layer*25);
+  for(let x=0;x<=w;x+=30){
+   const y=h*.7+layer*26+Math.sin(x*.012+layer*2)*24+random()*15;
+   ctx.lineTo(x,y);
   }
+  ctx.lineTo(w,h);ctx.lineTo(0,h);ctx.closePath();
+  ctx.fillStyle=["#090a22","#10102d","#171332"][layer];ctx.fill();
+ }
+ // Tiny glowing city skyline
+ for(let i=0;i<28;i++){
+  const x=random()*w,y=h*.68+random()*55,bw=5+random()*15,bh=12+random()*65;
+  ctx.fillStyle=i%3===0?p[3]+"bb":p[2]+"88";
+  ctx.fillRect(x,y-bh,bw,bh);
+  if(i%4===0){ctx.fillStyle="#ffffffcc";ctx.fillRect(x+bw*.45,y-bh+5,2,3);}
+ }
+}
 
-  function drawCover(image) {
-    const scale = Math.max(canvas.width / image.width, canvas.height / image.height);
-    const w = image.width * scale;
-    const h = image.height * scale;
-    ctx.drawImage(image, (canvas.width-w)/2, (canvas.height-h)/2, w, h);
-  }
+function drawIdeaText(text, style) {
+ const w=canvas.width,h=canvas.height;
+ const short=text.trim().slice(0,90) || "Create Another Reality";
+ const gradient=ctx.createLinearGradient(60,h-150,w*.7,h-55);
+ gradient.addColorStop(0,"#ffffff");gradient.addColorStop(1,(palettes[style]||palettes.cosmic)[3]);
+ ctx.fillStyle="#03030bcc";ctx.fillRect(35,h-147,w-70,112);
+ ctx.strokeStyle="#ffffff30";ctx.strokeRect(35,h-147,w-70,112);
+ ctx.fillStyle=gradient;ctx.font="bold 30px system-ui,sans-serif";
+ ctx.textAlign="left";
+ let line="",lines=[],words=short.split(/\s+/);
+ for(const word of words){
+  const test=line?line+" "+word:word;
+  if(ctx.measureText(test).width>w-110 && line){lines.push(line);line=word;}
+  else line=test;
+ }
+ if(line)lines.push(line);
+ lines.slice(0,2).forEach((l,i)=>ctx.fillText(l,58,h-100+i*37));
+ ctx.fillStyle="#ffffffb8";ctx.font="bold 12px system-ui,sans-serif";
+ ctx.fillText("MIRRORA  /  MADE IN MIAN ABDULLAH",58,h-51);
+}
 
-  function drawBackground(palette) {
-    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-    gradient.addColorStop(0, palette[0]);
-    gradient.addColorStop(0.55, palette[1]);
-    gradient.addColorStop(1, palette[0]);
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+function drawPhoto() {
+ const w=canvas.width,h=canvas.height;
+ const img=uploadedImage;
+ const scale=Math.max(w/img.width,h/img.height);
+ const iw=img.width*scale,ih=img.height*scale;
+ ctx.save();
+ ctx.filter = selectedStyle==="cyber" ? "saturate(1.5) hue-rotate(20deg) contrast(1.08)" :
+  selectedStyle==="dream" ? "saturate(1.25) hue-rotate(-15deg) brightness(1.08)" :
+  selectedStyle==="crystal" ? "saturate(1.35) hue-rotate(135deg) contrast(1.08)" :
+  "saturate(1.35) hue-rotate(12deg) contrast(1.06)";
+ ctx.drawImage(img,(w-iw)/2,(h-ih)/2,iw,ih);
+ ctx.restore();
+ const overlay=ctx.createLinearGradient(0,0,w,h);
+ overlay.addColorStop(0,"#4320a955");overlay.addColorStop(.5,"#03051508");overlay.addColorStop(1,"#0a123fcc");
+ ctx.fillStyle=overlay;ctx.fillRect(0,0,w,h);
+ // Colour frame
+ ctx.strokeStyle=(palettes[selectedStyle]||palettes.cosmic)[3];
+ ctx.lineWidth=5;ctx.strokeRect(12,12,w-24,h-24);
+ drawIdeaText(promptInput.value || "My MIRRORA Creation",selectedStyle);
+}
 
-    for (let i=0; i<150; i++) {
-      const x = Math.random() * canvas.width;
-      const y = Math.random() * canvas.height;
-      const r = Math.random() * 2.2 + 0.4;
-      ctx.globalAlpha = Math.random() * 0.7 + 0.2;
-      ctx.fillStyle = i % 3 === 0 ? palette[2] : "#ffffff";
-      ctx.beginPath();
-      ctx.arc(x, y, r, 0, Math.PI*2);
-      ctx.fill();
-    }
-    ctx.globalAlpha = 1;
+function createArtwork() {
+ const idea=promptInput.value.trim();
+ if(!uploadedImage && !idea) { toast("Pehle apna idea likho ya photo upload karo."); return; }
+ $("createBtn").disabled=true;
+ setStatus("Creating your artwork...");
+ try {
+  if(uploadedImage) drawPhoto();
+  else {drawBackground(selectedStyle,idea);drawIdeaText(idea,selectedStyle);}
+  $("placeholder").hidden=true;
+  canvas.hidden=false;
+  currentArtwork=canvas.toDataURL("image/png");
+  $("downloadBtn").disabled=false;
+  saveArtwork(currentArtwork,idea || "My Photo Creation",selectedStyle);
+  setStatus("Artwork created · Ready to download");
+  toast("Artwork ready! Aap download kar sakte hain.");
+ } catch(error) {
+  console.error(error);
+  setStatus("Could not create artwork");
+  toast("Artwork nahi ban saka. Chhoti photo ya doosra idea try karein.");
+ } finally { $("createBtn").disabled=false; }
+}
+$("createBtn").addEventListener("click",createArtwork);
 
-    const glow = ctx.createRadialGradient(600, 420, 20, 600, 420, 330);
-    glow.addColorStop(0, palette[2] + "99");
-    glow.addColorStop(0.35, palette[3] + "55");
-    glow.addColorStop(1, palette[0] + "00");
-    ctx.fillStyle = glow;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // Draw a fictional glowing planet.
-    const planet = ctx.createRadialGradient(510, 300, 20, 600, 410, 205);
-    planet.addColorStop(0, "#ffffff");
-    planet.addColorStop(0.08, palette[2]);
-    planet.addColorStop(0.48, palette[3]);
-    planet.addColorStop(0.85, palette[1]);
-    planet.addColorStop(1, palette[0]);
-    ctx.save();
-    ctx.shadowColor = palette[2];
-    ctx.shadowBlur = 55;
-    ctx.fillStyle = planet;
-    ctx.beginPath();
-    ctx.arc(600, 410, 190, 0, Math.PI*2);
-    ctx.fill();
-    ctx.restore();
-
-    ctx.save();
-    ctx.translate(600, 410);
-    ctx.rotate(-0.28);
-    ctx.strokeStyle = palette[2] + "cc";
-    ctx.lineWidth = 7;
-    ctx.beginPath();
-    ctx.ellipse(0, 0, 275, 70, 0, 0, Math.PI*2);
-    ctx.stroke();
-    ctx.restore();
-
-    // Atmospheric glow at the bottom.
-    const ground = ctx.createLinearGradient(0, 630, 0, 900);
-    ground.addColorStop(0, palette[1] + "00");
-    ground.addColorStop(1, palette[0] + "ee");
-    ctx.fillStyle = ground;
-    ctx.fillRect(0, 600, canvas.width, 300);
-  }
-
-  function drawArtwork() {
-    const palette = palettes[selectedStyle];
-    const filter = {
-      cosmic: "saturate(1.3) contrast(1.08)",
-      dream: "saturate(1.2) hue-rotate(-12deg) brightness(1.08)",
-      cyber: "saturate(1.8) contrast(1.18) hue-rotate(18deg)",
-      crystal: "saturate(1.35) brightness(1.12) hue-rotate(12deg)"
-    }[selectedStyle];
-
-    if (uploadedImage) {
-      ctx.save();
-      ctx.filter = filter;
-      drawCover(uploadedImage);
-      ctx.restore();
-
-      // Dark gradient keeps the text readable.
-      const shade = ctx.createLinearGradient(0, 350, 0, 900);
-      shade.addColorStop(0, "#05071900");
-      shade.addColorStop(1, "#050719eF");
-      ctx.fillStyle = shade;
-      ctx.fillRect(0, 0, 1200, 900);
-    } else {
-      drawBackground(palette);
-    }
-
-    const title = currentTitle;
-    ctx.save();
-    ctx.textAlign = "center";
-    ctx.shadowColor = palette[2];
-    ctx.shadowBlur = 18;
-    ctx.fillStyle = "#ffffff";
-    ctx.font = "bold 48px system-ui, sans-serif";
-
-    // Wrap the title to fit the artwork.
-    const words = title.split(/\s+/);
-    let line = "";
-    const lines = [];
-    for (const word of words) {
-      const test = line ? line + " " + word : word;
-      if (ctx.measureText(test).width > 950 && line) {
-        lines.push(line);
-        line = word;
-      } else line = test;
-    }
-    if (line) lines.push(line);
-    const visibleLines = lines.slice(0, 2);
-    const baseY = uploadedImage ? 725 : 720;
-    visibleLines.forEach((txt, i) => {
-      ctx.fillText(txt, 600, baseY + i*58, 960);
-    });
-
-    ctx.shadowBlur = 0;
-    ctx.fillStyle = palette[2];
-    ctx.font = "bold 19px system-ui, sans-serif";
-    ctx.fillText("MIRRORA  ✦  MADE IN MIAN ABDULLAH", 600, 835, 1100);
-    ctx.restore();
-  }
-
-  function showArtwork() {
-    $("placeholder").hidden = true;
-    canvas.hidden = false;
-    $("download").disabled = false;
-    $("share").disabled = false;
-    hasArtwork = true;
-  }
-
-  function saveCreation() {
-    // Small compressed thumbnails reduce local browser storage use.
-    try {
-      const thumbnail = document.createElement("canvas");
-      thumbnail.width = 240;
-      thumbnail.height = 180;
-      thumbnail.getContext("2d").drawImage(canvas, 0, 0, 240, 180);
-      const item = {
-        title: currentTitle,
-        style: selectedStyle,
-        image: thumbnail.toDataURL("image/jpeg", 0.65),
-        created: Date.now()
-      };
-      creations.unshift(item);
-      creations = creations.slice(0, 6);
-      try {
-        localStorage.setItem("mirrora-creations-v1", JSON.stringify(creations));
-      } catch (_) {
-        // Keep this session usable even if storage is full or unavailable.
-      }
-      renderGallery();
-    } catch (_) {
-      notify("Artwork ban gaya, lekin gallery mein save nahi ho saka.");
-    }
-  }
-
-  function renderGallery() {
-    $("count").textContent = creations.length + " saved";
-    const gallery = $("gallery");
-    gallery.replaceChildren();
-
-    if (!creations.length) {
-      const empty = document.createElement("div");
-      empty.className = "empty";
-      empty.textContent = "Abhi koi creation nahi. Apni pehli duniya banao!";
-      gallery.appendChild(empty);
-      return;
-    }
-
-    creations.forEach(item => {
-      const card = document.createElement("div");
-      card.className = "gallery-card";
-      const img = document.createElement("img");
-      img.src = item.image;
-      img.alt = item.title;
-      const button = document.createElement("button");
-      button.textContent = "↗ " + item.title;
-      button.title = "Create this style again";
-      button.addEventListener("click", () => {
-        currentTitle = item.title;
-        captionInput.value = item.title;
-        selectedStyle = item.style;
-        document.querySelectorAll(".preset").forEach(b =>
-          b.classList.toggle("active", b.dataset.style === selectedStyle)
-        );
-        uploadedImage = null;
-        photoInput.value = "";
-        drawArtwork();
-        showArtwork();
-        notify("Saved style loaded. Create it again or change your idea.");
-      });
-      card.append(img, button);
-      gallery.appendChild(card);
-    });
-  }
-
-  createButton.addEventListener("click", () => {
-    createButton.disabled = true;
-    createButton.textContent = "CREATING YOUR WORLD...";
-    $("status").textContent = "CREATING";
-    try {
-      currentTitle = captionInput.value.trim() ||
-        ideaInput.value.trim().slice(0, 55) || "My first universe";
-      drawArtwork();
-      showArtwork();
-      saveCreation();
-      $("status").textContent = "CREATION READY";
-      notify("Tumhari creation tayyar hai! Download ya share karo.");
-    } catch (error) {
-      console.error(error);
-      notify("Creation nahi ban saki. Doosra style ya image try karo.");
-      $("status").textContent = "TRY AGAIN";
-    } finally {
-      createButton.disabled = false;
-      createButton.textContent = "✦ CREATE MY REALITY";
-    }
-  });
-
-  $("download").addEventListener("click", () => {
-    if (!hasArtwork) return;
-    canvas.toBlob(blob => {
-      if (!blob) {
-        notify("Download nahi ho saka. Dobara try karo.");
-        return;
-      }
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "MIRRORA-creation.png";
-      a.click();
-      setTimeout(() => URL.revokeObjectURL(url), 1500);
-      notify("Artwork download ho rahi hai.");
-    }, "image/png");
-  });
-
-  $("share").addEventListener("click", async () => {
-    if (!hasArtwork) return;
-    try {
-      const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
-      if (!blob) throw new Error("Image export failed");
-      const file = new File([blob], "MIRRORA-creation.png", {type:"image/png"});
-      if (navigator.share && navigator.canShare && navigator.canShare({files:[file]})) {
-        await navigator.share({
-          title: currentTitle + " — MIRRORA",
-          text: "Check out my digital creation!",
-          files: [file]
-        });
-        notify("Share menu opened.");
-      } else {
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "MIRRORA-creation.png";
-        a.click();
-        setTimeout(() => URL.revokeObjectURL(url), 1500);
-        notify("Image downloaded. Ab ise kisi bhi app par share kar sakte ho.");
-      }
-    } catch (error) {
-      if (error.name !== "AbortError") notify("Sharing available nahi thi. Download button use karo.");
-    }
-  });
-
-  try {
-    const saved = JSON.parse(localStorage.getItem("mirrora-creations-v1") || "[]");
-    if (Array.isArray(saved)) {
-      creations = saved.filter(x => x && typeof x.image === "string").slice(0,6);
-    }
-  } catch (_) {}
+function getGallery() {
+ try { const data=JSON.parse(localStorage.getItem("mirrora_gallery_v1")||"[]"); return Array.isArray(data)?data:[]; }
+ catch(e) { return []; }
+}
+function saveArtwork(data,title,style) {
+ const items=getGallery();
+ items.unshift({id:Date.now(),data,title:title.slice(0,80),style,date:new Date().toLocaleDateString()});
+ // Keep recent creations within browser storage limits
+ const trimmed=items.slice(0,8);
+ try {
+  localStorage.setItem("mirrora_gallery_v1",JSON.stringify(trimmed));
   renderGallery();
+ } catch(e) {
+  try {
+   localStorage.setItem("mirrora_gallery_v1",JSON.stringify(items.slice(0,2)));
+   renderGallery();
+   toast("Storage full. Only the most recent creations were saved.");
+  } catch(err) {
+   toast("Browser storage is full. Download your artwork to keep it.");
+  }
+ }
+}
+function renderGallery() {
+ const grid=$("galleryGrid");
+ const query=$("gallerySearch").value.trim().toLowerCase();
+ const items=getGallery().filter(item=>(item.title+" "+item.style).toLowerCase().includes(query));
+ grid.innerHTML="";
+ if(!items.length) {
+  const empty=document.createElement("div");empty.className="empty-gallery";
+  empty.textContent=query?"No creations match your search.":"Your gallery is waiting for its first creation.";
+  grid.appendChild(empty);return;
+ }
+ items.forEach(item=>{
+  const card=document.createElement("article");card.className="art-card";
+  const img=document.createElement("img");img.src=item.data;img.alt=item.title;img.loading="lazy";
+  const info=document.createElement("div");info.className="art-card-info";
+  const title=document.createElement("strong");title.textContent=item.title||"My creation";
+  const date=document.createElement("small");date.textContent=(item.style||"artwork")+" · "+(item.date||"Saved");
+  const btn=document.createElement("button");btn.className="btn btn-soft btn-small";btn.textContent="↓ Download";
+  btn.addEventListener("click",()=>downloadData(item.data,"mirrora-"+item.id+".png"));
+  info.append(title,date,btn);card.append(img,info);grid.appendChild(card);
+ });
+}
+$("gallerySearch").addEventListener("input",renderGallery);
+
+function downloadData(data,name) {
+ const a=document.createElement("a");a.href=data;a.download=name;
+ document.body.appendChild(a);a.click();a.remove();
+}
+$("downloadBtn").addEventListener("click",()=>{
+ if(!currentArtwork){toast("Pehle artwork create karein.");return;}
+ downloadData(currentArtwork,"mirrora-creation.png");
+});
+$("shareBtn").addEventListener("click",async()=>{
+ if(!currentArtwork){toast("Pehle apna artwork create karein.");return;}
+ try {
+  const blob=await (await fetch(currentArtwork)).blob();
+  const file=new File([blob],"mirrora-creation.png",{type:"image/png"});
+  if(navigator.share && navigator.canShare && navigator.canShare({files:[file]})){
+   await navigator.share({title:"My MIRRORA Creation",text:"Created with MIRRORA — MADE IN MIAN ABDULLAH",files:[file]});
+  } else if(navigator.share){
+   await navigator.share({title:"My MIRRORA Creation",text:"I made this artwork with MIRRORA."});
+  } else {
+   downloadData(currentArtwork,"mirrora-creation.png");
+   toast("Share supported nahi. Artwork download kar diya; ab aap manually share kar sakte hain.");
+  }
+ } catch(e) {
+  if(e.name!=="AbortError") toast("Share available nahi. Download button use karein.");
+ }
+});
+$("clearBtn").addEventListener("click",()=>{
+ promptInput.value="";
+ photoInput.value="";
+ uploadedImage=null;
+ $("fileName").textContent="No photo selected. You can create artwork from your idea.";
+ currentArtwork="";
+ canvas.hidden=true;
+ $("placeholder").hidden=false;
+ $("downloadBtn").disabled=true;
+ setStatus("Canvas reset");
+});
+renderGallery();
 })();
 </script>
 </body>
 </html>
+
