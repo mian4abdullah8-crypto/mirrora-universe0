@@ -3,27 +3,59 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#090814">
-<title>MIRRORA — Create Another Reality</title>
+<title>MIRRORA — Made in Mian Abdullah</title>
 <style>
 :root{--bg:#090814;--panel:#151326;--line:#302944;--text:#f8f6ff;--muted:#aaa5c2;--purple:#a78bfa;--pink:#f0abfc}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#21113f 0%,var(--bg) 48%);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;min-height:100vh}
-button,input,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:12px 16px;font-weight:750;background:linear-gradient(100deg,#8b5cf6,#d946ef);color:white}
-button:disabled{opacity:.5;cursor:not-allowed}input,textarea{width:100%;padding:13px;background:#0d0b19;color:white;border:1px solid var(--line);border-radius:11px;outline:none}input:focus,textarea:focus{border-color:var(--purple)}
-header{position:sticky;top:0;z-index:5;background:#0b0915ed;backdrop-filter:blur(18px);border-bottom:1px solid var(--line);padding:13px 5%;display:flex;justify-content:space-between;align-items:center;gap:12px}
-.brand{font-size:22px;font-weight:950;letter-spacing:2px;background:linear-gradient(90deg,#c4b5fd,#f0abfc);color:transparent;background-clip:text}.brand small{display:block;font-size:9px;letter-spacing:2px;color:#c4b5fd}
-.wrap{max-width:1120px;margin:auto;padding:28px 18px}.hero{padding:35px 0 25px}.eyebrow{color:#d8b4fe;letter-spacing:3px;font-size:11px;font-weight:800}.hero h1{font-size:clamp(34px,6vw,65px);line-height:1.04;margin:12px 0}.gradient{background:linear-gradient(90deg,#c4b5fd,#f0abfc,#93c5fd);color:transparent;background-clip:text}.muted{color:var(--muted);line-height:1.6}.layout{display:grid;grid-template-columns: minmax(0,1.15fr) minmax(280px,.85fr);gap:20px;align-items:start}.panel{background:#151326eF;border:1px solid var(--line);border-radius:19px;padding:20px;box-shadow:0 15px 45px #0003}.panel h2{margin:0 0 15px;font-size:19px}.field{margin:12px 0}.field label{display:block;margin:0 0 7px;color:#d9d4ec;font-size:13px}.actions{display:flex;gap:9px;flex-wrap:wrap}.secondary{background:#27213b;border:1px solid #403657}.danger{background:#45213a}.tabs{display:flex;gap:8px;margin-bottom:15px}.tabs button{flex:1}.tabs .active{outline:2px solid #c4b5fd}.hidden{display:none!important}.status{font-size:13px;white-space:pre-wrap;overflow-wrap:anywhere;margin-top:12px;color:#c4b5fd}.feedhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:30px 0 15px}.feed{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.post{border:1px solid var(--line);background:#151326;border-radius:15px;overflow:hidden;min-width:0}.post img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:#211b32}.postbody{padding:12px}.postbody p{overflow-wrap:anywhere}.small{font-size:12px;color:var(--muted)}.avatar{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(130deg,#8b5cf6,#ec4899);font-weight:900;overflow:hidden;flex-shrink:0}.avatar img{width:100%;height:100%;object-fit:cover}.profileline{display:flex;align-items:center;gap:10px;margin-bottom:12px}.empty{grid-column:1/-1;text-align:center;padding:35px;color:var(--muted);border:1px dashed var(--line);border-radius:16px}.footer{text-align:center;color:#77718e;padding:35px 10px;font-size:12px}
-@media(max-width:760px){.layout{grid-template-columns:1fr}.feed{grid-template-columns:repeat(2,minmax(0,1fr))}.wrap{padding:20px 13px}.hero{padding-top:22px}header{padding:12px 14px}}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at top,#261344,var(--bg) 55%);color:var(--text);font-family:Inter,Arial,sans-serif;min-height:100vh}
+button,input,textarea{font:inherit}
+button{cursor:pointer;border:0;border-radius:12px;padding:12px 16px;font-weight:750;background:linear-gradient(100deg,#8b5cf6,#d946ef);color:white}
+button:disabled{opacity:.55;cursor:not-allowed}
+input,textarea{width:100%;padding:13px;background:#0d0b19;color:white;border:1px solid var(--line);border-radius:11px;outline:none}
+input:focus,textarea:focus{border-color:var(--purple)}
+header{position:sticky;top:0;z-index:5;background:#0b0915ee;backdrop-filter:blur(18px);border-bottom:1px solid var(--line);padding:13px 5%;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand{font-size:23px;font-weight:950;letter-spacing:2px;background:linear-gradient(90deg,#c4b5fd,#f0abfc);color:transparent;background-clip:text}
+.brand small{display:block;font-size:9px;letter-spacing:2px;color:#c4b5fd}
+.wrap{max-width:1150px;margin:auto;padding:25px 18px}
+.hero{padding:35px 0 28px}
+.eyebrow{color:#d8b4fe;letter-spacing:3px;font-size:11px;font-weight:800}
+.hero h1{font-size:clamp(36px,6vw,68px);line-height:1.04;margin:12px 0}
+.gradient{background:linear-gradient(90deg,#c4b5fd,#f0abfc,#93c5fd);color:transparent;background-clip:text}
+.muted{color:var(--muted);line-height:1.65}
+.layout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start}
+.panel{background:#151326ed;border:1px solid var(--line);border-radius:19px;padding:20px;box-shadow:0 15px 45px #0003;min-width:0}
+.panel h2{margin:0 0 14px;font-size:20px}
+.field{margin:13px 0}
+.field label{display:block;margin-bottom:7px;color:#d9d4ec;font-size:13px}
+.actions{display:flex;gap:9px;flex-wrap:wrap}
+.secondary{background:#27213b;border:1px solid #403657}
+.tabs{display:flex;gap:8px;margin-bottom:16px}
+.tabs button{flex:1}
+.tabs .active{outline:2px solid #c4b5fd}
+.hidden{display:none!important}
+.status{font-size:13px;white-space:pre-wrap;overflow-wrap:anywhere;margin-top:12px;color:#c4b5fd}
+.feedhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:32px 0 15px}
+.feed{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.post{border:1px solid var(--line);background:#151326;border-radius:15px;overflow:hidden;min-width:0}
+.post img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:#211b32}
+.postbody{padding:12px}
+.postbody p{overflow-wrap:anywhere;white-space:pre-wrap}
+.small{font-size:12px;color:var(--muted)}
+.avatar{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(130deg,#8b5cf6,#ec4899);font-weight:900;overflow:hidden;flex-shrink:0}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.profileline{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.empty{grid-column:1/-1;text-align:center;padding:35px 18px;color:var(--muted);border:1px dashed var(--line);border-radius:16px}
+.footer{text-align:center;color:#77718e;padding:35px 10px;font-size:12px;line-height:2}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.feed{grid-template-columns:repeat(2,minmax(0,1fr))}.wrap{padding:18px 13px}.hero{padding-top:22px}header{padding:12px 14px}}
 @media(max-width:420px){.feed{grid-template-columns:1fr}.brand{font-size:19px}.panel{padding:15px}}
 </style>
 </head>
 <body>
 <header>
   <div class="brand">MIRRORA<small>MADE IN MIAN ABDULLAH</small></div>
-  <div id="headerActions" class="actions">
-    <button id="openAuth">Sign in</button>
-  </div>
+  <div id="headerActions"><button id="headerLogin">Sign in</button></div>
 </header>
 
 <main class="wrap">
@@ -36,315 +68,352 @@ header{position:sticky;top:0;z-index:5;background:#0b0915ed;backdrop-filter:blur
   <div class="layout">
     <section class="panel" id="authPanel">
       <h2 id="authTitle">Join the universe</h2>
-      <p class="muted" id="authIntro">Create your account to publish creations and build your profile.</p>
+      <p class="muted" id="authIntro">Create your account and start your creative journey.</p>
       <div class="tabs">
-        <button class="active" id="signupTab">Sign up</button>
-        <button class="secondary" id="loginTab">Log in</button>
+        <button id="signupTab" class="active">Sign up</button>
+        <button id="loginTab" class="secondary">Log in</button>
       </div>
       <form id="authForm">
         <div class="field" id="nameField">
-          <label for="name">Display name</label>
-          <input id="name" maxlength="40" placeholder="Your creator name" autocomplete="name">
+          <label for="name">Creator name</label>
+          <input id="name" maxlength="40" placeholder="Your name" autocomplete="name">
         </div>
         <div class="field">
-          <label for="email">Email address</label>
+          <label for="email">Email</label>
           <input id="email" type="email" required autocomplete="email" placeholder="you@example.com">
         </div>
         <div class="field">
-          <label for="password">Password (at least 6 characters)</label>
-          <input id="password" type="password" required minlength="6" autocomplete="current-password" placeholder="Enter password">
+          <label for="password">Password</label>
+          <input id="password" type="password" required minlength="6" autocomplete="current-password" placeholder="At least 6 characters">
         </div>
         <button id="authSubmit" type="submit">Create account</button>
       </form>
       <div class="field"><button class="secondary" id="googleBtn" type="button" style="width:100%">Continue with Google</button></div>
-      <p class="status" id="authStatus" role="status"></p>
-      <p class="small">Use your own account. Never share your password with anyone.</p>
+      <p id="authStatus" class="status" role="status"></p>
     </section>
 
     <section class="panel hidden" id="profilePanel">
       <h2>Your creator profile</h2>
       <div class="profileline">
         <div class="avatar" id="avatar">M</div>
-        <div><strong id="profileEmail">Creator</strong><div class="small" id="profileUid"></div></div>
+        <div><strong id="profileName">Creator</strong><div class="small" id="profileEmail"></div></div>
       </div>
-      <div class="field"><label for="displayName">Display name</label><input id="displayName" maxlength="40" placeholder="Your name"></div>
-      <div class="field"><label for="bio">Bio</label><textarea id="bio" rows="3" maxlength="180" placeholder="Tell the universe about yourself"></textarea></div>
+      <div class="field">
+        <label for="displayName">Display name</label>
+        <input id="displayName" maxlength="40" placeholder="Your creator name">
+      </div>
+      <div class="field">
+        <label for="bio">About you</label>
+        <textarea id="bio" rows="3" maxlength="180" placeholder="Tell the universe about yourself"></textarea>
+      </div>
+      <div class="field">
+        <label for="avatarFile">Profile photo (JPG, PNG or WebP; max 3 MB)</label>
+        <input id="avatarFile" type="file" accept="image/jpeg,image/png,image/webp">
+      </div>
       <div class="actions">
         <button id="saveProfile">Save profile</button>
         <button id="logoutBtn" class="secondary">Log out</button>
       </div>
-      <p class="status" id="profileStatus" role="status"></p>
+      <p id="profileStatus" class="status" role="status"></p>
     </section>
 
     <section class="panel hidden" id="createPanel">
-      <h2>Publish a creation</h2>
-      <p class="muted">Upload an image to publish it to the online Explore feed.</p>
+      <h2>Publish your artwork</h2>
+      <p class="muted">Upload an image to share it with the Explore feed.</p>
       <form id="postForm">
-        <div class="field"><label for="artImage">Choose artwork (JPG, PNG or WebP; max 5 MB)</label><input id="artImage" type="file" accept="image/jpeg,image/png,image/webp" required></div>
-        <div class="field"><label for="caption">Caption</label><textarea id="caption" rows="3" maxlength="500" placeholder="Describe your creation..."></textarea></div>
+        <div class="field">
+          <label for="artImage">Artwork image (JPG, PNG or WebP; max 5 MB)</label>
+          <input id="artImage" type="file" accept="image/jpeg,image/png,image/webp" required>
+        </div>
+        <div class="field">
+          <label for="caption">Caption</label>
+          <textarea id="caption" rows="3" maxlength="500" placeholder="Describe your creation..."></textarea>
+        </div>
         <button id="publishBtn" type="submit">Publish creation</button>
       </form>
-      <p class="status" id="postStatus" role="status"></p>
+      <p id="postStatus" class="status" role="status"></p>
+    </section>
+
+    <section class="panel">
+      <h2>About MIRRORA</h2>
+      <p class="muted">A creative space for digital art, imagination and original ideas.</p>
+      <p>✦ Create and share artwork</p>
+      <p>✦ Build your creator profile</p>
+      <p>✦ Discover creations from the community</p>
+      <p class="small">Real AI generation, likes, comments and following will be connected in the next implementation phases.</p>
     </section>
   </div>
 
   <div class="feedhead">
     <div><div class="eyebrow">DISCOVER</div><h2 style="margin:5px 0">Explore Universe</h2></div>
-    <button class="secondary" id="refreshBtn">Refresh feed</button>
+    <button id="refreshBtn" class="secondary">Refresh</button>
   </div>
-  <section class="feed" id="feed"><div class="empty">Connecting to MIRRORA…</div></section>
-  <div class="footer">MIRRORA · MADE IN MIAN ABDULLAH<br>Build your world. Share your imagination.</div>
+  <section id="feed" class="feed"><div class="empty">Connecting to MIRRORA…</div></section>
+  <div class="footer">MIRRORA · MADE IN MIAN ABDULLAH<br>Imagine it. Create another reality.</div>
 </main>
 
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 import {
-  getAuth, onAuthStateChanged, createUserWithEmailAndPassword,
-  signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup,
-  updateProfile, signOut
+  getAuth,onAuthStateChanged,createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,GoogleAuthProvider,signInWithPopup,
+  updateProfile,signOut
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 import {
-  getFirestore, doc, getDoc, setDoc, collection, addDoc,
-  query, orderBy, limit, getDocs, serverTimestamp
+  getFirestore,doc,getDoc,setDoc,collection,addDoc,
+  query,orderBy,limit,getDocs,serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 import {
-  getStorage, ref, uploadBytes, getDownloadURL
+  getStorage,ref,uploadBytes,getDownloadURL
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-storage.js";
 
-/* STEP A: Firebase Console > Project settings > Your apps > Web app
-   Replace the placeholder values below with your own web config. */
+/* Your MIRRORA Firebase web configuration */
 const firebaseConfig = {
-  apiKey: "PASTE_YOUR_API_KEY",
-  authDomain: "PASTE_YOUR_PROJECT.firebaseapp.com",
-  projectId: "PASTE_YOUR_PROJECT_ID",
-  storageBucket: "PASTE_YOUR_STORAGE_BUCKET",
-  messagingSenderId: "PASTE_YOUR_SENDER_ID",
-  appId: "PASTE_YOUR_APP_ID"
+  apiKey: "AIzaSyAeKz8eAz5UbGR8Oz3iuG0qjcGZdrfbPg4",
+  authDomain: "mirrora-d7575.firebaseapp.com",
+  projectId: "mirrora-d7575",
+  storageBucket: "mirrora-d7575.firebasestorage.app",
+  messagingSenderId: "952045844134",
+  appId: "1:952045844134:web:556d0c465ea4bc4c02e667",
+  measurementId: "G-XFDTQLW0Q5"
 };
 
 const $ = id => document.getElementById(id);
-const authStatus = $("authStatus");
-const profileStatus = $("profileStatus");
-const postStatus = $("postStatus");
-let app, auth, db, storage, isSignup = true, currentUser = null;
+let app,auth,db,storage,currentUser=null,isSignup=true;
+const authStatus=$("authStatus"),profileStatus=$("profileStatus"),postStatus=$("postStatus");
 
-function message(el, text, isError=false) {
-  el.textContent = text;
-  el.style.color = isError ? "#fda4af" : "#c4b5fd";
+function say(el,text,error=false){
+  el.textContent=text;
+  el.style.color=error?"#fda4af":"#c4b5fd";
 }
-function show(el, yes) { el.classList.toggle("hidden", !yes); }
-function niceError(error) {
-  const known = {
-    "auth/email-already-in-use":"This email already has an account. Log in instead.",
-    "auth/invalid-email":"Please enter a valid email address.",
-    "auth/weak-password":"Choose a stronger password with at least 6 characters.",
+function show(el,yes){el.classList.toggle("hidden",!yes)}
+function errorText(e){
+  const errors={
+    "auth/email-already-in-use":"This email already has an account. Please log in.",
+    "auth/invalid-email":"Enter a valid email address.",
+    "auth/weak-password":"Use a stronger password with at least 6 characters.",
     "auth/invalid-credential":"Email or password is incorrect.",
     "auth/popup-closed-by-user":"Google sign-in was closed.",
     "auth/unauthorized-domain":"Add this website domain in Firebase Authentication settings.",
     "auth/operation-not-allowed":"Enable this sign-in method in Firebase Console.",
-    "permission-denied":"Firebase rules denied this action. Check Firestore/Storage rules."
+    "permission-denied":"Firebase rules denied this action. Check your database/storage rules.",
+    "storage/unauthorized":"Storage rules denied this upload."
   };
-  return known[error.code] || error.message || "Something went wrong. Please try again.";
+  return errors[e.code]||e.message||"An error occurred. Please try again.";
 }
-function validateConfig() {
-  return firebaseConfig.apiKey !== "PASTE_YOUR_API_KEY" &&
-         firebaseConfig.projectId !== "PASTE_YOUR_PROJECT_ID";
+function validImage(file,maxMB){
+  return file &&
+    ["image/jpeg","image/png","image/webp"].includes(file.type) &&
+    file.size <= maxMB*1024*1024;
 }
-if (!validateConfig()) {
-  message(authStatus, "Setup required: pehle firebaseConfig mein apne Firebase project ki values paste karein.", true);
-  $("feed").innerHTML = '<div class="empty">Firebase configuration abhi add nahi hui. Code mein firebaseConfig update karein.</div>';
-} else {
-  try {
-    app = initializeApp(firebaseConfig);
-    auth = getAuth(app);
-    db = getFirestore(app);
-    storage = getStorage(app);
-    onAuthStateChanged(auth, async user => {
-      currentUser = user;
-      show($("authPanel"), !user);
-      show($("profilePanel"), !!user);
-      show($("createPanel"), !!user);
-      $("headerActions").innerHTML = user
-        ? '<span class="small">Signed in</span>'
-        : '<button id="openAuth">Sign in</button>';
-      const headerButton = $("openAuth");
-      if (headerButton) headerButton.onclick = () => $("authPanel").scrollIntoView({behavior:"smooth"});
-      if (user) {
-        $("profileEmail").textContent = user.email || "Creator";
-        $("profileUid").textContent = "Creator account";
-        $("displayName").value = user.displayName || "";
-        $("bio").value = "";
-        $("avatar").textContent = (user.displayName || user.email || "M").charAt(0).toUpperCase();
-        try {
-          const snap = await getDoc(doc(db, "users", user.uid));
-          if (snap.exists()) {
-            const data = snap.data();
-            $("displayName").value = data.displayName || user.displayName || "";
-            $("bio").value = data.bio || "";
-            if (data.photoURL) $("avatar").innerHTML = '<img alt="Profile photo" src="'+data.photoURL+'">';
-          }
-        } catch (e) { message(profileStatus, niceError(e), true); }
-      }
-      await loadFeed();
-    });
-  } catch (e) {
-    message(authStatus, "Firebase setup error: " + niceError(e), true);
+function safeFileName(name){
+  return name.replace(/[^a-zA-Z0-9._-]/g,"_");
+}
+function setAvatar(url,name){
+  const avatar=$("avatar");
+  avatar.replaceChildren();
+  if(url){
+    const img=document.createElement("img");
+    img.src=url;img.alt="Creator profile photo";
+    avatar.appendChild(img);
+  }else{
+    avatar.textContent=(name||"M").charAt(0).toUpperCase();
   }
 }
-
-function setAuthMode(signup) {
-  isSignup = signup;
-  $("authTitle").textContent = signup ? "Join the universe" : "Welcome back";
-  $("authIntro").textContent = signup ? "Create your account to publish creations and build your profile." : "Log in to continue your creative journey.";
-  $("authSubmit").textContent = signup ? "Create account" : "Log in";
-  $("nameField").classList.toggle("hidden", !signup);
-  $("signupTab").className = signup ? "" : "secondary";
-  $("loginTab").className = signup ? "secondary" : "";
-  message(authStatus, "");
+function authMode(signup){
+  isSignup=signup;
+  $("authTitle").textContent=signup?"Join the universe":"Welcome back";
+  $("authIntro").textContent=signup?"Create your account and start your creative journey.":"Log in to continue creating.";
+  $("authSubmit").textContent=signup?"Create account":"Log in";
+  show($("nameField"),signup);
+  $("signupTab").className=signup?"active":"secondary";
+  $("loginTab").className=signup?"secondary":"active";
+  say(authStatus,"");
 }
-$("signupTab").onclick = () => setAuthMode(true);
-$("loginTab").onclick = () => setAuthMode(false);
-$("openAuth").onclick = () => $("authPanel").scrollIntoView({behavior:"smooth"});
+$("signupTab").onclick=()=>authMode(true);
+$("loginTab").onclick=()=>authMode(false);
+$("headerLogin").onclick=()=> $("authPanel").scrollIntoView({behavior:"smooth"});
 
-$("authForm").addEventListener("submit", async e => {
-  e.preventDefault();
-  if (!auth) return message(authStatus, "Pehle Firebase configuration complete karein.", true);
-  const email = $("email").value.trim();
-  const password = $("password").value;
-  const displayName = $("name").value.trim() || "MIRRORA Creator";
-  const btn = $("authSubmit");
-  btn.disabled = true;
-  try {
-    if (isSignup) {
-      const credential = await createUserWithEmailAndPassword(auth, email, password);
-      await updateProfile(credential.user, {displayName});
-      await setDoc(doc(db, "users", credential.user.uid), {
-        uid: credential.user.uid, email, displayName, bio: "",
-        createdAt: serverTimestamp()
-      });
-      message(authStatus, "Account created successfully!");
-    } else {
-      await signInWithEmailAndPassword(auth, email, password);
-      message(authStatus, "Logged in successfully!");
+try{
+  app=initializeApp(firebaseConfig);
+  auth=getAuth(app);
+  db=getFirestore(app);
+  storage=getStorage(app);
+
+  onAuthStateChanged(auth,async user=>{
+    currentUser=user;
+    show($("authPanel"),!user);
+    show($("profilePanel"),!!user);
+    show($("createPanel"),!!user);
+    $("headerActions").replaceChildren();
+
+    if(user){
+      const logoutTop=document.createElement("button");
+      logoutTop.className="secondary";
+      logoutTop.textContent="My account";
+      logoutTop.onclick=()=> $("profilePanel").scrollIntoView({behavior:"smooth"});
+      $("headerActions").appendChild(logoutTop);
+      $("profileEmail").textContent=user.email||"";
+      $("profileName").textContent=user.displayName||"Creator";
+      $("displayName").value=user.displayName||"";
+      $("bio").value="";
+      setAvatar(user.photoURL,user.displayName||user.email);
+      try{
+        const snap=await getDoc(doc(db,"users",user.uid));
+        if(snap.exists()){
+          const data=snap.data();
+          $("displayName").value=data.displayName||user.displayName||"";
+          $("bio").value=data.bio||"";
+          setAvatar(data.photoURL||user.photoURL,data.displayName||user.displayName);
+        }
+      }catch(e){say(profileStatus,errorText(e),true)}
+    }else{
+      const login=document.createElement("button");
+      login.textContent="Sign in";
+      login.onclick=()=> $("authPanel").scrollIntoView({behavior:"smooth"});
+      $("headerActions").appendChild(login);
     }
-  } catch (err) { message(authStatus, niceError(err), true); }
-  finally { btn.disabled = false; }
+    await loadFeed();
+  });
+}catch(e){
+  say(authStatus,"Firebase initialize error: "+errorText(e),true);
+  $("feed").innerHTML='<div class="empty">Firebase initialize nahi hua. Config aur network check karein.</div>';
+}
+
+$("authForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  if(!auth)return;
+  const email=$("email").value.trim();
+  const password=$("password").value;
+  const name=$("name").value.trim()||"MIRRORA Creator";
+  $("authSubmit").disabled=true;
+  try{
+    if(isSignup){
+      const result=await createUserWithEmailAndPassword(auth,email,password);
+      await updateProfile(result.user,{displayName:name});
+      await setDoc(doc(db,"users",result.user.uid),{
+        uid:result.user.uid,email,displayName:name,bio:"",
+        photoURL:"",createdAt:serverTimestamp()
+      });
+      say(authStatus,"Account created successfully.");
+    }else{
+      await signInWithEmailAndPassword(auth,email,password);
+      say(authStatus,"Logged in successfully.");
+    }
+  }catch(e){say(authStatus,errorText(e),true)}
+  finally{$("authSubmit").disabled=false}
 });
 
-$("googleBtn").onclick = async () => {
-  if (!auth) return message(authStatus, "Pehle Firebase configuration complete karein.", true);
-  try {
-    const result = await signInWithPopup(auth, new GoogleAuthProvider());
-    const userRef = doc(db, "users", result.user.uid);
-    const snap = await getDoc(userRef);
-    if (!snap.exists()) {
-      await setDoc(userRef, {
-        uid: result.user.uid, email: result.user.email || "",
-        displayName: result.user.displayName || "MIRRORA Creator",
-        photoURL: result.user.photoURL || "", bio: "", createdAt: serverTimestamp()
+$("googleBtn").onclick=async()=>{
+  try{
+    const result=await signInWithPopup(auth,new GoogleAuthProvider());
+    const userRef=doc(db,"users",result.user.uid);
+    const snap=await getDoc(userRef);
+    if(!snap.exists()){
+      await setDoc(userRef,{
+        uid:result.user.uid,email:result.user.email||"",
+        displayName:result.user.displayName||"MIRRORA Creator",
+        photoURL:result.user.photoURL||"",bio:"",
+        createdAt:serverTimestamp()
       });
     }
-  } catch (err) { message(authStatus, niceError(err), true); }
+  }catch(e){say(authStatus,errorText(e),true)}
 };
 
-$("saveProfile").onclick = async () => {
-  if (!currentUser) return;
-  const displayName = $("displayName").value.trim();
-  const bio = $("bio").value.trim();
-  if (!displayName) return message(profileStatus, "Display name required hai.", true);
-  try {
-    await updateProfile(currentUser, {displayName});
-    await setDoc(doc(db, "users", currentUser.uid), {
-      uid: currentUser.uid, email: currentUser.email || "",
-      displayName, bio, updatedAt: serverTimestamp()
-    }, {merge:true});
-    $("profileEmail").textContent = displayName;
-    $("avatar").textContent = displayName.charAt(0).toUpperCase();
-    message(profileStatus, "Profile saved.");
-  } catch (e) { message(profileStatus, niceError(e), true); }
-};
-$("logoutBtn").onclick = async () => {
-  try { await signOut(auth); }
-  catch (e) { message(profileStatus, niceError(e), true); }
+$("saveProfile").onclick=async()=>{
+  if(!currentUser)return;
+  const displayName=$("displayName").value.trim();
+  const bio=$("bio").value.trim();
+  const file=$("avatarFile").files[0];
+  if(!displayName)return say(profileStatus,"Display name required hai.",true);
+  if(file&&!validImage(file,3))return say(profileStatus,"Profile photo JPG, PNG ya WebP aur 3 MB se chhoti honi chahiye.",true);
+  const btn=$("saveProfile");btn.disabled=true;
+  try{
+    let photoURL=currentUser.photoURL||"";
+    if(file){
+      const path=`profilePhotos/${currentUser.uid}/avatar-${Date.now()}-${safeFileName(file.name)}`;
+      const fileRef=ref(storage,path);
+      await uploadBytes(fileRef,file,{contentType:file.type});
+      photoURL=await getDownloadURL(fileRef);
+    }
+    await updateProfile(currentUser,{displayName,photoURL});
+    await setDoc(doc(db,"users",currentUser.uid),{
+      uid:currentUser.uid,email:currentUser.email||"",
+      displayName,bio,photoURL,updatedAt:serverTimestamp()
+    },{merge:true});
+    $("profileName").textContent=displayName;
+    setAvatar(photoURL,displayName);
+    $("avatarFile").value="";
+    say(profileStatus,"Profile saved successfully.");
+  }catch(e){say(profileStatus,errorText(e),true)}
+  finally{btn.disabled=false}
 };
 
-$("postForm").addEventListener("submit", async e => {
+$("logoutBtn").onclick=async()=>{
+  try{await signOut(auth)}
+  catch(e){say(profileStatus,errorText(e),true)}
+};
+
+$("postForm").addEventListener("submit",async e=>{
   e.preventDefault();
-  if (!currentUser) return message(postStatus, "Pehle log in karein.", true);
-  const file = $("artImage").files[0];
-  const caption = $("caption").value.trim();
-  if (!file) return message(postStatus, "Pehle image choose karein.", true);
-  if (!["image/jpeg","image/png","image/webp"].includes(file.type)) return message(postStatus, "Sirf JPG, PNG ya WebP image allowed hai.", true);
-  if (file.size > 5 * 1024 * 1024) return message(postStatus, "Image 5 MB se chhoti honi chahiye.", true);
-  const btn = $("publishBtn");
-  btn.disabled = true;
-  try {
-    const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
-    const path = `artworks/${currentUser.uid}/${Date.now()}-${safeName}`;
-    const fileRef = ref(storage, path);
-    await uploadBytes(fileRef, file, {contentType:file.type});
-    const imageURL = await getDownloadURL(fileRef);
-    await addDoc(collection(db, "posts"), {
-      uid: currentUser.uid,
-      displayName: currentUser.displayName || $("displayName").value.trim() || "MIRRORA Creator",
-      caption, imageURL, storagePath:path,
-      createdAt: serverTimestamp()
+  if(!currentUser)return say(postStatus,"Pehle login karein.",true);
+  const file=$("artImage").files[0];
+  const caption=$("caption").value.trim();
+  if(!validImage(file,5))return say(postStatus,"Image JPG, PNG ya WebP aur 5 MB se chhoti honi chahiye.",true);
+  const btn=$("publishBtn");btn.disabled=true;
+  try{
+    const path=`artworks/${currentUser.uid}/${Date.now()}-${safeFileName(file.name)}`;
+    const fileRef=ref(storage,path);
+    await uploadBytes(fileRef,file,{contentType:file.type});
+    const imageURL=await getDownloadURL(fileRef);
+    await addDoc(collection(db,"posts"),{
+      uid:currentUser.uid,
+      displayName:$("displayName").value.trim()||currentUser.displayName||"MIRRORA Creator",
+      caption,imageURL,storagePath:path,
+      createdAt:serverTimestamp()
     });
     $("postForm").reset();
-    message(postStatus, "Creation published to Explore!");
+    say(postStatus,"Artwork published successfully.");
     await loadFeed();
-  } catch (e) { message(postStatus, niceError(e), true); }
-  finally { btn.disabled = false; }
+  }catch(e){say(postStatus,errorText(e),true)}
+  finally{btn.disabled=false}
 });
 
-function escapeHTML(value="") {
-  return String(value).replace(/[&<>"']/g, c => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  }[c]));
-}
-async function loadFeed() {
-  const feed = $("feed");
-  if (!db) {
-    feed.innerHTML = '<div class="empty">Firebase config add karne ke baad online feed chalegi.</div>';
-    return;
-  }
-  feed.innerHTML = '<div class="empty">Loading creations…</div>';
-  try {
-    const q = query(collection(db, "posts"), orderBy("createdAt", "desc"), limit(30));
-    const snaps = await getDocs(q);
-    if (snaps.empty) {
-      feed.innerHTML = '<div class="empty">Abhi koi public creation nahi. Login karke pehli creation publish karein.</div>';
+async function loadFeed(){
+  const feed=$("feed");
+  if(!db){feed.innerHTML='<div class="empty">Firebase setup required.</div>';return}
+  feed.innerHTML='<div class="empty">Loading creations…</div>';
+  try{
+    const q=query(collection(db,"posts"),orderBy("createdAt","desc"),limit(30));
+    const snaps=await getDocs(q);
+    feed.replaceChildren();
+    if(snaps.empty){
+      feed.innerHTML='<div class="empty">Abhi public creations nahi hain. Pehli creation publish karein!</div>';
       return;
     }
-    feed.innerHTML = "";
-    snaps.forEach(snap => {
-      const p = snap.data();
-      const card = document.createElement("article");
-      card.className = "post";
-      const img = document.createElement("img");
-      img.loading = "lazy";
-      img.alt = "Artwork by " + (p.displayName || "creator");
-      img.src = p.imageURL;
-      img.onerror = () => { img.alt = "Image could not be loaded"; };
-      const body = document.createElement("div");
-      body.className = "postbody";
-      const author = document.createElement("strong");
-      author.textContent = p.displayName || "MIRRORA Creator";
-      const caption = document.createElement("p");
-      caption.textContent = p.caption || "";
-      const meta = document.createElement("div");
-      meta.className = "small";
-      meta.textContent = "MIRRORA creator";
-      body.append(author, caption, meta);
-      card.append(img, body);
-      feed.append(card);
+    snaps.forEach(snap=>{
+      const p=snap.data();
+      const card=document.createElement("article");
+      card.className="post";
+      const img=document.createElement("img");
+      img.loading="lazy";img.alt="Artwork by "+(p.displayName||"creator");
+      img.src=p.imageURL||"";
+      const body=document.createElement("div");body.className="postbody";
+      const author=document.createElement("strong");
+      author.textContent=p.displayName||"MIRRORA Creator";
+      const caption=document.createElement("p");caption.textContent=p.caption||"";
+      const meta=document.createElement("div");meta.className="small";
+      meta.textContent="MIRRORA creator";
+      body.append(author,caption,meta);card.append(img,body);feed.append(card);
     });
-  } catch (e) {
-    feed.innerHTML = '<div class="empty">Feed load nahi hui: '+escapeHTML(niceError(e))+'</div>';
+  }catch(e){
+    feed.innerHTML="";
+    const empty=document.createElement("div");empty.className="empty";
+    empty.textContent="Feed error: "+errorText(e);
+    feed.appendChild(empty);
   }
 }
-$("refreshBtn").onclick = loadFeed;
+$("refreshBtn").onclick=loadFeed;
 </script>
 </body>
 </html>
-
