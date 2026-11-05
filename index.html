@@ -2,107 +2,125 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#ffffff">
 <title>NEXORA — Made in Mian Abdullah</title>
-
 <style>
-:root {
-  --bg:#f6f7fb; --card:#fff; --text:#171923;
-  --muted:#777b8e; --line:#e7e9f1; --purple:#7047ff;
-  --blue:#3284ff; --soft:#f0edff;
-}
-* { box-sizing:border-box; }
-body { margin:0; background:var(--bg); color:var(--text); font-family:Arial,sans-serif; }
-button,input,textarea,select { font:inherit; }
-button { cursor:pointer; }
-.hidden { display:none!important; }
-.topbar { position:sticky;top:0;z-index:10;background:#fff;display:flex;align-items:center;gap:14px;padding:12px 4%;border-bottom:1px solid var(--line); }
-.logo { font-size:25px;font-weight:950;letter-spacing:-1px;background:linear-gradient(100deg,var(--purple),var(--blue));color:transparent;background-clip:text; }
-.brand,.muted { color:var(--muted);font-size:12px; }
-.search,.field { width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fafbff; }
-.search { max-width:480px;flex:1; }
-.avatar { width:42px;height:42px;border-radius:50%;object-fit:cover;background:var(--soft); }
-.layout { max-width:1250px;margin:auto;padding:20px;display:grid;grid-template-columns:190px minmax(0,650px);gap:20px; }
-.sidebar { position:sticky;top:85px;height:max-content; }
-.navbtn { width:100%;padding:13px;border:0;border-radius:12px;background:transparent;text-align:left;font-weight:bold;margin-bottom:5px; }
-.navbtn:hover,.navbtn.active { background:var(--soft);color:var(--purple); }
-.panel,.post { background:white;border:1px solid var(--line);border-radius:17px;padding:15px;margin-bottom:15px; }
-.post { padding:0;overflow:hidden; }
-.btn { border:0;border-radius:11px;padding:11px 15px;background:var(--soft);color:var(--purple);font-weight:bold; }
-.primary { background:linear-gradient(100deg,var(--purple),var(--blue));color:white; }
-.row { display:flex;align-items:center;gap:10px; }
-.grow { flex:1;min-width:0; }
-.stories { display:flex;gap:14px;overflow-x:auto;padding:8px 0; }
-.story { min-width:68px;text-align:center;cursor:pointer; }
-.ring { width:62px;height:62px;padding:3px;border-radius:50%;background:linear-gradient(135deg,#ff9c00,#ec277c,#7047ff);margin:auto auto 6px; }
-.ringinner { height:100%;border:3px solid white;border-radius:50%;background:var(--soft);overflow:hidden;display:grid;place-items:center; }
-.ringinner img { width:100%;height:100%;object-fit:cover; }
-.storyname { font-size:12px;max-width:75px;overflow-wrap:anywhere; }
-.posthead { display:flex;align-items:center;gap:10px;padding:14px; }
-.postbody { padding:0 14px 12px;white-space:pre-wrap;overflow-wrap:anywhere; }
-.postmedia { display:block;width:100%;max-height:600px;object-fit:contain;background:#101014; }
-.actions { display:flex;gap:5px;padding:8px;flex-wrap:wrap;border-top:1px solid var(--line); }
-.action { border:0;background:transparent;padding:9px;border-radius:10px; }
-.action:hover { background:var(--soft); }
-.field { margin:6px 0 12px; }
-textarea.field { min-height:85px;resize:vertical; }
-.profilehero { text-align:center;padding:25px; }
-.profilehero .avatar { width:90px;height:90px; }
-.profilegrid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px; }
-.profiletile { aspect-ratio:1;background:#111;overflow:hidden;cursor:pointer; }
-.profiletile img,.profiletile video { width:100%;height:100%;object-fit:cover; }
-#reelsFeed { height:calc(100vh - 120px);overflow:auto;scroll-snap-type:y mandatory;background:#08080b;border-radius:15px; }
-.reel { height:calc(100vh - 120px);min-height:420px;position:relative;scroll-snap-align:start;background:#08080b;color:white;display:flex;align-items:center;justify-content:center;overflow:hidden; }
-.reel video { width:100%;height:100%;object-fit:contain; }
-.reelbottom { position:absolute;bottom:0;left:0;right:0;padding:60px 75px 18px 15px;background:linear-gradient(transparent,#000c);pointer-events:none; }
-.reelactions { position:absolute;right:10px;bottom:60px;display:grid;gap:10px; }
-.reelaction { border:0;border-radius:50%;width:48px;height:48px;background:#333a;color:white; }
-.camera { position:fixed;inset:0;z-index:100;background:#08080b;color:white;display:flex;flex-direction:column; }
-.camtop,.cambottom { display:flex;justify-content:space-between;align-items:center;padding:12px;gap:8px; }
-.camera button { border:1px solid #ffffff55;border-radius:22px;background:#292932;color:white;padding:10px; }
-.camstage { flex:1;min-height:0;display:grid;place-items:center;overflow:hidden; }
-#cameraVideo { width:100%;height:100%;object-fit:contain; }
-.filters { display:flex;gap:8px;overflow:auto;padding:10px; }
-.filters .selected { background:var(--purple); }
-.capture { width:62px;height:62px;border:5px solid white!important;border-radius:50%!important;background:var(--purple)!important; }
-.previewmedia { max-width:100%;max-height:280px;display:block;margin:8px auto; }
-.storyviewer,.mediaoverlay { position:fixed;inset:0;z-index:150;background:#08080bee;color:white;display:grid;place-items:center;padding:15px; }
-.storycard { position:relative;width:min(100%,430px);height:min(82dvh,760px);background:#20202a;border-radius:18px;overflow:hidden; }
-.storycard img,.storycard video { width:100%;height:100%;object-fit:contain; }
-.storycaption { position:absolute;bottom:0;left:0;right:0;padding:50px 15px 18px;background:linear-gradient(transparent,#000c); }
-.storyclose { position:absolute;top:10px;right:10px;z-index:2;border:0;border-radius:50%;padding:10px;background:#222c;color:white; }
-.chatlayout { display:grid;grid-template-columns: .8fr 1.2fr;gap:10px; }
-.chatpeople { max-height:400px;overflow:auto; }
-.chatmessages { height:300px;overflow:auto;background:#f6f6fa;padding:10px;border-radius:12px; }
-.bubble { padding:9px 12px;margin:6px 0;border-radius:12px;background:#e9e6f7;max-width:85%;overflow-wrap:anywhere; }
-.bubble.mine { margin-left:auto;background:var(--purple);color:white; }
-#toast { position:fixed;bottom:25px;left:50%;transform:translateX(-50%);z-index:200;background:#191923;color:white;padding:12px 18px;border-radius:12px;max-width:90%; }
-.notification-dot { background:#ec277c;color:white;border-radius:20px;padding:3px 6px;font-size:11px; }
-.mobilebar { display:none; }
-@media(max-width:700px) {
- .topbar { padding:10px;gap:8px; }
- .brand { display:none; }
- .layout { display:block;padding:10px 8px 80px; }
- .sidebar { display:none; }
- .mobilebar { display:flex;position:fixed;bottom:0;left:0;right:0;z-index:20;justify-content:space-around;background:#fff;border-top:1px solid var(--line);padding:8px 0; }
- .mobilebar button { border:0;background:transparent;font-size:19px; }
- .mobilebar span { display:block;font-size:10px; }
- #reelsFeed,.reel { height:calc(100dvh - 140px); }
- .chatlayout { grid-template-columns:1fr; }
- .chatpeople { max-height:160px; }
+:root{--bg:#f6f7fb;--card:#fff;--text:#171923;--muted:#777b8e;--line:#e7e9f1;--purple:#7047ff;--blue:#3284ff;--soft:#f0edff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+button,input,textarea,select{font:inherit}button{cursor:pointer}
+.topbar{height:66px;background:#ffffffed;backdrop-filter:blur(14px);position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;padding:0 4%;border-bottom:1px solid var(--line)}
+.logo{font-size:25px;font-weight:950;letter-spacing:-1px;background:linear-gradient(100deg,var(--purple),var(--blue));color:transparent;background-clip:text}
+.brand{font-size:10px;color:var(--muted);margin-top:3px}
+.search{width:100%;max-width:480px;flex:1;background:#f3f4f9;border:1px solid var(--line);border-radius:14px;padding:11px 14px;outline:none}
+.avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;background:var(--soft);flex-shrink:0}
+.layout{max-width:1400px;margin:auto;padding:22px 18px;display:grid;grid-template-columns:205px minmax(0,650px) 245px;gap:20px}
+.sidebar{position:sticky;top:85px;height:calc(100vh - 100px)}
+.navbtn{display:flex;align-items:center;gap:13px;border:0;background:transparent;border-radius:13px;padding:13px;width:100%;text-align:left;color:#55596b;font-weight:650;margin:4px 0}
+.navbtn.active,.navbtn:hover{background:var(--soft);color:var(--purple)}
+.navicon{width:27px;text-align:center;font-size:22px}
+.panel,.post{background:var(--card);border:1px solid var(--line);border-radius:19px;padding:16px;margin-bottom:16px;box-shadow:0 6px 25px #1c183408}
+.post{padding:0;overflow:hidden}
+h2{font-size:20px;margin:0 0 14px}h3{font-size:15px;margin:0 0 7px}
+p{line-height:1.5}.muted{font-size:13px;color:var(--muted)}
+.btn{border:0;border-radius:12px;padding:11px 15px;background:var(--soft);color:var(--purple);font-weight:700}
+.primary{background:linear-gradient(100deg,var(--purple),var(--blue));color:white}
+.dark{background:#191923;color:white}
+.field{width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fafbff;margin:5px 0 12px;outline:none}
+.field:focus{border-color:var(--purple)}
+textarea.field{min-height:85px;resize:vertical}
+.row{display:flex;align-items:center;gap:10px}.grow{flex:1;min-width:0}
+.between{justify-content:space-between}.hidden{display:none!important}
+.authwrap{min-height:100vh;display:grid;place-items:center;padding:18px;background:radial-gradient(circle at top left,#e8e0ff,transparent 50%),var(--bg)}
+.authcard{width:min(100%,430px);padding:28px;background:white;border:1px solid var(--line);border-radius:24px}
+.stories{display:flex;gap:13px;overflow-x:auto;padding:5px 0 13px}
+.story{min-width:70px;text-align:center;cursor:pointer}
+.ring{width:61px;height:61px;border-radius:50%;padding:3px;background:linear-gradient(135deg,#ff9c00,#ec277c,#7047ff);margin:0 auto 7px}
+.ringinner{height:100%;border-radius:50%;border:3px solid white;background:var(--soft);display:grid;place-items:center;overflow:hidden}
+.ringinner img{width:100%;height:100%;object-fit:cover}
+.storyname{font-size:12px;overflow-wrap:anywhere}
+.posthead{display:flex;align-items:center;gap:10px;padding:15px}
+.postbody{padding:0 15px 14px;white-space:pre-wrap;overflow-wrap:anywhere}
+.postmedia{width:100%;max-height:570px;object-fit:contain;background:#111}
+.actions{display:flex;gap:4px;padding:8px 10px;border-top:1px solid var(--line);flex-wrap:wrap}
+.action{border:0;background:transparent;padding:9px;border-radius:10px;color:#565a6a}
+.action:hover{background:var(--soft);color:var(--purple)}
+.comments{padding:8px 12px}.comment{font-size:13px;padding:6px 0;overflow-wrap:anywhere}
+.badge{display:inline-block;border-radius:20px;background:var(--soft);color:var(--purple);padding:5px 9px;font-size:11px;font-weight:bold}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.feature{border:1px solid var(--line);border-radius:15px;padding:14px}
+#reelsFeed{height:calc(100vh - 110px);overflow-y:auto;scroll-snap-type:y mandatory;background:#08080b;border-radius:16px}
+.reel{height:calc(100vh - 110px);min-height:420px;position:relative;scroll-snap-align:start;background:#08080b;color:white;display:flex;justify-content:center;align-items:center;overflow:hidden}
+.reel video{width:100%;height:100%;object-fit:contain;background:#08080b}
+.reelbottom{position:absolute;bottom:0;left:0;right:0;padding:65px 75px 20px 16px;background:linear-gradient(transparent,#000b);pointer-events:none}
+.reelactions{position:absolute;right:12px;bottom:65px;display:grid;gap:13px}
+.reelaction{width:45px;height:45px;border:0;border-radius:50%;background:#333a;color:white;font-size:20px}
+.reelaction small{display:block;font-size:10px}
+.camera{position:fixed;inset:0;z-index:100;background:#08080b;color:white;display:flex;flex-direction:column}
+.camtop,.cambottom{padding:12px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.camtop button,.cambottom button,.filters button{border:1px solid #ffffff44;border-radius:22px;background:#292932;color:white;padding:10px 13px}
+.camstage{flex:1;min-height:0;display:grid;place-items:center;overflow:hidden}
+#cameraVideo{width:100%;height:100%;object-fit:contain}
+.filters{display:flex;gap:8px;overflow-x:auto;padding:10px}
+.filters button.selected{background:var(--purple)}
+.capture{height:62px;width:62px;border:5px solid white!important;border-radius:50%!important;background:var(--purple)!important}
+#toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);background:#191923;color:white;padding:12px 18px;border-radius:12px;z-index:200;max-width:92%;text-align:center}
+.filepick{display:block;width:100%;padding:12px;border:1px dashed #b8b2d8;border-radius:13px;background:#faf9ff;margin:6px 0 12px}
+.previewmedia{display:block;max-width:100%;max-height:300px;margin:8px auto;border-radius:12px}
+.storyviewer{position:fixed;inset:0;z-index:150;background:#09090d;color:#fff;display:flex;align-items:center;justify-content:center;padding:18px}
+.storycard{width:min(100%,430px);height:min(82dvh,760px);position:relative;background:#20202a;border-radius:20px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.storycard img,.storycard video{width:100%;height:100%;object-fit:contain}
+.storycaption{position:absolute;bottom:0;left:0;right:0;padding:45px 16px 18px;background:linear-gradient(transparent,#000c);white-space:pre-wrap}
+.storyclose{position:absolute;top:12px;right:12px;z-index:2;background:#222b;color:white;border:0;border-radius:50%;width:40px;height:40px}
+.notification-dot{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 5px;border-radius:20px;background:#ec277c;color:#fff;font-size:11px}
+.chatlayout{display:grid;grid-template-columns:minmax(150px,.7fr) minmax(0,1.3fr);gap:12px}
+.chatpeople{max-height:430px;overflow:auto}.chatwindow{min-height:300px;display:flex;flex-direction:column}
+.chatmessages{flex:1;min-height:230px;max-height:420px;overflow:auto;padding:10px;background:#f7f7fb;border-radius:12px}
+.bubble{max-width:85%;padding:9px 12px;border-radius:14px;margin:7px 0;background:#e9e6f7;overflow-wrap:anywhere}
+.bubble.mine{margin-left:auto;background:#7047ff;color:white}
+.mediaoverlay{position:fixed;inset:0;z-index:160;background:#08080bee;display:grid;place-items:center;padding:18px}
+.mediaoverlay img,.mediaoverlay video{max-width:100%;max-height:85dvh;object-fit:contain}
+.mobilebar{display:none}
+.tiktok-profile{max-width:720px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.tt-profile-top{display:flex;align-items:center;gap:22px;padding:28px 22px 12px}
+.tt-avatar-wrap{position:relative;flex-shrink:0}
+.tt-avatar{width:105px;height:105px;border-radius:50%;object-fit:cover;border:2px solid #eee;cursor:pointer;background:var(--soft)}
+.tt-add-photo{position:absolute;right:0;bottom:0;width:31px;height:31px;border:0;border-radius:50%;background:#fe2c55;color:white;font-size:24px}
+.tt-username h2{margin:0 0 5px;overflow-wrap:anywhere}.tt-username p{margin:0;color:#777;overflow-wrap:anywhere}
+.tt-stats{display:flex;padding:16px 8px;border-bottom:1px solid #eee}.tt-stats>div{flex:1;text-align:center;display:grid;gap:4px}.tt-stats strong{font-size:20px}.tt-stats span{font-size:12px;color:#777}
+.tt-bio{text-align:center;white-space:pre-wrap;padding:0 18px;overflow-wrap:anywhere}
+.tt-profile-buttons{display:flex;justify-content:center;gap:10px;padding:8px 15px 20px}
+.tt-tabs{display:flex;border-top:1px solid #eee;margin-top:5px}
+.tt-tab{flex:1;padding:15px 4px;border:0;background:white;color:#777;font-weight:700;border-bottom:2px solid transparent}
+.tt-tab.active{color:#171717;border-bottom-color:#171717}
+.tt-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px}
+.tt-tile{position:relative;aspect-ratio:3/4;background:#111;overflow:hidden;cursor:pointer}
+.tt-tile img,.tt-tile video{width:100%;height:100%;object-fit:cover}
+.tt-play{position:absolute;right:8px;bottom:8px;color:white;text-shadow:0 1px 5px black;font-size:17px}
+.tt-empty{grid-column:1/-1;padding:40px 12px;text-align:center;color:#777}
+@media(max-width:500px){.tt-profile-top{padding:22px 14px 10px;gap:15px}.tt-avatar{width:82px;height:82px}.tt-username h2{font-size:18px}.tt-profile-buttons .btn{padding:10px;font-size:12px}}
+@media(max-width:1050px){.layout{grid-template-columns:180px minmax(0,1fr)}.rightcol{display:none}}
+@media(max-width:680px){
+.topbar{height:59px;padding:0 10px;gap:10px}.logo{font-size:22px}.brand{display:none}
+.layout{display:block;padding:12px 9px 82px}.sidebar{display:none}
+.mobilebar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:20;justify-content:space-around;background:#ffffffef;backdrop-filter:blur(15px);border-top:1px solid var(--line);padding:7px 2px}
+.mobilebar button{border:0;background:transparent;display:grid;gap:3px;justify-items:center;color:#696d7c;font-size:19px;min-width:48px}
+.mobilebar button span{font-size:10px}.mobilebar button.active{color:var(--purple)}
+#reelsFeed{height:calc(100dvh - 135px)}.reel{height:calc(100dvh - 135px)}
+.grid2{grid-template-columns:1fr}.chatlayout{grid-template-columns:1fr}.chatpeople{max-height:180px}
 }
 </style>
 </head>
-
 <body>
-<div id="authScreen" style="min-height:100vh;display:grid;place-items:center;padding:18px">
-  <div class="panel" style="width:min(100%,430px);padding:28px">
+
+<div id="authScreen" class="authwrap">
+  <div class="authcard">
     <div class="logo" style="font-size:36px">NEXORA</div>
     <p class="muted">MADE IN MIAN ABDULLAH</p>
     <h2 id="authHeading">Welcome to your world</h2>
     <form id="authForm">
-      <input id="authName" class="field" placeholder="Your name" required>
+      <input id="authName" class="field" placeholder="Your name">
       <input id="authEmail" class="field" type="email" placeholder="Email address" required>
       <input id="authPassword" class="field" type="password" minlength="6" placeholder="Password (6+ characters)" required>
       <button id="authSubmit" class="btn primary" style="width:100%">Create account</button>
@@ -115,29 +133,31 @@ textarea.field { min-height:85px;resize:vertical; }
 <div id="app" class="hidden">
 <header class="topbar">
   <div><div class="logo">NEXORA</div><div class="brand">MADE IN MIAN ABDULLAH</div></div>
-  <input id="globalSearch" class="search" placeholder="Search posts and people...">
-  <button id="notificationsButton" class="btn">🔔 <span id="notificationCount" class="hidden notification-dot">0</span></button>
-  <img id="topAvatar" class="avatar" alt="Profile">
+  <input id="globalSearch" class="search" placeholder="Search posts or people...">
+  <button id="notificationsButton" class="btn" title="Notifications">🔔 <span id="notificationCount" class="notification-dot hidden">0</span></button>
+  <img id="topAvatar" class="avatar" alt="Profile" title="Open profile" style="cursor:pointer">
 </header>
 
 <div class="layout">
 <aside class="sidebar">
-  <button class="navbtn active" data-page="home">⌂ Home</button>
-  <button class="navbtn" data-page="reels">▶ Reels</button>
-  <button class="navbtn" data-page="discover">⌕ Search people</button>
-  <button class="navbtn" data-page="create">＋ Create</button>
-  <button class="navbtn" data-page="messages">✉ Messages</button>
-  <button class="navbtn" data-page="profile">◎ Profile</button>
-  <button class="navbtn" data-page="market">◇ Marketplace</button>
-  <button class="navbtn" data-page="settings">⚙ Settings</button>
+  <button class="navbtn active" data-page="home"><span class="navicon">⌂</span>Home</button>
+  <button class="navbtn" data-page="reels"><span class="navicon">▶</span>Reels</button>
+  <button class="navbtn" data-page="discover"><span class="navicon">⌕</span>Discover</button>
+  <button class="navbtn" data-page="create"><span class="navicon">＋</span>Create</button>
+  <button class="navbtn" data-page="messages"><span class="navicon">✉</span>Messages</button>
+  <button class="navbtn" data-page="profile"><span class="navicon">◎</span>Profile</button>
+  <button class="navbtn" data-page="market"><span class="navicon">◇</span>Marketplace</button>
+  <button class="navbtn" data-page="explore"><span class="navicon">✦</span>Explore</button>
+  <button class="navbtn" data-page="settings"><span class="navicon">⚙</span>Settings</button>
 </aside>
 
 <main>
 <section id="page-home">
   <div class="panel">
-    <div class="row" style="justify-content:space-between"><h2>Stories</h2><span class="muted">24 hours</span></div>
-    <div id="storiesList" class="stories"></div>
+    <div class="row between"><h2>Stories</h2><span class="badge">24 hours</span></div>
+    <div id="storiesList" class="stories">Loading stories...</div>
     <button id="addStory" class="btn">＋ Add Story</button>
+    <input id="storyFile" class="hidden" type="file" accept="image/*,video/*">
   </div>
   <div class="panel">
     <div class="row">
@@ -146,27 +166,30 @@ textarea.field { min-height:85px;resize:vertical; }
     </div>
     <div class="row" style="margin-top:12px;flex-wrap:wrap">
       <button id="openCamera" class="btn">◎ Camera</button>
+      <button id="quickVideo" class="btn">▶ Gallery video</button>
       <button id="quickCreate" class="btn">＋ Post</button>
     </div>
   </div>
-  <h2>Your Feed</h2><div id="feed"></div>
+  <div class="row between"><h2>Your Feed</h2><span id="feedCount" class="muted"></span></div>
+  <div id="feed"></div>
 </section>
 
 <section id="page-create" class="hidden">
   <div class="panel">
     <h2>Create a post</h2>
-    <textarea id="postText" class="field" maxlength="2000" placeholder="Write a caption..."></textarea>
-    <label>Select photo or video from your gallery</label>
-    <input id="postFile" class="field" type="file" accept="image/*,video/*">
+    <textarea id="postText" class="field" maxlength="2000" placeholder="Share your thoughts..."></textarea>
+    <label class="muted">Choose photo or video from your device</label>
+    <input id="postFile" class="filepick" type="file" accept="image/*,video/*">
     <div id="postPreview"></div>
-    <button id="takePhoto" class="btn">◎ Open Camera</button>
     <button id="publishPost" class="btn primary">Publish post</button>
-    <p class="muted">Upload requires Firebase Storage to be enabled.</p>
+    <p class="muted">Photo/video upload needs Firebase Storage enabled and permitted.</p>
+    <button id="createCamera" class="btn">◎ Open Camera</button>
   </div>
 </section>
 
 <section id="page-reels" class="hidden">
-  <h2>Reels</h2><div id="reelsFeed"></div>
+  <div class="row between"><h2>Reels</h2><span class="badge">Vertical video</span></div>
+  <div id="reelsFeed"></div>
 </section>
 
 <section id="page-discover" class="hidden">
@@ -176,68 +199,97 @@ textarea.field { min-height:85px;resize:vertical; }
 </section>
 
 <section id="page-profile" class="hidden">
-  <div class="panel profilehero">
-    <img id="profileAvatar" class="avatar" alt="">
-    <h2 id="profileName">My Profile</h2>
-    <p id="profileUsername" class="muted"></p>
-    <p id="profileBio"></p>
-    <div><strong id="myPostsCount">0</strong> Posts</div>
-    <button id="chooseProfilePhoto" class="btn">Change profile photo</button>
-    <input id="profileFile" type="file" accept="image/*" class="hidden">
+  <div class="tiktok-profile">
+    <div class="tt-profile-top">
+      <div class="tt-avatar-wrap">
+        <img id="profileAvatar" class="tt-avatar" alt="Profile photo" title="Change profile photo">
+        <button id="changeProfilePhoto" class="tt-add-photo" type="button">+</button>
+        <input id="profilePhotoFile" type="file" accept="image/*" class="hidden">
+      </div>
+      <div class="tt-username"><h2 id="profileName">Creator</h2><p id="profileUsername">@username</p></div>
+    </div>
+    <div class="tt-stats">
+      <div><strong id="myPostsCount">0</strong><span>Posts</span></div>
+      <div><strong id="myFollowersCount">0</strong><span>Followers</span></div>
+      <div><strong id="myFollowingCount">0</strong><span>Following</span></div>
+    </div>
+    <p id="profileBio" class="tt-bio">Welcome to NEXORA.</p>
+    <div class="tt-profile-buttons">
+      <button id="editProfileToggle" class="btn primary" type="button">Edit profile</button>
+      <button id="profileShare" class="btn" type="button">Share profile</button>
+    </div>
+    <div id="editProfileBox" class="panel hidden">
+      <h3>Edit your profile</h3>
+      <label class="muted">Name</label><input id="editName" class="field" maxlength="40">
+      <label class="muted">Username (3–20 letters/numbers/_)</label><input id="editUsername" class="field" maxlength="20">
+      <label class="muted">Country</label>
+      <select id="editCountry" class="field">
+        <option>Pakistan</option><option>United Kingdom</option><option>United States</option>
+        <option>Saudi Arabia</option><option>United Arab Emirates</option><option>India</option>
+        <option>Canada</option><option>Australia</option><option>Other</option>
+      </select>
+      <label class="muted">Bio</label><textarea id="editBio" class="field" maxlength="250"></textarea>
+      <button id="saveProfile" class="btn primary" type="button">Save changes</button>
+    </div>
+    <div class="tt-tabs">
+      <button class="tt-tab active" data-profile-tab="all" type="button">▦ All posts</button>
+      <button class="tt-tab" data-profile-tab="video" type="button">▶ Videos</button>
+      <button class="tt-tab" data-profile-tab="image" type="button">▧ Photos</button>
+    </div>
+    <div id="profileGrid" class="tt-grid"></div>
+    <div id="myPosts" class="hidden"></div>
   </div>
-  <div class="panel">
-    <h3>Edit profile</h3>
-    <input id="editName" class="field" placeholder="Name" maxlength="40">
-    <input id="editUsername" class="field" placeholder="Username" maxlength="20">
-    <select id="editCountry" class="field">
-      <option>Pakistan</option><option>United Kingdom</option>
-      <option>United States</option><option>Saudi Arabia</option>
-      <option>United Arab Emirates</option><option>India</option>
-      <option>Canada</option><option>Australia</option><option>Other</option>
-    </select>
-    <textarea id="editBio" class="field" maxlength="250" placeholder="Bio"></textarea>
-    <button id="saveProfile" class="btn primary">Save profile</button>
-  </div>
-  <h2>Your posts</h2><div id="myPosts" class="profilegrid"></div>
 </section>
 
 <section id="page-market" class="hidden">
   <div class="panel">
-    <h2>Marketplace</h2>
-    <input id="marketTitle" class="field" placeholder="Listing title">
-    <textarea id="marketDescription" class="field" placeholder="Describe your service"></textarea>
+    <h2>Creator Marketplace</h2>
+    <input id="marketTitle" class="field" maxlength="80" placeholder="Listing title">
+    <select id="marketCategory" class="field"><option>Digital Services</option><option>Design</option><option>Programming</option><option>Education</option><option>Products</option><option>Other</option></select>
+    <textarea id="marketDescription" class="field" maxlength="1000" placeholder="Describe your service"></textarea>
+    <input id="marketContact" class="field" placeholder="Contact email (optional)">
     <button id="publishListing" class="btn primary">Publish listing</button>
   </div>
-  <div id="marketList"></div>
+  <h2>Listings</h2><div id="marketList"></div>
 </section>
 
 <section id="page-messages" class="hidden">
-  <div class="panel">
-    <h2>Private messages</h2>
-    <input id="chatSearch" class="field" placeholder="Search users">
+  <div class="panel"><h2>Private Messages</h2><p class="muted">User select karein aur message bhejein.</p>
     <div class="chatlayout">
-      <div id="chatPeople" class="chatpeople"></div>
-      <div class="chatwindow">
-        <b id="chatTitle">Select a person</b>
-        <div id="chatMessages" class="chatmessages"></div>
-        <div class="row">
-          <input id="chatInput" class="field grow" placeholder="Write a message..." disabled>
-          <button id="sendChat" class="btn primary" disabled>Send</button>
-        </div>
+      <div><input id="chatSearch" class="field" placeholder="Find a user"><div id="chatPeople" class="chatpeople"></div></div>
+      <div class="chatwindow"><h3 id="chatTitle">Select a person</h3><div id="chatMessages" class="chatmessages"></div>
+        <div class="row"><input id="chatInput" class="field grow" maxlength="2000" placeholder="Write a message..." disabled><button id="sendChat" class="btn primary" disabled>Send</button></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="page-settings" class="hidden">
-  <div class="panel">
-    <h2>Settings</h2>
-    <p class="muted">Account: <span id="accountEmail"></span></p>
-    <button id="refreshApp" class="btn">Refresh data</button>
-    <button id="logout" class="btn">Log out</button>
+<section id="page-explore" class="hidden">
+  <h2>Explore</h2>
+  <div class="grid2">
+    <div class="feature"><h3>🌍 Communities</h3><p class="muted">Country profile mein select karein.</p></div>
+    <div class="feature"><h3>📰 News</h3><p class="muted">Live news ke liye news API chahiye.</p></div>
+    <div class="feature"><h3>⚽ Sports</h3><p class="muted">Sports data provider chahiye.</p></div>
+    <div class="feature"><h3>🌐 Translation</h3><p class="muted">Translation API chahiye.</p></div>
+    <div class="feature"><h3>📡 Live</h3><p class="muted">Live streaming service chahiye.</p></div>
+    <div class="feature"><h3>💳 Earnings</h3><p class="muted">Payment provider chahiye.</p></div>
   </div>
 </section>
+
+<section id="page-settings" class="hidden">
+  <div class="panel"><h2>Settings</h2><p class="muted">Account: <span id="accountEmail"></span></p>
+    <p class="muted">Database: <span id="connectionStatus">Connecting...</span></p>
+    <button id="refreshApp" class="btn">Refresh data</button>
+    <button id="logout" class="btn dark" style="margin-top:10px">Log out</button>
+  </div>
+  <div class="panel"><h3>Before public launch</h3><p class="muted">Secure Firestore Rules, privacy, moderation, uploads aur Android packaging ko test karna hoga.</p></div>
+</section>
 </main>
+
+<aside class="rightcol">
+  <div class="panel"><h3>Welcome to NEXORA ✦</h3><p class="muted">Connect. Create. Discover.</p></div>
+  <div class="panel"><h3>Features</h3><p class="muted">✓ Accounts & profiles</p><p class="muted">✓ Posts, likes, comments</p><p class="muted">✓ Photo/video Stories</p><p class="muted">✓ Gallery uploads</p><p class="muted">✓ Camera filters</p><p class="muted">✓ User search & private text chat</p><p class="muted">✓ In-app activity alerts</p><p class="muted">○ Calls, streaming & payments need extra services</p></div>
+</aside>
 </div>
 
 <nav class="mobilebar">
@@ -247,51 +299,35 @@ textarea.field { min-height:85px;resize:vertical; }
   <button data-page="discover">⌕<span>Search</span></button>
   <button data-page="profile">♙<span>Profile</span></button>
 </nav>
+</div>
 
 <div id="cameraModal" class="camera hidden">
-  <div class="camtop">
-    <button id="closeCamera">✕ Close</button>
-    <b>NEXORA CAMERA</b>
-    <button id="switchCamera">↻ Flip</button>
-  </div>
-  <div class="camstage"><video id="cameraVideo" autoplay playsinline muted></video></div>
+  <div class="camtop"><button id="closeCamera">✕ Close</button><b>NEXORA CAMERA</b><button id="switchCamera">↻ Flip</button></div>
+  <div class="camstage"><video id="cameraVideo" autoplay playsinline muted></video><canvas id="cameraCanvas" class="hidden"></canvas></div>
   <div class="filters">
-    <button class="selected" data-filter="none">Normal</button>
-    <button data-filter="grayscale(1)">B&W</button>
-    <button data-filter="sepia(.8)">Vintage</button>
-    <button data-filter="brightness(1.3) saturate(1.3)">Bright</button>
-    <button data-filter="saturate(1.8)">Warm</button>
+    <button class="selected" data-filter="none">Normal</button><button data-filter="grayscale(1)">B&W</button>
+    <button data-filter="sepia(.8)">Vintage</button><button data-filter="brightness(1.3) saturate(1.3)">Bright</button>
+    <button data-filter="saturate(1.8) hue-rotate(-10deg)">Warm</button><button data-filter="contrast(1.3) saturate(1.2)">Pop</button>
   </div>
-  <div class="cambottom">
-    <span id="cameraStatus" class="muted">Allow camera permission</span>
-    <button id="capturePhoto" class="capture"></button>
-    <button id="downloadPhoto">Use photo</button>
-  </div>
-</div>
-
-<div id="storyViewer" class="storyviewer hidden"><div id="storyViewerCard" class="storycard"></div></div>
-<div id="mediaOverlay" class="mediaoverlay hidden"></div>
-<div id="notificationPanel" class="panel hidden" style="position:fixed;right:15px;top:65px;z-index:120;width:min(360px,92vw);max-height:70vh;overflow:auto">
-  <h3>Notifications</h3><div id="notificationList"></div>
+  <div class="cambottom"><span id="cameraStatus" class="muted">Allow camera permission</span><button id="capturePhoto" class="capture" aria-label="Capture photo"></button><button id="downloadPhoto">Use photo</button></div>
 </div>
 <div id="toast" class="hidden" role="status"></div>
+<div id="storyViewer" class="storyviewer hidden"><div id="storyViewerCard" class="storycard"></div></div>
+<div id="mediaOverlay" class="mediaoverlay hidden"><button id="closeMediaOverlay" class="storyclose">✕</button><div id="mediaOverlayContent"></div></div>
+<div id="notificationPanel" class="panel hidden" style="position:fixed;z-index:120;right:12px;top:72px;width:min(360px,94vw);max-height:70vh;overflow:auto">
+  <div class="row between"><h2>Notifications</h2><button id="closeNotifications" class="btn">✕</button></div><div id="notificationList"></div>
+  <label class="muted"><input type="checkbox" id="soundEnabled" checked> Notification sound</label>
+  <label class="muted" style="display:block;margin-top:8px"><input type="checkbox" id="vibrationEnabled" checked> Vibration (supported devices)</label>
+</div>
 
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-import {
- getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,
- onAuthStateChanged,signOut
-} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-import {
- getFirestore,collection,doc,getDoc,getDocs,setDoc,addDoc,updateDoc,
- deleteDoc,query,orderBy,limit,onSnapshot,serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
-import {
- getStorage,ref as storageRef,uploadBytes,getDownloadURL
-} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-storage.js";
+import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+import {getFirestore,collection,doc,getDoc,getDocs,setDoc,addDoc,updateDoc,deleteDoc,query,where,orderBy,limit,onSnapshot,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+import {getStorage,ref as storageRef,uploadBytes,getDownloadURL} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-storage.js";
 
-/* Existing Firebase configuration */
-const firebaseConfig = {
+/* Keep this config matched to your Firebase Console project settings. */
+const firebaseConfig={
  apiKey:"AIzaSyAeKz8eAz5UbGR8Oz3iuG0qjcGZdrfbPg4",
  authDomain:"mirrora-d7575.firebaseapp.com",
  projectId:"mirrora-d7575",
@@ -300,35 +336,42 @@ const firebaseConfig = {
  appId:"1:952045844134:web:556d0c465ea4bc4c02e667",
  measurementId:"G-XFDTQLW0Q5"
 };
-
-const fb=initializeApp(firebaseConfig);
-const auth=getAuth(fb),db=getFirestore(fb),storage=getStorage(fb);
+const appFirebase=initializeApp(firebaseConfig);
+const auth=getAuth(appFirebase),db=getFirestore(appFirebase),storage=getStorage(appFirebase);
 const $=id=>document.getElementById(id);
-const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({
- "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-}[c]));
-const safeURL=v=>{
- try { const u=new URL(v);return ["https:","http:"].includes(u.protocol)?u.href:""; }
- catch { return ""; }
+const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safeURL=v=>{try{const u=new URL(v);return ["https:","http:"].includes(u.protocol)?u.href:""}catch{return ""}};
+const photo=u=>safeURL(u?.photoURL)||"https://placehold.co/100x100/ece7ff/7047ff?text=N";
+let user=null,profile=null,posts=[],stories=[],users=[],listings=[],feedStop=null,chatStop=null,noticeStop=null;
+let signup=true,stream=null,facing="user",filter="none",captured=null,selectedChatUser=null,notifications=[];
+let activeProfileTab="all";
+
+const uploadFile=async(file,folder)=>{
+ if(!file)throw new Error("File select nahi hui.");
+ if(!user)throw new Error("Pehle login karein.");
+ if(!file.type.startsWith("image/")&&!file.type.startsWith("video/"))throw new Error("Sirf photo ya video upload karein.");
+ if(file.size>500*1024*1024)throw new Error("File 500 MB se bari hai.");
+ const safeName=file.name.replace(/[^a-zA-Z0-9._-]/g,"_").slice(-100);
+ const path=folder+"/"+user.uid+"/"+Date.now()+"_"+safeName;
+ const r=storageRef(storage,path);
+ await uploadBytes(r,file,{contentType:file.type});
+ return await getDownloadURL(r);
 };
-const photo=p=>safeURL(p?.photoURL)||"https://placehold.co/100x100/ece7ff/7047ff?text=N";
-
-let user=null,profile=null,posts=[],stories=[],users=[],listings=[];
-let notifications=[],feedStop=null,noticeStop=null,chatStop=null;
-let signup=true,stream=null,facing="user",filter="none",captured=null,selectedChatUser=null;
-
-function toast(message){
- $("toast").textContent=message;
- $("toast").classList.remove("hidden");
- setTimeout(()=>$("toast").classList.add("hidden"),3000);
+function pingNotification(){
+ if($("soundEnabled")?.checked){
+  try{const C=window.AudioContext||window.webkitAudioContext;if(C){const c=new C(),o=c.createOscillator(),g=c.createGain();o.type="sine";o.frequency.value=880;g.gain.value=.06;o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+.16);o.onended=()=>c.close()}}catch{}
+ }
+ if($("vibrationEnabled")?.checked&&navigator.vibrate)navigator.vibrate([120,60,120]);
 }
+async function addNotification(targetUid,type,fromName,text){
+ if(!targetUid||targetUid===user?.uid)return;
+ await addDoc(collection(db,"notifications"),{targetUid,fromUid:user.uid,fromName:fromName||profile?.name||"Someone",type,text,read:false,createdAt:serverTimestamp()});
+}
+function toast(t){$("toast").textContent=t;$("toast").classList.remove("hidden");setTimeout(()=>$("toast").classList.add("hidden"),3200)}
 function error(e,where="Error"){
  console.error(where,e);
- toast(where+": "+(e.code==="permission-denied"
-  ?"Firebase Rules ne request rok di."
-  :e.code==="storage/unauthorized"
-  ?"Firebase Storage Rules ya permission check karein."
-  :e.message||"Unknown error"));
+ const msg=e.code==="permission-denied"?"Firebase Rules ne request rok di.":e.code==="storage/unauthorized"?"Storage Rules upload allow nahi kar rahe.":e.code==="storage/bucket-not-found"?"Firebase Storage bucket config check karein.":e.code==="auth/unauthorized-domain"?"Firebase Authentication mein website domain add karein.":e.message||"Unknown error";
+ toast(where+": "+msg);
 }
 function page(p){
  document.querySelectorAll("main section").forEach(s=>s.classList.add("hidden"));
@@ -338,37 +381,57 @@ function page(p){
  if(p==="profile")renderProfile();
  if(p==="market")renderListings();
  if(p==="reels")renderReels();
- if(p==="messages")renderChatPeople();
  window.scrollTo({top:0,behavior:"smooth"});
 }
-document.querySelectorAll("[data-page]").forEach(b=>b.onclick=()=>{
- if(b.dataset.page==="create")page("create");
- else page(b.dataset.page);
-});
-$("openCamera").onclick=$("takePhoto").onclick=()=>openCamera();
+document.querySelectorAll("[data-page]").forEach(b=>b.onclick=()=>page(b.dataset.page));
+$("openCamera").onclick=$("createCamera").onclick=()=>openCamera();
 $("openCreate").onclick=$("quickCreate").onclick=()=>page("create");
-$("chooseProfilePhoto").onclick=()=>$("profileFile").click();
+$("quickVideo").onclick=()=>{page("create");$("postFile").click()};
+$("topAvatar").onclick=()=>page("profile");
+$("profileAvatar").onclick=()=>$("profilePhotoFile").click();
+$("changeProfilePhoto").onclick=()=>$("profilePhotoFile").click();
+
+$("postFile").onchange=()=>{
+ const f=$("postFile").files?.[0];
+ if(!f){$("postPreview").innerHTML="";return}
+ const u=URL.createObjectURL(f);
+ $("postPreview").innerHTML=f.type.startsWith("video/")?`<video class="previewmedia" controls src="${u}"></video>`:`<img class="previewmedia" src="${u}" alt="Selected photo">`;
+};
+$("profilePhotoFile").onchange=async()=>{
+ const f=$("profilePhotoFile").files?.[0];if(!f)return;
+ if(!f.type.startsWith("image/"))return toast("Profile photo ke liye image select karein.");
+ try{
+  toast("Profile photo upload ho rahi hai...");
+  const photoURL=await uploadFile(f,"profilePhotos");
+  await updateDoc(doc(db,"users",user.uid),{photoURL});
+  profile={...profile,photoURL};updateProfileUI();await loadStories();
+  $("profilePhotoFile").value="";toast("Profile photo updated.");
+ }catch(e){error(e,"Profile photo upload")}
+};
+$("notificationsButton").onclick=()=>{$("notificationPanel").classList.toggle("hidden");renderNotifications()};
+$("closeNotifications").onclick=()=>$("notificationPanel").classList.add("hidden");
+$("closeMediaOverlay").onclick=()=>$("mediaOverlay").classList.add("hidden");
+$("mediaOverlay").onclick=e=>{if(e.target===$("mediaOverlay"))$("mediaOverlay").classList.add("hidden")};
+$("notificationsButton").addEventListener("click",async()=>{
+ try{const unseen=notifications.filter(n=>!n.read);for(const n of unseen)await updateDoc(doc(db,"notifications",n.id),{read:true})}catch(e){console.warn(e)}
+});
 
 $("toggleAuth").onclick=()=>{
- signup=!signup;
- $("authName").classList.toggle("hidden",!signup);
+ signup=!signup;$("authName").classList.toggle("hidden",!signup);
  $("authName").required=signup;
  $("authHeading").textContent=signup?"Welcome to your world":"Welcome back";
  $("authSubmit").textContent=signup?"Create account":"Log in";
  $("toggleAuth").textContent=signup?"Already have an account? Log in":"New here? Create account";
 };
-
 $("authForm").onsubmit=async e=>{
- e.preventDefault();
- $("authSubmit").disabled=true;
+ e.preventDefault();$("authSubmit").disabled=true;$("authError").textContent="";
  try{
   const email=$("authEmail").value.trim(),password=$("authPassword").value;
   if(signup){
    const c=await createUserWithEmailAndPassword(auth,email,password);
    await setDoc(doc(db,"users",c.user.uid),{
     uid:c.user.uid,name:$("authName").value.trim()||"NEXORA Creator",
-    username:"user_"+c.user.uid.slice(0,8),country:"Pakistan",
-    bio:"",photoURL:"",createdAt:serverTimestamp()
+    username:"user_"+c.user.uid.slice(0,8),country:"Pakistan",bio:"",photoURL:"",createdAt:serverTimestamp()
    });
   }else await signInWithEmailAndPassword(auth,email,password);
  }catch(e){$("authError").textContent=e.message}
@@ -378,211 +441,69 @@ $("authForm").onsubmit=async e=>{
 onAuthStateChanged(auth,async u=>{
  user=u;
  if(!u){
-  if(feedStop)feedStop();
-  if(noticeStop)noticeStop();
-  if(chatStop)chatStop();
-  $("app").classList.add("hidden");
-  $("authScreen").classList.remove("hidden");
-  return;
+  if(feedStop)feedStop();if(chatStop)chatStop();if(noticeStop)noticeStop();
+  $("app").classList.add("hidden");$("authScreen").classList.remove("hidden");return;
  }
  try{
-  const ref=doc(db,"users",u.uid);
-  let snap=await getDoc(ref);
+  const ref=doc(db,"users",u.uid);let snap=await getDoc(ref);
   if(!snap.exists()){
-   await setDoc(ref,{
-    uid:u.uid,name:u.displayName||"NEXORA Creator",
-    username:"user_"+u.uid.slice(0,8),country:"Pakistan",
-    bio:"",photoURL:"",createdAt:serverTimestamp()
-   });
+   await setDoc(ref,{uid:u.uid,name:u.displayName||"NEXORA Creator",username:"user_"+u.uid.slice(0,8),country:"Pakistan",bio:"",photoURL:"",createdAt:serverTimestamp()});
    snap=await getDoc(ref);
   }
-  profile=snap.data();
-  $("authScreen").classList.add("hidden");
-  $("app").classList.remove("hidden");
-  $("accountEmail").textContent=u.email||"";
-  updateProfileUI();
+  profile=snap.data();$("authScreen").classList.add("hidden");$("app").classList.remove("hidden");
+  $("accountEmail").textContent=u.email||"";updateProfileUI();
   await Promise.all([loadUsers(),loadStories(),loadListings()]);
-  startFeed();startNotifications();
+  startFeed();startNotifications();$("connectionStatus").textContent="Signed in";
  }catch(e){error(e,"Account setup")}
 });
 
 function updateProfileUI(){
  if(!profile)return;
- $("topAvatar").src=photo(profile);
- $("composerAvatar").src=photo(profile);
- $("profileAvatar").src=photo(profile);
+ $("topAvatar").src=photo(profile);$("composerAvatar").src=photo(profile);$("profileAvatar").src=photo(profile);
  $("profileName").textContent=profile.name||"Creator";
  $("profileUsername").textContent="@"+(profile.username||"creator")+" · "+(profile.country||"");
  $("profileBio").textContent=profile.bio||"Add your bio.";
- $("editName").value=profile.name||"";
- $("editUsername").value=profile.username||"";
- $("editCountry").value=profile.country||"Pakistan";
- $("editBio").value=profile.bio||"";
+ $("editName").value=profile.name||"";$("editUsername").value=profile.username||"";
+ $("editCountry").value=profile.country||"Pakistan";$("editBio").value=profile.bio||"";
 }
-
-async function uploadFile(file,folder){
- if(!file)throw new Error("File select karein.");
- if(file.size>500*1024*1024)throw new Error("File 500 MB se bari hai.");
- const clean=file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
- const path=`${folder}/${user.uid}/${Date.now()}_${clean}`;
- const r=storageRef(storage,path);
- await uploadBytes(r,file,{contentType:file.type||"application/octet-stream"});
- return await getDownloadURL(r);
-}
-
-$("profileFile").onchange=async()=>{
- const file=$("profileFile").files[0];if(!file)return;
- if(!file.type.startsWith("image/"))return toast("Profile ke liye image select karein.");
- try{
-  toast("Profile photo upload ho rahi hai...");
-  const photoURL=await uploadFile(file,"profilePhotos");
-  await updateDoc(doc(db,"users",user.uid),{photoURL});
-  profile={...profile,photoURL};updateProfileUI();toast("Profile photo updated.");
- }catch(e){error(e,"Profile photo")}
-};
-
 $("saveProfile").onclick=async()=>{
- const name=$("editName").value.trim(),username=$("editUsername").value.trim();
- const bio=$("editBio").value.trim(),country=$("editCountry").value;
- if(!name||!/^[A-Za-z0-9_]{3,20}$/.test(username))
-  return toast("Name aur username (3–20 letters/numbers/_) dein.");
+ const name=$("editName").value.trim(),username=$("editUsername").value.trim(),bio=$("editBio").value.trim();
+ if(!name||!/^[A-Za-z0-9_]{3,20}$/.test(username))return toast("Name aur valid username dein (3–20 characters).");
  try{
+  const country=$("editCountry").value;
   await updateDoc(doc(db,"users",user.uid),{name,username,bio,country});
-  profile={...profile,name,username,bio,country};
-  updateProfileUI();toast("Profile saved.");
+  profile={...profile,name,username,bio,country};updateProfileUI();await loadUsers();toast("Profile saved.");
  }catch(e){error(e,"Save profile")}
 };
+$("editProfileToggle").onclick=()=>$("editProfileBox").classList.toggle("hidden");
+$("profileShare").onclick=async()=>{
+ try{await navigator.clipboard.writeText(location.href+"#profile-"+user.uid);toast("Profile link copied.")}
+ catch{toast("Browser clipboard permission nahi mili.")}
+};
+document.querySelectorAll("[data-profile-tab]").forEach(b=>b.onclick=()=>{
+ activeProfileTab=b.dataset.profileTab;
+ document.querySelectorAll("[data-profile-tab]").forEach(x=>x.classList.toggle("active",x===b));
+ renderProfile();
+});
+$("profileGrid").addEventListener("click",e=>{
+ const tile=e.target.closest("[data-open-post]");if(!tile)return;
+ const p=posts.find(x=>x.id===tile.dataset.openPost);if(!p)return;
+ const src=safeURL(p.videoURL||p.imageURL||"");if(!src)return;
+ $("mediaOverlayContent").innerHTML=p.videoURL?`<video controls autoplay playsinline src="${esc(src)}"></video>`:`<img src="${esc(src)}" alt="Post">`;
+ $("mediaOverlay").classList.remove("hidden");
+});
 
 function startFeed(){
  if(feedStop)feedStop();
- feedStop=onSnapshot(query(collection(db,"posts"),orderBy("createdAt","desc"),limit(100)),s=>{
-  posts=s.docs.map(d=>({id:d.id,...d.data()}));
-  renderFeed();renderReels();renderProfile();
+ feedStop=onSnapshot(query(collection(db,"posts"),orderBy("createdAt","desc"),limit(50)),s=>{
+  posts=s.docs.map(d=>({id:d.id,...d.data()}));renderFeed();renderReels();renderProfile();
  },e=>error(e,"Feed"));
 }
-function when(ts){
- try{return ts?.toDate?ts.toDate().toLocaleString():"Just now"}
- catch{return ""}
-}
-function media(p){
- const v=safeURL(p.videoURL||""),i=safeURL(p.imageURL||"");
- if(v)return `<video class="postmedia" controls playsinline preload="metadata" src="${esc(v)}"></video>`;
- if(i)return `<img class="postmedia" loading="lazy" alt="Post" src="${esc(i)}">`;
- return "";
-}
-function postHTML(p){
- const likes=Array.isArray(p.likes)?p.likes:[];
- return `<article class="post" data-post="${esc(p.id)}">
-  <div class="posthead">
-   <img class="avatar" src="${esc(safeURL(p.authorPhoto)||photo({}))}" alt="">
-   <div class="grow"><b>${esc(p.authorName||"Creator")}</b>
-    <div class="muted">@${esc(p.authorUsername||"creator")} · ${esc(when(p.createdAt))}</div>
-   </div>
-   ${p.ownerUid===user.uid?'<button class="action" data-delete>Delete</button>':""}
-  </div>
-  ${p.text?`<div class="postbody">${esc(p.text)}</div>`:""}
-  ${media(p)}
-  <div class="actions">
-   <button class="action" data-like>${likes.includes(user.uid)?"💜":"♡"} ${likes.length} Like</button>
-   <button class="action" data-comments-toggle>▢ Comment</button>
-   <button class="action" data-share>↗ Share</button>
-  </div>
-  <div class="comments hidden" style="padding:10px">
-   <div data-comment-list class="muted">Loading comments...</div>
-   <div class="row"><input class="field grow" data-comment-input maxlength="500" placeholder="Write a comment..."><button class="btn" data-comment-send>Send</button></div>
-  </div>
- </article>`;
-}
-function renderFeed(){
- const term=$("globalSearch").value.trim().toLowerCase();
- const filtered=posts.filter(p=>!term||
-  (p.text||"").toLowerCase().includes(term)||
-  (p.authorName||"").toLowerCase().includes(term)||
-  (p.authorUsername||"").toLowerCase().includes(term));
- $("feed").innerHTML=filtered.length?filtered.map(postHTML).join(""):'<div class="panel">No posts yet. Share the first one!</div>';
-}
-$("globalSearch").oninput=()=>{
- renderFeed();
- $("peopleSearch").value=$("globalSearch").value;
- renderUsers();
-};
-
-async function addNotification(targetUid,type,fromName,text){
- if(!targetUid||targetUid===user.uid)return;
- await addDoc(collection(db,"notifications"),{
-  targetUid,fromUid:user.uid,fromName:fromName||profile?.name||"Someone",
-  type,text,read:false,createdAt:serverTimestamp()
- });
-}
-function pingNotification(){
- try{
-  if(navigator.vibrate)navigator.vibrate([150,80,150]);
-  const C=window.AudioContext||window.webkitAudioContext;
-  if(C){
-   const ctx=new C(),osc=ctx.createOscillator(),gain=ctx.createGain();
-   osc.type="sine";osc.frequency.value=880;gain.gain.value=.08;
-   osc.connect(gain);gain.connect(ctx.destination);
-   osc.start();osc.stop(ctx.currentTime+.18);
-  }
- }catch(e){console.warn("Notification sound unavailable",e)}
-}
-async function postAction(e){
- const article=e.target.closest("[data-post]");if(!article)return;
- const p=posts.find(x=>x.id===article.dataset.post);if(!p)return;
- try{
-  if(e.target.closest("[data-like]")){
-   const likes=Array.isArray(p.likes)?p.likes:[];
-   const liked=likes.includes(user.uid);
-   await updateDoc(doc(db,"posts",p.id),{
-    likes:liked?likes.filter(x=>x!==user.uid):[...likes,user.uid]
-   });
-   if(!liked)await addNotification(p.ownerUid,"like",profile.name,"liked your post");
-  }else if(e.target.closest("[data-delete]")){
-   if(p.ownerUid===user.uid&&confirm("Delete this post?"))
-    await deleteDoc(doc(db,"posts",p.id));
-  }else if(e.target.closest("[data-share]")){
-   try{await navigator.clipboard.writeText(location.href+"#post-"+p.id);toast("Link copied.");}
-   catch{toast("Share link: "+location.href+"#post-"+p.id)}
-  }else if(e.target.closest("[data-comments-toggle]")){
-   const box=article.querySelector(".comments");box.classList.toggle("hidden");
-   if(!box.classList.contains("hidden"))await loadComments(p.id,article);
-  }else if(e.target.closest("[data-comment-send]")){
-   const input=article.querySelector("[data-comment-input]"),text=input.value.trim();
-   if(!text)return;
-   await addDoc(collection(db,"posts",p.id,"comments"),{
-    ownerUid:user.uid,text:text.slice(0,500),authorName:profile.name||"Creator",
-    createdAt:serverTimestamp()
-   });
-   if(p.ownerUid!==user.uid)await addNotification(p.ownerUid,"comment",profile.name,"commented on your post");
-   input.value="";await loadComments(p.id,article);
-  }
- }catch(e){error(e,"Post action")}
-}
-async function loadComments(id,article){
- try{
-  const s=await getDocs(query(collection(db,"posts",id,"comments"),orderBy("createdAt","asc"),limit(100)));
-  article.querySelector("[data-comment-list]").innerHTML=s.empty?"No comments yet.":
-   s.docs.map(d=>`<div style="padding:5px"><b>${esc(d.data().authorName||"User")}:</b> ${esc(d.data().text)}</div>`).join("");
- }catch(e){article.querySelector("[data-comment-list]").textContent="Comments unavailable. Check Firestore Rules."}
-}
-$("feed").addEventListener("click",postAction);
-$("myPosts").addEventListener("click",e=>{
- const tile=e.target.closest("[data-open-media]");
- if(tile){showMedia(tile.dataset.openMedia,tile.dataset.type);return;}
- postAction(e);
-});
-
-$("postFile").onchange=()=>{
- const file=$("postFile").files[0];if(!file)return;
- if(!file.type.startsWith("image/")&&!file.type.startsWith("video/"))
-  return toast("Image ya video select karein.");
- $("postPreview").innerHTML=file.type.startsWith("video/")
-  ?`<video class="previewmedia" controls src="${URL.createObjectURL(file)}"></video>`
-  :`<img class="previewmedia" src="${URL.createObjectURL(file)}" alt="Preview">`;
-};
 $("publishPost").onclick=async()=>{
- const text=$("postText").value.trim(),file=$("postFile").files[0];
- if(!text&&!file)return toast("Caption ya photo/video select karein.");
+ const text=$("postText").value.trim(),file=$("postFile").files?.[0];
+ if(!text&&!file)return toast("Text ya gallery se photo/video select karein.");
+ if(file&&file.size>500*1024*1024)return toast("File 500 MB se bari hai.");
+ if(file&&!file.type.startsWith("image/")&&!file.type.startsWith("video/"))return toast("Sirf photo ya video file select karein.");
  try{
   let imageURL="",videoURL="";
   if(file){
@@ -591,272 +512,274 @@ $("publishPost").onclick=async()=>{
    if(file.type.startsWith("video/"))videoURL=url;else imageURL=url;
   }
   await addDoc(collection(db,"posts"),{
-   ownerUid:user.uid,authorName:profile.name||"Creator",
-   authorUsername:profile.username||"creator",authorPhoto:profile.photoURL||"",
-   text:text.slice(0,2000),imageURL,videoURL,likes:[],
-   createdAt:serverTimestamp()
+   ownerUid:user.uid,authorName:profile.name||"Creator",authorUsername:profile.username||"creator",
+   authorPhoto:profile.photoURL||"",text:text.slice(0,2000),imageURL,videoURL,
+   mediaType:videoURL?"video":imageURL?"image":"text",likes:[],createdAt:serverTimestamp()
   });
   $("postText").value="";$("postFile").value="";$("postPreview").innerHTML="";
   page("home");toast("Post published.");
  }catch(e){error(e,"Publish post")}
 };
+function when(ts){try{return ts?.toDate?ts.toDate().toLocaleString():"Just now"}catch{return ""}}
+function media(p){
+ const v=safeURL(p.videoURL||""),i=safeURL(p.imageURL||"");
+ if(v)return `<video class="postmedia" controls playsinline preload="metadata" src="${esc(v)}"></video>`;
+ if(i)return `<img class="postmedia" loading="lazy" alt="Post media" src="${esc(i)}">`;
+ return "";
+}
+function postHTML(p){
+ const likes=Array.isArray(p.likes)?p.likes:[];
+ return `<article class="post" data-post="${esc(p.id)}">
+ <div class="posthead"><img class="avatar" src="${esc(safeURL(p.authorPhoto)||photo({}))}" alt="">
+ <div class="grow"><b>${esc(p.authorName||"Creator")}</b><div class="muted">@${esc(p.authorUsername||"creator")} · ${esc(when(p.createdAt))}</div></div>
+ ${p.ownerUid===user.uid?'<button class="action" data-delete>Delete</button>':""}</div>
+ ${p.text?`<div class="postbody">${esc(p.text)}</div>`:""}${media(p)}
+ <div class="actions"><button class="action" data-like>${likes.includes(user.uid)?"💜":"♡"} ${likes.length} Like</button><button class="action" data-comments-toggle>▢ Comment</button><button class="action" data-share>↗ Share</button></div>
+ <div class="comments hidden"><div data-comment-list class="muted">Open comments to load.</div>
+ <div class="row"><input class="field grow" data-comment-input maxlength="500" placeholder="Write a comment..."><button class="btn" data-comment-send>Send</button></div></div>
+ </article>`;
+}
+function renderFeed(){
+ const term=$("globalSearch").value.trim().toLowerCase();
+ const filtered=posts.filter(p=>!term||(p.text||"").toLowerCase().includes(term)||(p.authorName||"").toLowerCase().includes(term)||(p.authorUsername||"").toLowerCase().includes(term));
+ $("feedCount").textContent=filtered.length+" posts";
+ $("feed").innerHTML=filtered.length?filtered.map(postHTML).join(""):'<div class="panel">No posts yet. Share the first one!</div>';
+}
+$("globalSearch").oninput=renderFeed;
+
+async function postAction(e){
+ const article=e.target.closest("[data-post]");if(!article)return;
+ const p=posts.find(x=>x.id===article.dataset.post);if(!p)return;
+ try{
+  if(e.target.closest("[data-like]")){
+   const likes=Array.isArray(p.likes)?p.likes:[];
+   const nowLiked=!likes.includes(user.uid);
+   await updateDoc(doc(db,"posts",p.id),{likes:nowLiked?[...likes,user.uid]:likes.filter(x=>x!==user.uid)});
+   if(nowLiked)await addNotification(p.ownerUid,"like",profile.name||"Someone","liked your post");
+  }else if(e.target.closest("[data-delete]")){
+   if(p.ownerUid===user.uid&&confirm("Delete this post?"))await deleteDoc(doc(db,"posts",p.id));
+  }else if(e.target.closest("[data-share]")){
+   try{await navigator.clipboard.writeText(location.href+"#post-"+p.id);toast("Page link copied.")}
+   catch{toast("Clipboard permission nahi mili.")}
+  }else if(e.target.closest("[data-comments-toggle]")){
+   const box=article.querySelector(".comments");box.classList.toggle("hidden");
+   if(!box.classList.contains("hidden"))await loadComments(p.id,article);
+  }else if(e.target.closest("[data-comment-send]")){
+   const input=article.querySelector("[data-comment-input]"),text=input.value.trim();if(!text)return;
+   await addDoc(collection(db,"posts",p.id,"comments"),{ownerUid:user.uid,text:text.slice(0,500),authorName:profile.name||"Creator",createdAt:serverTimestamp()});
+   input.value="";await loadComments(p.id,article);
+  }
+ }catch(e){error(e,"Post action")}
+}
+async function loadComments(id,article){
+ try{
+  const s=await getDocs(query(collection(db,"posts",id,"comments"),orderBy("createdAt","asc"),limit(100)));
+  article.querySelector("[data-comment-list]").innerHTML=s.empty?"No comments yet.":s.docs.map(d=>`<div class="comment"><b>${esc(d.data().authorName)}:</b> ${esc(d.data().text)}</div>`).join("");
+ }catch(e){article.querySelector("[data-comment-list]").textContent="Comments unavailable; check Firestore Rules."}
+}
+$("feed").addEventListener("click",postAction);
+$("myPosts").addEventListener("click",postAction);
 
 function renderReels(){
  const videos=posts.filter(p=>safeURL(p.videoURL||""));
  $("reelsFeed").innerHTML=videos.length?videos.map(p=>`
-  <section class="reel" data-post="${esc(p.id)}">
-   <video src="${esc(safeURL(p.videoURL))}" controls playsinline loop></video>
-   <div class="reelbottom"><b>@${esc(p.authorUsername||"creator")}</b><p>${esc(p.text||"")}</p></div>
-   <div class="reelactions">
-    <button class="reelaction" data-like>♡<br><small>${(p.likes||[]).length}</small></button>
-    <button class="reelaction" data-comments-toggle>▢<br><small>Comment</small></button>
-    <button class="reelaction" data-share>↗<br><small>Share</small></button>
-   </div>
-   <div class="comments hidden" style="position:absolute;bottom:0;background:white;color:#111;width:100%">
-    <div data-comment-list></div>
-    <div class="row"><input class="field grow" data-comment-input placeholder="Comment"><button class="btn" data-comment-send>Send</button></div>
-   </div>
-  </section>`).join(""):'<div class="reel" style="padding:25px;text-align:center">No videos yet. Create a post and select a video from your gallery.</div>';
+ <section class="reel" data-post="${esc(p.id)}">
+ <video src="${esc(safeURL(p.videoURL))}" controls playsinline preload="metadata"></video>
+ <div class="reelbottom"><b>@${esc(p.authorUsername||"creator")}</b><p>${esc(p.text||"")}</p></div>
+ <div class="reelactions"><button class="reelaction" data-like>♡<small>${Array.isArray(p.likes)?p.likes.length:0} Likes</small></button>
+ <button class="reelaction" data-comments-toggle>▢<small>Comment</small></button><button class="reelaction" data-share>↗<small>Share</small></button></div>
+ <div class="comments hidden" style="position:absolute;bottom:0;background:white;color:#111;width:100%" data-reel-comments>
+ <div data-comment-list></div><div class="row"><input class="field grow" data-comment-input maxlength="500" placeholder="Comment"><button class="btn" data-comment-send>Send</button></div></div>
+ </section>`).join(""):'<div class="reel"><p>No videos yet. Create a post with a video.</p></div>';
 }
-$("reelsFeed").addEventListener("click",postAction);
+$("reelsFeed").addEventListener("click",async e=>{
+ const reel=e.target.closest("[data-post]");if(!reel)return;
+ const p=posts.find(x=>x.id===reel.dataset.post);if(!p)return;
+ try{
+  if(e.target.closest("[data-like]")){
+   const likes=Array.isArray(p.likes)?p.likes:[];
+   const nowLiked=!likes.includes(user.uid);
+   await updateDoc(doc(db,"posts",p.id),{likes:nowLiked?[...likes,user.uid]:likes.filter(x=>x!==user.uid)});
+   if(nowLiked)await addNotification(p.ownerUid,"like",profile.name||"Someone","liked your video");
+  }else if(e.target.closest("[data-comments-toggle]")){
+   const box=reel.querySelector("[data-reel-comments]");box.classList.toggle("hidden");
+   if(!box.classList.contains("hidden"))await loadComments(p.id,reel);
+  }else if(e.target.closest("[data-comment-send]")){
+   const input=reel.querySelector("[data-comment-input]"),text=input.value.trim();if(!text)return;
+   await addDoc(collection(db,"posts",p.id,"comments"),{ownerUid:user.uid,text:text.slice(0,500),authorName:profile.name||"Creator",createdAt:serverTimestamp()});
+   input.value="";await loadComments(p.id,reel);
+  }else if(e.target.closest("[data-share]")){
+   try{await navigator.clipboard.writeText(location.href);toast("Link copied.")}catch{toast("Clipboard permission nahi mili.")}
+  }
+ }catch(e){error(e,"Reel action")}
+});
+const reelObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+ const video=entry.target.querySelector("video");if(!video)return;
+ if(entry.isIntersecting)video.play().catch(()=>{});else video.pause();
+}),{threshold:.65});
+const reelMutation=new MutationObserver(()=>document.querySelectorAll("#reelsFeed .reel").forEach(r=>reelObserver.observe(r)));
+reelMutation.observe($("reelsFeed"),{childList:true});
 
 async function loadUsers(){
  try{
-  const s=await getDocs(query(collection(db,"users"),limit(200)));
-  users=s.docs.map(d=>d.data()).filter(u=>u.uid!==user.uid);
-  renderUsers();renderChatPeople();
+  const s=await getDocs(query(collection(db,"users"),limit(100)));
+  users=s.docs.map(d=>d.data()).filter(u=>u.uid!==user.uid);renderUsers();renderChatPeople();
  }catch(e){error(e,"Users")}
 }
 function renderUsers(){
- if(!$("peopleList"))return;
  const term=($("peopleSearch").value||"").toLowerCase();
- const list=users.filter(u=>(u.name||"").toLowerCase().includes(term)||
-  (u.username||"").toLowerCase().includes(term));
- $("peopleList").innerHTML=list.length?list.map(u=>`
-  <div class="panel row">
-   <img class="avatar" src="${esc(photo(u))}" alt="">
-   <div class="grow"><b>${esc(u.name||"Creator")}</b><div class="muted">@${esc(u.username||"creator")}</div></div>
-   <button class="btn" data-follow="${esc(u.uid)}">Follow</button>
-  </div>`).join(""):'<div class="panel">No matching profiles.</div>';
+ const list=users.filter(u=>(u.name||"").toLowerCase().includes(term)||(u.username||"").toLowerCase().includes(term));
+ $("peopleList").innerHTML=list.length?list.map(u=>`<div class="panel row"><img class="avatar" src="${esc(photo(u))}" alt=""><div class="grow"><b>${esc(u.name||"Creator")}</b><div class="muted">@${esc(u.username||"creator")} · ${esc(u.country||"")}</div></div><button class="btn" data-follow="${esc(u.uid)}">Follow</button></div>`).join(""):'<div class="panel">No matching profiles.</div>';
  $("peopleList").querySelectorAll("[data-follow]").forEach(b=>b.onclick=async()=>{
   const target=b.dataset.follow,ref=doc(db,"follows",user.uid+"_"+target);
   try{
    const s=await getDoc(ref);
-   if(s.exists()){await deleteDoc(ref);toast("Unfollowed.");}
-   else{
-    await setDoc(ref,{followerUid:user.uid,followingUid:target,createdAt:serverTimestamp()});
-    await addNotification(target,"follow",profile.name,"started following you");
-    toast("Following.");
-   }
+   if(s.exists()){await deleteDoc(ref);toast("Unfollowed.")}
+   else{await setDoc(ref,{followerUid:user.uid,followingUid:target,createdAt:serverTimestamp()});await addNotification(target,"follow",profile.name||"Someone","started following you");toast("Following.")}
+   renderProfile();
   }catch(e){error(e,"Follow")}
  });
 }
 $("peopleSearch").oninput=renderUsers;
 
 $("addStory").onclick=()=>$("storyFile").click();
-
-async function publishStory(){
- const file=$("storyFile").files[0];if(!file)return;
- if(!file.type.startsWith("image/")&&!file.type.startsWith("video/"))
-  return toast("Photo ya video select karein.");
+$("storyFile").onchange=async()=>{
+ const file=$("storyFile").files?.[0];if(!file)return;
+ if(!file.type.startsWith("image/")&&!file.type.startsWith("video/"))return toast("Story ke liye image ya video select karein.");
+ if(file.size>100*1024*1024)return toast("Story file 100 MB se chhoti honi chahiye.");
  try{
   toast("Story upload ho rahi hai...");
   const url=await uploadFile(file,"stories");
-  await addDoc(collection(db,"stories"),{
-   ownerUid:user.uid,authorName:profile.name||"Creator",
-   authorPhoto:profile.photoURL||"",mediaURL:url,
-   mediaType:file.type.startsWith("video/")?"video":"image",
-   text:"",expiresAt:Date.now()+86400000,createdAt:serverTimestamp()
-  });
+  await addDoc(collection(db,"stories"),{ownerUid:user.uid,authorName:profile.name||"Creator",authorPhoto:profile.photoURL||"",mediaURL:url,mediaType:file.type.startsWith("video/")?"video":"image",text:"",expiresAt:Date.now()+86400000,createdAt:serverTimestamp()});
   $("storyFile").value="";await loadStories();toast("Story added.");
  }catch(e){error(e,"Story upload")}
+};
+function showStory(story){
+ const content=story.mediaType==="video"&&safeURL(story.mediaURL)?`<video controls autoplay playsinline src="${esc(safeURL(story.mediaURL))}"></video>`:story.mediaURL&&safeURL(story.mediaURL)?`<img src="${esc(safeURL(story.mediaURL))}" alt="Story">`:`<div style="padding:35px;font-size:22px;text-align:center">${esc(story.text||"")}</div>`;
+ $("storyViewerCard").innerHTML=`<button class="storyclose" id="storyViewerClose">✕</button>${content}<div class="storycaption"><b>${esc(story.authorName||"Creator")}</b><div>${esc(story.text||"")}</div></div>`;
+ $("storyViewer").classList.remove("hidden");$("storyViewerClose").onclick=()=>$("storyViewer").classList.add("hidden");
 }
+$("storyViewer").onclick=e=>{if(e.target===$("storyViewer"))$("storyViewer").classList.add("hidden")};
 async function loadStories(){
  try{
   const s=await getDocs(query(collection(db,"stories"),orderBy("createdAt","desc"),limit(100)));
   stories=s.docs.map(d=>({id:d.id,...d.data()})).filter(x=>x.expiresAt>Date.now());
   const mine={id:"add",ownerUid:user.uid,authorName:"Your story",authorPhoto:profile?.photoURL||"",isAdd:true};
-  $("storiesList").innerHTML=[mine,...stories].map(x=>`
-   <div class="story" data-story="${esc(x.id)}">
-    <div class="ring"><div class="ringinner">${safeURL(x.authorPhoto||"")?`<img src="${esc(safeURL(x.authorPhoto))}" alt="">`:"✦"}</div></div>
-    <div class="storyname">${esc(x.authorName||"Creator")}</div>
-   </div>`).join("");
-  $("storiesList").querySelectorAll("[data-story]").forEach(el=>el.onclick=()=>{
-   const s=stories.find(x=>x.id===el.dataset.story);
-   if(s)showStory(s);else $("storyFile").click();
-  });
- }catch(e){error(e,"Stories")}
+  $("storiesList").innerHTML=[mine,...stories].map(x=>`<div class="story" data-story="${esc(x.id)}"><div class="ring"><div class="ringinner">${safeURL(x.authorPhoto||"")?`<img src="${esc(safeURL(x.authorPhoto))}" alt="">`:"✦"}</div></div><div class="storyname">${esc(x.authorName||"Creator")}</div></div>`).join("");
+  $("storiesList").querySelectorAll("[data-story]").forEach(el=>el.onclick=()=>{const st=stories.find(x=>x.id===el.dataset.story);if(st)showStory(st);else $("storyFile").click()});
+ }catch(e){error(e,"Load stories");$("storiesList").textContent="Stories load nahi ho sake. Firebase Rules check karein."}
 }
-function showStory(s){
- const content=s.mediaType==="video"&&safeURL(s.mediaURL)
-  ?`<video controls autoplay playsinline src="${esc(safeURL(s.mediaURL))}"></video>`
-  :s.mediaURL&&safeURL(s.mediaURL)
-  ?`<img src="${esc(safeURL(s.mediaURL))}" alt="Story">`
-  :`<div style="padding:30px;color:white">${esc(s.text||"")}</div>`;
- $("storyViewerCard").innerHTML=`<button class="storyclose" id="storyViewerClose">✕</button>${content}<div class="storycaption"><b>${esc(s.authorName||"Creator")}</b><div>${esc(s.text||"")}</div></div>`;
- $("storyViewer").classList.remove("hidden");
- $("storyViewerClose").onclick=()=>$("storyViewer").classList.add("hidden");
-}
-$("storyViewer").onclick=e=>{if(e.target===$("storyViewer"))$("storyViewer").classList.add("hidden")};
 
 $("publishListing").onclick=async()=>{
- const title=$("marketTitle").value.trim(),description=$("marketDescription").value.trim();
+ const title=$("marketTitle").value.trim(),description=$("marketDescription").value.trim(),contact=$("marketContact").value.trim();
  if(!title||!description)return toast("Title aur description required hain.");
+ if(contact&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact))return toast("Valid email dein.");
  try{
-  await addDoc(collection(db,"marketListings"),{
-   ownerUid:user.uid,title:title.slice(0,80),description:description.slice(0,1000),
-   authorName:profile.name||"Creator",createdAt:serverTimestamp()
-  });
-  $("marketTitle").value="";$("marketDescription").value="";
+  await addDoc(collection(db,"marketListings"),{ownerUid:user.uid,title:title.slice(0,80),description:description.slice(0,1000),category:$("marketCategory").value,contact,authorName:profile.name||"Creator",createdAt:serverTimestamp()});
+  $("marketTitle").value="";$("marketDescription").value="";$("marketContact").value="";
   await loadListings();toast("Listing published.");
  }catch(e){error(e,"Marketplace")}
 };
 async function loadListings(){
- try{
-  const s=await getDocs(query(collection(db,"marketListings"),orderBy("createdAt","desc"),limit(50)));
-  listings=s.docs.map(d=>({id:d.id,...d.data()}));renderListings();
- }catch(e){error(e,"Listings")}
+ try{const s=await getDocs(query(collection(db,"marketListings"),orderBy("createdAt","desc"),limit(50)));listings=s.docs.map(d=>({id:d.id,...d.data()}));renderListings()}
+ catch(e){error(e,"Listings")}
 }
 function renderListings(){
- $("marketList").innerHTML=listings.length?listings.map(l=>`
-  <div class="panel"><h3>${esc(l.title)}</h3><p>${esc(l.description)}</p>
-   <p class="muted">By ${esc(l.authorName||"Creator")}</p>
-   ${l.ownerUid===user.uid?`<button class="btn" data-remove="${esc(l.id)}">Delete</button>`:""}
-  </div>`).join(""):'<div class="panel">No listings yet.</div>';
+ $("marketList").innerHTML=listings.length?listings.map(l=>`<div class="panel"><span class="badge">${esc(l.category)}</span><h3 style="margin-top:10px">${esc(l.title)}</h3><p>${esc(l.description)}</p><p class="muted">By ${esc(l.authorName||"Creator")}</p>${l.contact?`<a href="mailto:${esc(l.contact)}">Contact seller</a>`:""}${l.ownerUid===user.uid?`<button class="btn" data-remove="${esc(l.id)}">Delete</button>`:""}</div>`).join(""):'<div class="panel">No listings yet.</div>';
  $("marketList").querySelectorAll("[data-remove]").forEach(b=>b.onclick=async()=>{
   if(!confirm("Delete listing?"))return;
-  try{await deleteDoc(doc(db,"marketListings",b.dataset.remove));await loadListings();}
-  catch(e){error(e,"Delete listing")}
+  try{await deleteDoc(doc(db,"marketListings",b.dataset.remove));await loadListings()}catch(e){error(e,"Delete listing")}
  });
 }
-function renderProfile(){
+async function renderProfile(){
  if(!user)return;
  const mine=posts.filter(p=>p.ownerUid===user.uid);
  $("myPostsCount").textContent=mine.length;
- $("myPosts").innerHTML=mine.map(p=>{
-  const url=safeURL(p.videoURL||p.imageURL||"");
-  const type=p.videoURL?"video":"image";
-  return `<div class="profiletile" data-open-media="${esc(url)}" data-type="${type}">
-   ${url?(type==="video"?`<video src="${esc(url)}" muted></video>`:`<img src="${esc(url)}" alt="Post">`):`<div style="padding:8px;color:white">${esc((p.text||"Post").slice(0,50))}</div>`}
-  </div>`;
- }).join("");
+ const shown=activeProfileTab==="video"?mine.filter(p=>p.videoURL):activeProfileTab==="image"?mine.filter(p=>p.imageURL):mine;
+ $("profileGrid").innerHTML=shown.length?shown.map(p=>{
+  const src=safeURL(p.videoURL||p.imageURL||"");if(!src)return "";
+  const content=p.videoURL?`<video src="${esc(src)}" muted playsinline preload="metadata"></video>`:`<img src="${esc(src)}" loading="lazy" alt="Post">`;
+  return `<div class="tt-tile" data-open-post="${esc(p.id)}">${content}${p.videoURL?'<span class="tt-play">▶</span>':""}</div>`;
+ }).join(""):'<div class="tt-empty">Abhi yahan koi posts nahi hain.</div>';
+ $("myPosts").innerHTML=mine.length?mine.map(postHTML).join(""):"";
+ try{
+  const [followers,following]=await Promise.all([
+   getDocs(query(collection(db,"follows"),where("followingUid","==",user.uid))),
+   getDocs(query(collection(db,"follows"),where("followerUid","==",user.uid)))
+  ]);
+  $("myFollowersCount").textContent=followers.size;$("myFollowingCount").textContent=following.size;
+ }catch(e){console.warn("Follow counts",e);$("myFollowersCount").textContent="—";$("myFollowingCount").textContent="—"}
 }
-function showMedia(url,type){
- if(!safeURL(url))return;
- $("mediaOverlay").innerHTML=`<button class="storyclose" id="mediaClose">✕</button>${type==="video"?`<video controls autoplay playsinline src="${esc(safeURL(url))}"></video>`:`<img src="${esc(safeURL(url))}" alt="Post">`}`;
- $("mediaOverlay").classList.remove("hidden");
- $("mediaClose").onclick=()=>$("mediaOverlay").classList.add("hidden");
-}
-$("mediaOverlay").onclick=e=>{if(e.target===$("mediaOverlay"))$("mediaOverlay").classList.add("hidden")};
-
 function chatId(a,b){return [a,b].sort().join("_")}
 function renderChatPeople(){
  const term=($("chatSearch").value||"").toLowerCase();
  const list=users.filter(u=>(u.name||"").toLowerCase().includes(term)||(u.username||"").toLowerCase().includes(term));
- $("chatPeople").innerHTML=list.length?list.map(u=>`
-  <button class="navbtn" data-chat-user="${esc(u.uid)}">
-   <img class="avatar" src="${esc(photo(u))}" alt="">
-   ${esc(u.name||"Creator")} <small>@${esc(u.username||"user")}</small>
-  </button>`).join(""):'<p class="muted">No users found. Ask friends to create accounts.</p>';
+ $("chatPeople").innerHTML=list.length?list.map(u=>`<button class="navbtn" data-chat-user="${esc(u.uid)}"><img class="avatar" src="${esc(photo(u))}" alt=""><span>${esc(u.name||"Creator")}<small style="display:block">@${esc(u.username||"user")}</small></span></button>`).join(""):'<p class="muted">No users found. Refresh users or ask them to sign up.</p>';
  $("chatPeople").querySelectorAll("[data-chat-user]").forEach(b=>b.onclick=()=>openChat(users.find(u=>u.uid===b.dataset.chatUser)));
 }
 async function openChat(target){
- if(!target)return;
- selectedChatUser=target;if(chatStop)chatStop();
+ if(!target)return;selectedChatUser=target;if(chatStop)chatStop();
  $("chatTitle").textContent=(target.name||"User")+" · @"+(target.username||"user");
- $("chatInput").disabled=false;$("sendChat").disabled=false;
+ $("chatInput").disabled=false;$("sendChat").disabled=false;$("chatMessages").innerHTML='<p class="muted">Loading messages...</p>';
  const id=chatId(user.uid,target.uid);
  chatStop=onSnapshot(query(collection(db,"chats",id,"messages"),orderBy("createdAt","asc"),limit(200)),snap=>{
-  $("chatMessages").innerHTML=snap.docs.map(d=>{
-   const m=d.data();
-   return `<div class="bubble ${m.senderUid===user.uid?"mine":""}">${esc(m.text||"")}<div class="muted">${esc(m.senderUid===user.uid?"You":target.name||"User")}</div></div>`;
-  }).join("")||'<p class="muted">Start the conversation.</p>';
+  $("chatMessages").innerHTML=snap.docs.map(d=>{const m=d.data();return `<div class="bubble ${m.senderUid===user.uid?"mine":""}">${esc(m.text||"")}<div style="font-size:10px;opacity:.7;margin-top:4px">${esc(m.senderUid===user.uid?"You":target.name||"User")}</div></div>`}).join("")||'<p class="muted">Start the conversation.</p>';
   $("chatMessages").scrollTop=$("chatMessages").scrollHeight;
  },e=>error(e,"Chat"));
 }
 $("chatSearch").oninput=renderChatPeople;
 $("sendChat").onclick=async()=>{
- const text=$("chatInput").value.trim(),target=selectedChatUser;
- if(!text||!target)return;
+ const text=$("chatInput").value.trim();if(!text||!selectedChatUser)return;
+ const target=selectedChatUser;
  try{
-  await addDoc(collection(db,"chats",chatId(user.uid,target.uid),"messages"),{
-   senderUid:user.uid,receiverUid:target.uid,text:text.slice(0,2000),createdAt:serverTimestamp()
-  });
+  const id=chatId(user.uid,target.uid);
+  await addDoc(collection(db,"chats",id,"messages"),{senderUid:user.uid,receiverUid:target.uid,text:text.slice(0,2000),createdAt:serverTimestamp()});
   await addNotification(target.uid,"message",profile.name||"Someone","sent you a message");
   $("chatInput").value="";
  }catch(e){error(e,"Send message")}
 };
-$("chatInput").addEventListener("keydown",e=>{
- if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();$("sendChat").click();}
-});
-
+$("chatInput").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();$("sendChat").click()}});
 function renderNotifications(){
  const unread=notifications.filter(n=>!n.read).length;
- $("notificationCount").textContent=unread;
- $("notificationCount").classList.toggle("hidden",!unread);
- $("notificationList").innerHTML=notifications.length?notifications.map(n=>`
-  <div class="panel"><b>${esc(n.fromName||"Someone")}</b> ${esc(n.text||n.type||"activity")}
-   <div class="muted">${esc(when(n.createdAt))}</div>
-  </div>`).join(""):'<p class="muted">No notifications yet.</p>';
+ $("notificationCount").textContent=unread;$("notificationCount").classList.toggle("hidden",!unread);
+ $("notificationList").innerHTML=notifications.length?notifications.map(n=>`<div class="feature" style="margin:8px 0"><b>${esc(n.fromName||"Someone")}</b> ${esc(n.text||n.type||"activity")}<div class="muted">${esc(when(n.createdAt))}</div></div>`).join(""):'<p class="muted">No notifications yet.</p>';
 }
 function startNotifications(){
  if(noticeStop)noticeStop();
  noticeStop=onSnapshot(query(collection(db,"notifications"),orderBy("createdAt","desc"),limit(50)),snap=>{
   const next=snap.docs.map(d=>({id:d.id,...d.data()})).filter(n=>n.targetUid===user.uid);
-  const previous=new Set(notifications.map(n=>n.id));
-  if(notifications.length&&next.some(n=>!previous.has(n.id)))pingNotification();
+  const previousIds=new Set(notifications.map(n=>n.id));
+  if(notifications.length&&next.some(n=>!previousIds.has(n.id)))pingNotification();
   notifications=next;renderNotifications();
  },e=>console.warn("Notifications",e));
 }
-$("notificationsButton").onclick=async()=>{
- $("notificationPanel").classList.toggle("hidden");
- renderNotifications();
- try{
-  for(const n of notifications.filter(n=>!n.read))
-   await updateDoc(doc(db,"notifications",n.id),{read:true});
- }catch(e){console.warn(e)}
-};
+$("refreshApp").onclick=async()=>{await loadUsers();await loadStories();await loadListings();toast("Data refreshed.")};
+$("logout").onclick=()=>signOut(auth).catch(e=>error(e,"Logout"));
 
 async function openCamera(){
- $("cameraModal").classList.remove("hidden");
- $("cameraStatus").textContent="Opening camera...";
- if(!navigator.mediaDevices?.getUserMedia){
-  $("cameraStatus").textContent="Camera requires HTTPS or localhost.";return;
- }
+ $("cameraModal").classList.remove("hidden");$("cameraStatus").textContent="Opening camera...";
+ if(!navigator.mediaDevices?.getUserMedia){$("cameraStatus").textContent="Camera ke liye HTTPS ya localhost use karein.";return}
  try{
   stopCamera();
-  stream=await navigator.mediaDevices.getUserMedia({
-   video:{facingMode:facing,width:{ideal:1280},height:{ideal:720}},audio:false
-  });
-  $("cameraVideo").srcObject=stream;
-  $("cameraVideo").style.filter=filter;
-  await $("cameraVideo").play();
-  $("cameraStatus").textContent="Camera ready — choose a filter.";
- }catch(e){
-  console.error(e);
-  $("cameraStatus").textContent="Allow camera permission and check device.";
- }
+  stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing,width:{ideal:1280},height:{ideal:720}},audio:false});
+  $("cameraVideo").srcObject=stream;$("cameraVideo").style.filter=filter;
+  await $("cameraVideo").play();$("cameraStatus").textContent="Camera ready — filter select karein.";
+ }catch(e){console.error(e);$("cameraStatus").textContent="Camera unavailable. Permission aur camera check karein."}
 }
-function stopCamera(){
- if(stream){stream.getTracks().forEach(t=>t.stop());stream=null;}
- $("cameraVideo").srcObject=null;
-}
+function stopCamera(){if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}$("cameraVideo").srcObject=null}
 $("closeCamera").onclick=()=>{stopCamera();$("cameraModal").classList.add("hidden")};
-$("switchCamera").onclick=async()=>{
- facing=facing==="user"?"environment":"user";await openCamera();
-};
+$("switchCamera").onclick=async()=>{facing=facing==="user"?"environment":"user";await openCamera()};
 document.querySelectorAll("[data-filter]").forEach(b=>b.onclick=()=>{
- filter=b.dataset.filter;
- $("cameraVideo").style.filter=filter;
+ filter=b.dataset.filter;$("cameraVideo").style.filter=filter;
  document.querySelectorAll("[data-filter]").forEach(x=>x.classList.toggle("selected",x===b));
 });
 $("capturePhoto").onclick=()=>{
  const v=$("cameraVideo");if(!v.videoWidth)return toast("Camera abhi ready nahi.");
- const c=document.createElement("canvas");c.width=v.videoWidth;c.height=v.videoHeight;
+ const c=$("cameraCanvas");c.width=v.videoWidth;c.height=v.videoHeight;
  const ctx=c.getContext("2d");ctx.filter=filter;
- if(facing==="user"){ctx.translate(c.width,0);ctx.scale(-1,1);}
- ctx.drawImage(v,0,0,c.width,c.height);captured=c.toDataURL("image/jpeg",.9);
- $("cameraStatus").textContent="Photo captured. Use photo dabayein.";
+ if(facing==="user"){ctx.translate(c.width,0);ctx.scale(-1,1)}
+ ctx.drawImage(v,0,0,c.width,c.height);ctx.filter="none";
+ captured=c.toDataURL("image/jpeg",.9);$("cameraStatus").textContent="Photo captured. Use photo dabayein.";
 };
 $("downloadPhoto").onclick=async()=>{
  if(!captured)return toast("Pehle photo capture karein.");
@@ -865,26 +788,9 @@ $("downloadPhoto").onclick=async()=>{
   const file=new File([blob],"camera-photo.jpg",{type:"image/jpeg"});
   const dt=new DataTransfer();dt.items.add(file);$("postFile").files=dt.files;
   $("postPreview").innerHTML=`<img class="previewmedia" src="${captured}" alt="Captured photo">`;
-  stopCamera();$("cameraModal").classList.add("hidden");page("create");
-  toast("Photo ready. Caption likhein aur Publish post dabayein.");
- }catch(e){toast("Photo use nahi ho saka. Gallery se select karein.");}
+  stopCamera();$("cameraModal").classList.add("hidden");page("create");toast("Photo ready hai. Caption likh kar Publish post dabayein.");
+ }catch(e){toast("Camera photo ko use nahi kar sake; gallery se photo select karein.")}
 };
-
-$("refreshApp").onclick=async()=>{
- await loadUsers();await loadStories();await loadListings();toast("Data refreshed.");
-};
-$("logout").onclick=()=>signOut(auth).catch(e=>error(e,"Logout"));
-</script>
-
-<!-- Hidden picker used by Stories -->
-<input id="storyFile" type="file" accept="image/*,video/*" class="hidden">
-<script type="module">
-/* Connect the Stories picker to the Firebase-enabled page logic. */
-const picker=document.getElementById("storyFile");
-picker.addEventListener("change",()=>{
-  // The main module exposes the story upload through the custom event below.
-  window.dispatchEvent(new CustomEvent("nexora-story-selected",{detail:picker.files[0]}));
-});
 </script>
 </body>
 </html>
