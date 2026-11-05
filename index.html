@@ -3,434 +3,546 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#080713">
-<title>MIRRORA — Living Digital Universe</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b0d17">
+<title>NEXORA — Global Network</title>
 <style>
-:root{--bg:#080713;--panel:#151226;--line:#302747;--text:#f8f5ff;--muted:#aaa3c3;--violet:#a78bfa;--pink:#f0abfc;--cyan:#67e8f9}
+:root{--bg:#0b0d17;--panel:#131725;--line:#292e42;--text:#f4f5ff;--muted:#9ba4bd;--blue:#7c8cff;--cyan:#5ce1e6}
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at 50% -15%,#41206c 0%,#100c23 38%,var(--bg) 75%);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;min-height:100vh}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif}
 button,input,textarea,select{font:inherit}
-button{cursor:pointer;border:0;border-radius:12px;padding:11px 15px;background:linear-gradient(110deg,#8b5cf6,#d946ef);color:#fff;font-weight:750}
+button{cursor:pointer}
 button:disabled{opacity:.55;cursor:not-allowed}
-input,textarea,select{width:100%;padding:12px;background:#0d0b19;color:#fff;border:1px solid var(--line);border-radius:11px;outline:none}
-input:focus,textarea:focus,select:focus{border-color:var(--violet)}
-header{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 5%;background:#0a0815ed;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
-.brand{font-weight:1000;letter-spacing:3px;font-size:23px;background:linear-gradient(90deg,#c4b5fd,#f0abfc,#67e8f9);color:transparent;background-clip:text}
-.brand small{display:block;color:#c4b5fd;font-size:9px;letter-spacing:2px}
-.header-actions{display:flex;gap:8px;align-items:center}
-.wrap{max-width:1180px;margin:auto;padding:24px 18px}
-.hero{position:relative;overflow:hidden;border:1px solid #453264;border-radius:26px;padding:clamp(25px,6vw,65px);background:linear-gradient(115deg,#1b1238ed,#15112acc),radial-gradient(circle at 80% 20%,#8b5cf6,#090814)}
-.hero:after{content:"";position:absolute;width:230px;height:230px;border:1px solid #d8b4fe77;border-radius:50%;right:8%;top:15%;box-shadow:0 0 60px #a855f755,inset 0 0 45px #8b5cf655;pointer-events:none}
-.kicker{font-size:11px;letter-spacing:3px;font-weight:850;color:#e9d5ff}
-h1{font-size:clamp(36px,6vw,70px);line-height:1.02;margin:15px 0;max-width:750px}
-.gradient{background:linear-gradient(90deg,#c4b5fd,#f0abfc,#67e8f9);color:transparent;background-clip:text}
-p{line-height:1.6}.muted{color:var(--muted)}
-.hero p{max-width:560px;position:relative;z-index:1}
-.hero .actions{position:relative;z-index:1}
-.actions{display:flex;gap:9px;flex-wrap:wrap}
-.secondary{background:#28213c;border:1px solid #45385e}
-.wrap h2{font-size:22px}
-.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:30px 0 14px}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
-.panel{background:#151226eF;border:1px solid var(--line);border-radius:19px;padding:19px;min-width:0;box-shadow:0 15px 45px #0002}
-.panel h2{margin:0 0 14px}
+header{height:68px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 5%;position:sticky;top:0;background:#0b0d17ed;backdrop-filter:blur(14px);z-index:5}
+.logo{font-weight:900;font-size:24px;letter-spacing:2px;background:linear-gradient(100deg,var(--cyan),var(--blue));color:transparent;background-clip:text}
+.small{font-size:12px;color:var(--muted)}
+.wrap{max-width:1180px;margin:28px auto;padding:0 18px}
+.layout{display:grid;grid-template-columns:220px minmax(0,1fr) 260px;gap:20px}
+.panel,.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px}
+.sidebar{height:max-content;position:sticky;top:88px}
+.nav{display:block;width:100%;text-align:left;padding:12px;border:0;background:transparent;color:var(--muted);border-radius:10px;margin:3px 0}
+.nav:hover,.nav.active{background:#252c46;color:white}
+h1{font-size:30px;margin:0 0 8px}
+h2{font-size:19px;margin:0 0 14px}
+p{line-height:1.55}
+.muted{color:var(--muted)}
+.gradient{background:linear-gradient(100deg,var(--cyan),var(--blue));color:#080b17}
+.btn{border:0;border-radius:10px;padding:11px 15px;font-weight:750}
+.btn.primary{background:linear-gradient(100deg,var(--cyan),var(--blue));color:#080b17}
+.btn.secondary{background:#252c46;color:white;border:1px solid #363d58}
+.btn.danger{background:#472331;color:#ffdbe3}
+input,textarea,select{width:100%;background:#0d1120;color:white;border:1px solid #343b53;border-radius:10px;padding:12px;outline:none}
+input:focus,textarea:focus,select:focus{border-color:var(--cyan)}
+label{font-size:13px;color:#c4cbe0;display:block;margin:12px 0 6px}
+textarea{min-height:95px;resize:vertical}
+.stack{display:grid;gap:10px}
+.row{display:flex;align-items:center;gap:10px}
+.between{justify-content:space-between}
+.avatar{width:44px;height:44px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#5ce1e6,#7c8cff);color:#101326;font-weight:900;font-size:18px}
+.avatar.big{width:72px;height:72px;font-size:27px}
+.feed{display:grid;gap:14px;margin-top:18px}
+.post{background:var(--panel);border:1px solid var(--line);padding:18px;border-radius:16px;overflow-wrap:anywhere}
+.postbody{white-space:pre-wrap;margin:15px 0}
+.postfoot{font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+.people{display:grid;gap:12px}
+.person{display:flex;align-items:center;gap:10px;justify-content:space-between}
+.person .info{min-width:0;flex:1}
+.person .info strong{display:block;overflow-wrap:anywhere}
 .hidden{display:none!important}
-.field{margin:13px 0}
-.field label{display:block;margin-bottom:7px;color:#dcd4f2;font-size:13px}
-.tabs{display:flex;gap:8px;margin:14px 0}
-.tabs button{flex:1}
-.status{white-space:pre-wrap;overflow-wrap:anywhere;color:#c4b5fd;font-size:13px}
-.portal-card{overflow:hidden;border:1px solid #403052;border-radius:18px;background:#141123;min-width:0;transition:transform .2s,border-color .2s}
-.portal-card:hover{transform:translateY(-3px);border-color:#9d7de8}
-.world-art{position:relative;height:190px;overflow:hidden;display:grid;place-items:center;background:var(--world-bg,linear-gradient(135deg,#21103f,#3c1c67,#0c243a))}
-.world-art:before{content:"";position:absolute;width:150px;height:150px;border:1px solid #ffffff55;border-radius:50%;box-shadow:0 0 45px #c084fc66,inset 0 0 40px #c084fc33}
-.world-art:after{content:"";position:absolute;width:210px;height:55px;border:2px solid #ffffff55;border-radius:50%;transform:rotate(-25deg);box-shadow:0 0 15px #a78bfa88}
-.orb{position:relative;z-index:1;width:95px;height:95px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff,#c4b5fd 12%,#8b5cf6 42%,#201044 75%);box-shadow:0 0 50px #a78bfa99}
-.world-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.world-art img~.orb,.world-art img~.portal-label{display:none}
-.portal-label{position:absolute;bottom:12px;left:12px;z-index:2;background:#090814bb;border:1px solid #ffffff33;border-radius:999px;padding:6px 10px;font-size:10px;letter-spacing:1px}
-.card-body{padding:14px}
-.card-body h3{margin:0 0 6px;overflow-wrap:anywhere}
-.card-body p{margin:7px 0;overflow-wrap:anywhere}
-.creator{font-size:12px;color:#c4b5fd}
-.card-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px}
-.pill{font-size:10px;letter-spacing:1px;border:1px solid #594474;border-radius:999px;padding:5px 8px;color:#e9d5ff}
-.empty{grid-column:1/-1;text-align:center;padding:30px 15px;color:var(--muted);border:1px dashed var(--line);border-radius:16px}
-.world-preview{min-height:245px;border-radius:16px;display:grid;place-items:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#27124c,#592f87,#102b48);border:1px solid #ffffff22}
-.world-preview .orb{width:125px;height:125px}
-.world-preview:after{content:"";position:absolute;width:250px;height:70px;border:2px solid #ffffff55;border-radius:50%;transform:rotate(-25deg)}
-.avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(120deg,#8b5cf6,#ec4899);display:grid;place-items:center;font-weight:900;overflow:hidden}
-.avatar img{width:100%;height:100%;object-fit:cover}
-.footer{text-align:center;padding:36px 10px;color:#827b9b;font-size:12px;line-height:2}
-@media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero:after{right:-75px;opacity:.6}}
-@media(max-width:560px){header{padding:12px}.brand{font-size:19px}.brand small{font-size:8px}.wrap{padding:16px 12px}.grid{grid-template-columns:1fr}.world-art{height:210px}.hero{border-radius:19px}.hero:after{width:130px;height:130px;top:5%;right:-35px}.panel{padding:15px}}
+.notice{padding:12px;border-radius:10px;background:#202a42;color:#d9e5ff;margin:12px 0;overflow-wrap:anywhere}
+.error{background:#46212c;color:#ffd9df}
+.success{background:#173b35;color:#c4fff1}
+.hero{padding:26px;border-radius:18px;border:1px solid #303653;background:radial-gradient(ellipse at top right,#31376c 0,transparent 55%),linear-gradient(135deg,#171c30,#101321);margin-bottom:20px}
+.pill{display:inline-block;font-size:11px;letter-spacing:1px;color:var(--cyan);border:1px solid #36536a;border-radius:30px;padding:5px 9px;margin-bottom:10px}
+.stats{display:flex;gap:20px;flex-wrap:wrap;margin:14px 0}
+.stat strong{font-size:20px;display:block}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:35px 0}
+#auth{max-width:470px;margin:60px auto;padding:0 18px}
+#auth .panel{padding:25px}
+@media(max-width:950px){.layout{grid-template-columns:190px minmax(0,1fr)}.rightbar{display:none}}
+@media(max-width:650px){header{padding:0 16px}.wrap{margin:18px auto;padding:0 12px}.layout{display:block}.sidebar{position:static;margin-bottom:15px;padding:9px;display:flex;gap:5px;overflow-x:auto}.nav{white-space:nowrap;width:auto;margin:0}.sidebar .small{display:none}.rightbar{display:none}h1{font-size:25px}.hero{padding:20px}.panel{padding:14px}}
 </style>
 </head>
 <body>
 <header>
-  <div class="brand">MIRRORA<small>MADE IN MIAN ABDULLAH</small></div>
-  <div class="header-actions" id="headerActions"><button id="headerSignIn">Sign in</button></div>
+  <div>
+    <div class="logo">NEXORA</div>
+    <div class="small">MADE IN MIAN ABDULLAH</div>
+  </div>
+  <div class="row">
+    <span id="headerUser" class="small">Global network</span>
+    <button id="logoutBtn" class="btn secondary hidden">Log out</button>
+  </div>
 </header>
 
-<main class="wrap">
-  <section class="hero">
-    <div class="kicker">A LIVING DIGITAL UNIVERSE</div>
-    <h1>Don't just post.<br><span class="gradient">Build a world.</span></h1>
-    <p class="muted">Create your own digital reality, give it a name, open its portal to the world and discover universes imagined by other creators.</p>
-    <div class="actions">
-      <button id="heroCreate">＋ Create a world</button>
-      <button class="secondary" id="heroExplore">Explore universes ↓</button>
-    </div>
-  </section>
-
-  <section class="sectionhead">
-    <div><div class="kicker">YOUR IDENTITY</div><h2 style="margin:6px 0">Creator access</h2></div>
-  </section>
-  <div class="grid" id="accountGrid">
-    <section class="panel" id="authPanel">
-      <h2 id="authTitle">Enter the universe</h2>
-      <p class="muted" id="authIntro">Create an account to publish your worlds.</p>
-      <div class="tabs">
-        <button id="signupTab">Sign up</button>
-        <button class="secondary" id="loginTab">Log in</button>
-      </div>
-      <form id="authForm">
-        <div class="field" id="nameField"><label for="name">Creator name</label><input id="name" maxlength="40" placeholder="Your name"></div>
-        <div class="field"><label for="email">Email</label><input id="email" type="email" required autocomplete="email" placeholder="you@example.com"></div>
-        <div class="field"><label for="password">Password</label><input id="password" type="password" minlength="6" required autocomplete="current-password" placeholder="At least 6 characters"></div>
-        <button id="authSubmit" type="submit">Create account</button>
-      </form>
-      <button class="secondary" id="googleBtn" style="width:100%;margin-top:10px">Continue with Google</button>
-      <p id="authStatus" class="status" role="status"></p>
-    </section>
-
-    <section class="panel hidden" id="profilePanel">
-      <h2>Your creator identity</h2>
-      <div style="display:flex;gap:12px;align-items:center;margin-bottom:14px">
-        <div class="avatar" id="avatar">M</div>
-        <div><strong id="profileName">Creator</strong><div class="muted" id="profileEmail" style="font-size:12px"></div></div>
-      </div>
-      <div class="field"><label for="displayName">Display name</label><input id="displayName" maxlength="40"></div>
-      <div class="field"><label for="bio">Creator bio</label><textarea id="bio" rows="3" maxlength="180" placeholder="Describe your creative universe"></textarea></div>
-      <div class="field"><label for="avatarFile">Profile photo (optional, max 3 MB)</label><input id="avatarFile" type="file" accept="image/jpeg,image/png,image/webp"></div>
-      <div class="actions"><button id="saveProfile">Save profile</button><button class="secondary" id="logoutBtn">Log out</button></div>
-      <p id="profileStatus" class="status" role="status"></p>
-    </section>
-
-    <section class="panel hidden" id="createPanel">
-      <h2>World Builder ✦</h2>
-      <p class="muted">Give your reality a name, a theme and a story.</p>
-      <form id="worldForm">
-        <div class="field"><label for="worldName">World name</label><input id="worldName" required maxlength="55" placeholder="e.g. The Crystal Ocean"></div>
-        <div class="field"><label for="worldDescription">World story</label><textarea id="worldDescription" required maxlength="500" rows="3" placeholder="What makes your world special?"></textarea></div>
-        <div class="field"><label for="worldTheme">Choose its atmosphere</label>
-          <select id="worldTheme">
-            <option value="cosmic">Cosmic Dream</option>
-            <option value="crystal">Crystal Kingdom</option>
-            <option value="cyber">Cyber City</option>
-            <option value="ocean">Neon Ocean</option>
-            <option value="forest">Mystic Forest</option>
-            <option value="sunset">Golden Sunset</option>
-          </select>
-        </div>
-        <div class="field"><label for="worldCover">Cover image (optional, max 5 MB)</label><input id="worldCover" type="file" accept="image/jpeg,image/png,image/webp"></div>
-        <div class="world-preview" id="worldPreview"><div class="orb"></div></div>
-        <p class="muted" style="font-size:12px">Preview uses a visual theme. This is not yet a real 3D or AI-generated world.</p>
-        <button id="publishWorld" type="submit" style="width:100%">Create my world ↗</button>
-      </form>
-      <p id="worldStatus" class="status" role="status"></p>
-    </section>
+<section id="auth">
+  <div class="hero">
+    <span class="pill">ONE WORLD. MORE CONNECTIONS.</span>
+    <h1>Your world, connected.</h1>
+    <p class="muted">Discover people, share your thoughts and build meaningful connections around the world.</p>
   </div>
+  <div class="panel">
+    <div class="row between">
+      <h2 id="authTitle">Join NEXORA</h2>
+      <span class="small">Phase 1</span>
+    </div>
+    <div id="signupFields">
+      <label for="signupName">Your name</label>
+      <input id="signupName" maxlength="40" placeholder="e.g. Abdullah">
+      <label for="signupUsername">Username</label>
+      <input id="signupUsername" maxlength="20" placeholder="e.g. abdullah123">
+      <label for="signupCountry">Country</label>
+      <select id="signupCountry">
+        <option value="Pakistan">Pakistan</option><option>United States</option>
+        <option>United Kingdom</option><option>Saudi Arabia</option>
+        <option>United Arab Emirates</option><option>India</option>
+        <option>Bangladesh</option><option>Türkiye</option>
+        <option>Canada</option><option>Other</option>
+      </select>
+    </div>
+    <label for="email">Email</label>
+    <input id="email" type="email" autocomplete="email" placeholder="you@example.com">
+    <label for="password">Password</label>
+    <input id="password" type="password" autocomplete="current-password" minlength="6" placeholder="At least 6 characters">
+    <div class="stack" style="margin-top:16px">
+      <button id="authBtn" class="btn primary">Create account</button>
+      <button id="toggleAuth" class="btn secondary">Already have an account? Log in</button>
+    </div>
+    <div id="authMsg" class="notice hidden"></div>
+  </div>
+  <p class="small" style="text-align:center">Use a valid email. Your account is stored by Firebase Authentication.</p>
+</section>
 
-  <section class="sectionhead" id="explore">
-    <div><div class="kicker">OPEN THE PORTAL</div><h2 style="margin:6px 0">Explore Universes</h2></div>
-    <button id="refreshBtn" class="secondary">Refresh</button>
-  </section>
-  <div class="field"><label for="searchWorlds">Search worlds by name, story, theme or creator</label><input id="searchWorlds" placeholder="Search the universe…"></div>
-  <section class="grid" id="worldFeed"><div class="empty">Connecting to the universe…</div></section>
-  <div class="footer">MIRRORA · MADE IN MIAN ABDULLAH<br>Imagine it. Build it. Let the world experience it.</div>
+<main id="app" class="wrap hidden">
+  <div class="hero">
+    <span class="pill">WELCOME TO NEXORA</span>
+    <h1>Meet the world.</h1>
+    <p class="muted">A place for people, ideas and new connections. Start by sharing something with your community.</p>
+  </div>
+  <div class="layout">
+    <aside class="panel sidebar">
+      <div class="small" style="padding:8px">YOUR NETWORK</div>
+      <button class="nav active" data-view="feedView">⌂ &nbsp; Global Feed</button>
+      <button class="nav" data-view="discoverView">◎ &nbsp; Discover People</button>
+      <button class="nav" data-view="profileView">◉ &nbsp; My Profile</button>
+      <div style="margin-top:18px;padding:8px" class="small">NEXORA · PHASE 1</div>
+    </aside>
+
+    <section>
+      <div id="globalNotice" class="notice hidden"></div>
+
+      <section id="feedView">
+        <div class="panel">
+          <h2>Share an update</h2>
+          <textarea id="postText" maxlength="2000" placeholder="What would you like the world to know?"></textarea>
+          <div class="row between" style="margin-top:10px">
+            <span class="small">Up to 2,000 characters</span>
+            <button id="publishBtn" class="btn primary">Publish post ↗</button>
+          </div>
+        </div>
+        <div class="row between" style="margin-top:22px">
+          <h2>Global Feed</h2><button id="refreshPosts" class="btn secondary">Refresh</button>
+        </div>
+        <div id="posts" class="feed"><p class="muted">Loading posts…</p></div>
+      </section>
+
+      <section id="discoverView" class="hidden">
+        <div class="panel">
+          <h2>Discover people</h2>
+          <input id="peopleSearch" placeholder="Search name, username or country…">
+          <p class="small">Find other people who have joined NEXORA.</p>
+        </div>
+        <div id="peopleList" class="people" style="margin-top:15px"></div>
+      </section>
+
+      <section id="profileView" class="hidden">
+        <div class="panel">
+          <div class="row">
+            <div id="myAvatar" class="avatar big">N</div>
+            <div><h2 id="profileHeading">My profile</h2><div id="profileHandle" class="muted"></div></div>
+          </div>
+          <div class="stats">
+            <div class="stat"><strong id="followersCount">0</strong><span class="small">Followers</span></div>
+            <div class="stat"><strong id="followingCount">0</strong><span class="small">Following</span></div>
+          </div>
+          <label for="editName">Display name</label>
+          <input id="editName" maxlength="40">
+          <label for="editUsername">Username</label>
+          <input id="editUsername" maxlength="20">
+          <label for="editCountry">Country</label>
+          <select id="editCountry">
+            <option>Pakistan</option><option>United States</option>
+            <option>United Kingdom</option><option>Saudi Arabia</option>
+            <option>United Arab Emirates</option><option>India</option>
+            <option>Bangladesh</option><option>Türkiye</option>
+            <option>Canada</option><option>Other</option>
+          </select>
+          <label for="editBio">Bio</label>
+          <textarea id="editBio" maxlength="250" placeholder="Tell people a little about yourself…"></textarea>
+          <button id="saveProfile" class="btn primary" style="margin-top:12px">Save profile</button>
+          <div id="profileMsg" class="notice hidden"></div>
+        </div>
+      </section>
+    </section>
+
+    <aside class="rightbar stack">
+      <div class="panel">
+        <h2>About NEXORA</h2>
+        <p class="muted">A growing global network made for people and ideas.</p>
+        <div class="small">Real accounts · Real posts · Real follows</div>
+      </div>
+      <div class="panel">
+        <h2>Quick discovery</h2>
+        <p class="muted">Find people, learn about them and follow their journey.</p>
+        <button class="btn secondary" style="width:100%" data-jump="discoverView">Discover people</button>
+      </div>
+    </aside>
+  </div>
+  <footer>NEXORA — MADE IN MIAN ABDULLAH · Build connections, respect people.</footer>
 </main>
 
 <script type="module">
-import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 import {
-  getAuth,onAuthStateChanged,createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,GoogleAuthProvider,signInWithPopup,
-  updateProfile,signOut
+  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  signOut, onAuthStateChanged, updateProfile
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 import {
-  getFirestore,doc,getDoc,setDoc,collection,addDoc,
-  query,orderBy,limit,getDocs,serverTimestamp
+  getFirestore, doc, setDoc, getDoc, updateDoc, collection, addDoc,
+  getDocs, query, orderBy, limit, serverTimestamp, where, deleteDoc
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
-import {
-  getStorage,ref,uploadBytes,getDownloadURL
-} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-storage.js";
 
-const firebaseConfig={
-  apiKey:"AIzaSyAeKz8eAz5UbGR8Oz3iuG0qjcGZdrfbPg4",
-  authDomain:"mirrora-d7575.firebaseapp.com",
-  projectId:"mirrora-d7575",
-  storageBucket:"mirrora-d7575.firebasestorage.app",
-  messagingSenderId:"952045844134",
-  appId:"1:952045844134:web:556d0c465ea4bc4c02e667",
-  measurementId:"G-XFDTQLW0Q5"
+const firebaseConfig = {
+  apiKey: "AIzaSyAeKz8eAz5UbGR8Oz3iuG0qjcGZdrfbPg4",
+  authDomain: "mirrora-d7575.firebaseapp.com",
+  projectId: "mirrora-d7575",
+  storageBucket: "mirrora-d7575.firebasestorage.app",
+  messagingSenderId: "952045844134",
+  appId: "1:952045844134:web:556d0c465ea4bc4c02e667",
+  measurementId: "G-XFDTQLW0Q5"
 };
-const $=id=>document.getElementById(id);
-let auth,db,storage,currentUser=null,isSignup=true,worlds=[];
-const themes={
-  cosmic:{label:"Cosmic Dream",bg:"linear-gradient(135deg,#160e35,#6035a0,#102a50)"},
-  crystal:{label:"Crystal Kingdom",bg:"linear-gradient(135deg,#102d47,#4b76ae,#251448)"},
-  cyber:{label:"Cyber City",bg:"linear-gradient(135deg,#260b3d,#922e87,#071c36)"},
-  ocean:{label:"Neon Ocean",bg:"linear-gradient(135deg,#062e40,#087f8c,#20134b)"},
-  forest:{label:"Mystic Forest",bg:"linear-gradient(135deg,#092c2b,#236b53,#30204f)"},
-  sunset:{label:"Golden Sunset",bg:"linear-gradient(135deg,#401d56,#b64e71,#e89a60)"}
-};
-function say(el,text,error=false){el.textContent=text;el.style.color=error?"#fda4af":"#c4b5fd"}
-function show(el,yes){el.classList.toggle("hidden",!yes)}
-function niceError(e){
-  const known={
-    "auth/email-already-in-use":"This email already has an account. Please log in.",
-    "auth/invalid-email":"Please enter a valid email.",
-    "auth/weak-password":"Password must be at least 6 characters.",
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const $ = id => document.getElementById(id);
+let currentUser = null;
+let myProfile = null;
+let allPeople = [];
+let followingIds = new Set();
+let signupMode = true;
+
+function showMessage(id, message, error=false) {
+  const el = $(id);
+  el.textContent = message;
+  el.classList.remove("hidden", "error", "success");
+  el.classList.add(error ? "error" : "success");
+}
+function hideMessage(id) { $(id).classList.add("hidden"); }
+function cleanText(value, max=2000) {
+  return String(value || "").trim().slice(0, max);
+}
+function validUsername(value) {
+  return /^[a-zA-Z0-9_]{3,20}$/.test(value);
+}
+function safeDate(value) {
+  if (!value) return "Just now";
+  const date = value.toDate ? value.toDate() : new Date(value);
+  return Number.isNaN(date.getTime()) ? "Recently" : date.toLocaleString();
+}
+function avatar(name) {
+  return cleanText(name, 1).toUpperCase() || "N";
+}
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+  }[char]));
+}
+function errorText(error) {
+  const messages = {
+    "auth/email-already-in-use":"This email already has an account. Try logging in.",
+    "auth/invalid-email":"Please enter a valid email address.",
+    "auth/weak-password":"Choose a stronger password with at least 6 characters.",
     "auth/invalid-credential":"Email or password is incorrect.",
-    "auth/unauthorized-domain":"Add your website domain in Firebase Authentication settings.",
-    "auth/operation-not-allowed":"Enable this sign-in method in Firebase Console.",
-    "permission-denied":"Firebase rules denied the request. Check your Firestore rules.",
-    "storage/unauthorized":"Storage rules denied this upload."
+    "auth/user-not-found":"No account found. Please sign up first.",
+    "auth/wrong-password":"Email or password is incorrect.",
+    "auth/too-many-requests":"Too many attempts. Please wait and try again.",
+    "permission-denied":"Firestore permission denied. Check your Firestore rules.",
+    "unavailable":"Network issue. Check your internet and try again."
   };
-  return known[e.code]||e.message||"Something went wrong.";
-}
-function validImage(file,maxMB){
-  return file&&["image/jpeg","image/png","image/webp"].includes(file.type)&&file.size<=maxMB*1024*1024;
-}
-function safeName(name){return name.replace(/[^a-zA-Z0-9._-]/g,"_")}
-function setAvatar(url,name){
-  const box=$("avatar");box.replaceChildren();
-  if(url){const img=document.createElement("img");img.src=url;img.alt="Creator photo";box.appendChild(img)}
-  else box.textContent=(name||"M").charAt(0).toUpperCase();
-}
-function updatePreview(){
-  const theme=themes[$("worldTheme").value]||themes.cosmic;
-  $("worldPreview").style.background=theme.bg;
-}
-$("worldTheme").addEventListener("change",updatePreview);
-updatePreview();
-
-function setAuthMode(signup){
-  isSignup=signup;
-  $("authTitle").textContent=signup?"Enter the universe":"Welcome back";
-  $("authIntro").textContent=signup?"Create an account to publish your worlds.":"Log in to continue your journey.";
-  $("authSubmit").textContent=signup?"Create account":"Log in";
-  show($("nameField"),signup);
-  $("signupTab").className=signup?"":"secondary";
-  $("loginTab").className=signup?"secondary":"";
-  say($("authStatus"),"");
-}
-$("signupTab").onclick=()=>setAuthMode(true);
-$("loginTab").onclick=()=>setAuthMode(false);
-$("headerSignIn").onclick=()=> $("authPanel").scrollIntoView({behavior:"smooth"});
-$("heroCreate").onclick=()=> {
-  if(!currentUser) $("authPanel").scrollIntoView({behavior:"smooth"});
-  else $("createPanel").scrollIntoView({behavior:"smooth"});
-};
-$("heroExplore").onclick=()=> $("explore").scrollIntoView({behavior:"smooth"});
-$("refreshBtn").onclick=loadWorlds;
-
-try{
-  const app=initializeApp(firebaseConfig);
-  auth=getAuth(app);db=getFirestore(app);storage=getStorage(app);
-  onAuthStateChanged(auth,async user=>{
-    currentUser=user;
-    show($("authPanel"),!user);
-    show($("profilePanel"),!!user);
-    show($("createPanel"),!!user);
-    $("headerActions").replaceChildren();
-    if(user){
-      const btn=document.createElement("button");
-      btn.className="secondary";btn.textContent="My creator profile";
-      btn.onclick=()=> $("profilePanel").scrollIntoView({behavior:"smooth"});
-      $("headerActions").appendChild(btn);
-      $("profileEmail").textContent=user.email||"";
-      $("displayName").value=user.displayName||"";
-      $("profileName").textContent=user.displayName||"Creator";
-      setAvatar(user.photoURL,user.displayName);
-      try{
-        const snap=await getDoc(doc(db,"users",user.uid));
-        if(snap.exists()){
-          const u=snap.data();
-          $("displayName").value=u.displayName||user.displayName||"";
-          $("bio").value=u.bio||"";
-          setAvatar(u.photoURL||user.photoURL,u.displayName||user.displayName);
-        }
-      }catch(e){say($("profileStatus"),niceError(e),true)}
-    }else{
-      const btn=document.createElement("button");btn.textContent="Sign in";
-      btn.onclick=()=> $("authPanel").scrollIntoView({behavior:"smooth"});
-      $("headerActions").appendChild(btn);
-    }
-    await loadWorlds();
-  });
-}catch(e){
-  $("worldFeed").innerHTML="";
-  const empty=document.createElement("div");empty.className="empty";
-  empty.textContent="Firebase error: "+niceError(e);
-  $("worldFeed").appendChild(empty);
-  say($("authStatus"),niceError(e),true);
+  return messages[error.code] || error.message || "Something went wrong.";
 }
 
-$("authForm").addEventListener("submit",async e=>{
-  e.preventDefault();if(!auth)return;
-  $("authSubmit").disabled=true;
-  try{
-    const email=$("email").value.trim(),password=$("password").value;
-    const name=$("name").value.trim()||"MIRRORA Creator";
-    if(isSignup){
-      const cred=await createUserWithEmailAndPassword(auth,email,password);
-      await updateProfile(cred.user,{displayName:name});
-      await setDoc(doc(db,"users",cred.user.uid),{
-        uid:cred.user.uid,email,displayName:name,bio:"",photoURL:"",
-        createdAt:serverTimestamp()
+$("toggleAuth").addEventListener("click", () => {
+  signupMode = !signupMode;
+  $("signupFields").classList.toggle("hidden", !signupMode);
+  $("authTitle").textContent = signupMode ? "Join NEXORA" : "Welcome back";
+  $("authBtn").textContent = signupMode ? "Create account" : "Log in";
+  $("toggleAuth").textContent = signupMode
+    ? "Already have an account? Log in"
+    : "New to NEXORA? Create an account";
+  $("password").autocomplete = signupMode ? "new-password" : "current-password";
+  hideMessage("authMsg");
+});
+
+$("authBtn").addEventListener("click", async () => {
+  hideMessage("authMsg");
+  const email = cleanText($("email").value, 160).toLowerCase();
+  const password = $("password").value;
+  if (!email || !password) return showMessage("authMsg", "Enter your email and password.", true);
+  if (password.length < 6) return showMessage("authMsg", "Password must be at least 6 characters.", true);
+
+  const name = cleanText($("signupName").value, 40);
+  const username = cleanText($("signupUsername").value, 20).toLowerCase();
+  const country = $("signupCountry").value;
+
+  if (signupMode && !name) return showMessage("authMsg", "Enter your display name.", true);
+  if (signupMode && !validUsername(username))
+    return showMessage("authMsg", "Username must be 3–20 letters, numbers or underscores.", true);
+
+  $("authBtn").disabled = true;
+  try {
+    if (signupMode) {
+      const credential = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(credential.user, { displayName: name });
+      await setDoc(doc(db, "users", credential.user.uid), {
+        uid: credential.user.uid,
+        name, username, country, bio: "",
+        createdAt: serverTimestamp()
       });
-      say($("authStatus"),"Account created successfully!");
-    }else{
-      await signInWithEmailAndPassword(auth,email,password);
-      say($("authStatus"),"Logged in successfully!");
+    } else {
+      await signInWithEmailAndPassword(auth, email, password);
     }
-  }catch(e){say($("authStatus"),niceError(e),true)}
-  finally{$("authSubmit").disabled=false}
+  } catch (error) {
+    showMessage("authMsg", errorText(error), true);
+  } finally {
+    $("authBtn").disabled = false;
+  }
 });
 
-$("googleBtn").onclick=async()=>{
-  try{
-    const result=await signInWithPopup(auth,new GoogleAuthProvider());
-    const userRef=doc(db,"users",result.user.uid),snap=await getDoc(userRef);
-    if(!snap.exists())await setDoc(userRef,{
-      uid:result.user.uid,email:result.user.email||"",
-      displayName:result.user.displayName||"MIRRORA Creator",
-      photoURL:result.user.photoURL||"",bio:"",createdAt:serverTimestamp()
-    });
-  }catch(e){say($("authStatus"),niceError(e),true)}
-};
-
-$("saveProfile").onclick=async()=>{
-  if(!currentUser)return;
-  const name=$("displayName").value.trim(),bio=$("bio").value.trim(),file=$("avatarFile").files[0];
-  if(!name)return say($("profileStatus"),"Creator name required hai.",true);
-  if(file&&!validImage(file,3))return say($("profileStatus"),"Profile photo JPG, PNG ya WebP aur 3 MB se chhoti honi chahiye.",true);
-  const btn=$("saveProfile");btn.disabled=true;
-  try{
-    let photoURL=currentUser.photoURL||"";
-    if(file){
-      const path=`profilePhotos/${currentUser.uid}/avatar-${Date.now()}-${safeName(file.name)}`;
-      await uploadBytes(ref(storage,path),file,{contentType:file.type});
-      photoURL=await getDownloadURL(ref(storage,path));
-    }
-    await updateProfile(currentUser,{displayName:name,photoURL});
-    await setDoc(doc(db,"users",currentUser.uid),{
-      uid:currentUser.uid,email:currentUser.email||"",displayName:name,bio,photoURL,
-      updatedAt:serverTimestamp()
-    },{merge:true});
-    $("profileName").textContent=name;setAvatar(photoURL,name);$("avatarFile").value="";
-    say($("profileStatus"),"Creator profile saved.");
-  }catch(e){say($("profileStatus"),niceError(e),true)}
-  finally{btn.disabled=false}
-};
-$("logoutBtn").onclick=async()=>{try{await signOut(auth)}catch(e){say($("profileStatus"),niceError(e),true)}};
-
-$("worldForm").addEventListener("submit",async e=>{
-  e.preventDefault();
-  if(!currentUser)return say($("worldStatus"),"Pehle login karein.",true);
-  const name=$("worldName").value.trim();
-  const description=$("worldDescription").value.trim();
-  const themeKey=$("worldTheme").value;
-  const file=$("worldCover").files[0];
-  if(!name||!description)return say($("worldStatus"),"World name aur story dono likhein.",true);
-  if(file&&!validImage(file,5))return say($("worldStatus"),"Cover image JPG, PNG ya WebP aur 5 MB se chhoti honi chahiye.",true);
-  const btn=$("publishWorld");btn.disabled=true;
-  try{
-    let coverURL="";
-    if(file){
-      const path=`worldCovers/${currentUser.uid}/${Date.now()}-${safeName(file.name)}`;
-      const storageRef=ref(storage,path);
-      await uploadBytes(storageRef,file,{contentType:file.type});
-      coverURL=await getDownloadURL(storageRef);
-    }
-    await addDoc(collection(db,"worlds"),{
-      ownerUid:currentUser.uid,
-      creatorName:$("displayName").value.trim()||currentUser.displayName||"MIRRORA Creator",
-      name,description,theme:themeKey,coverURL,
-      createdAt:serverTimestamp()
-    });
-    $("worldForm").reset();updatePreview();
-    say($("worldStatus"),"Your world is now in the universe!");
-    await loadWorlds();
-    $("explore").scrollIntoView({behavior:"smooth"});
-  }catch(e){say($("worldStatus"),niceError(e),true)}
-  finally{btn.disabled=false}
+$("logoutBtn").addEventListener("click", async () => {
+  try { await signOut(auth); }
+  catch (error) { alert(errorText(error)); }
 });
 
-function makeWorldCard(world){
-  const card=document.createElement("article");card.className="portal-card";
-  const art=document.createElement("div");art.className="world-art";
-  const theme=themes[world.theme]||themes.cosmic;art.style.setProperty("--world-bg",theme.bg);
-  if(world.coverURL){
-    const img=document.createElement("img");img.src=world.coverURL;img.alt=world.name+" world cover";img.loading="lazy";art.appendChild(img);
-  }else{
-    const orb=document.createElement("div");orb.className="orb";art.appendChild(orb);
+onAuthStateChanged(auth, async user => {
+  currentUser = user;
+  $("auth").classList.toggle("hidden", !!user);
+  $("app").classList.toggle("hidden", !user);
+  $("logoutBtn").classList.toggle("hidden", !user);
+  $("headerUser").textContent = user ? (user.displayName || user.email) : "Global network";
+  if (!user) {
+    myProfile = null;
+    allPeople = [];
+    followingIds = new Set();
+    return;
   }
-  const label=document.createElement("div");label.className="portal-label";label.textContent="PORTAL · "+theme.label.toUpperCase();art.appendChild(label);
-  const body=document.createElement("div");body.className="card-body";
-  const title=document.createElement("h3");title.textContent=world.name||"Unnamed world";
-  const description=document.createElement("p");description.className="muted";description.textContent=world.description||"A new digital reality.";
-  const creator=document.createElement("div");creator.className="creator";creator.textContent="Created by "+(world.creatorName||"MIRRORA Creator");
-  const foot=document.createElement("div");foot.className="card-foot";
-  const pill=document.createElement("span");pill.className="pill";pill.textContent="PUBLIC WORLD";
-  const explore=document.createElement("button");explore.className="secondary";explore.textContent="Enter portal ↗";
-  explore.onclick=()=>openWorld(world);
-  foot.append(pill,explore);body.append(title,description,creator,foot);card.append(art,body);
-  return card;
+  try {
+    await ensureProfile(user);
+    await Promise.all([loadPeople(), loadPosts(), loadFollowing()]);
+    renderPeople();
+    await renderProfile();
+  } catch (error) {
+    showMessage("globalNotice", errorText(error), true);
+  }
+});
+
+async function ensureProfile(user) {
+  const ref = doc(db, "users", user.uid);
+  const snap = await getDoc(ref);
+  if (snap.exists()) {
+    myProfile = snap.data();
+    return;
+  }
+  const fallbackName = user.displayName || (user.email || "NEXORA User").split("@")[0];
+  myProfile = {
+    uid: user.uid, name: fallbackName,
+    username: "user_" + user.uid.slice(0, 8),
+    country: "Other", bio: "", createdAt: serverTimestamp()
+  };
+  await setDoc(ref, myProfile);
 }
-function openWorld(world){
-  const theme=themes[world.theme]||themes.cosmic;
-  const win=document.createElement("section");win.className="panel";
-  win.style.margin="16px 0";win.style.gridColumn="1/-1";
-  const title=document.createElement("h2");title.textContent="✦ "+world.name;
-  const story=document.createElement("p");story.className="muted";story.textContent=world.description;
-  const info=document.createElement("p");info.textContent="Theme: "+theme.label+" · Creator: "+(world.creatorName||"MIRRORA Creator");
-  const close=document.createElement("button");close.className="secondary";close.textContent="Close portal";
-  close.onclick=()=>win.remove();
-  const preview=document.createElement("div");preview.className="world-preview";preview.style.background=theme.bg;
-  if(world.coverURL){
-    const img=document.createElement("img");img.src=world.coverURL;img.alt=world.name;img.style.cssText="width:100%;height:260px;object-fit:cover;border-radius:12px";preview.appendChild(img);
-  }else{const orb=document.createElement("div");orb.className="orb";preview.appendChild(orb)}
-  win.append(title,preview,story,info,close);
-  $("worldFeed").prepend(win);win.scrollIntoView({behavior:"smooth",block:"center"});
+
+async function loadPeople() {
+  const snap = await getDocs(query(collection(db, "users"), limit(100)));
+  allPeople = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+    .filter(person => person.uid !== currentUser.uid);
 }
-async function loadWorlds(){
-  const feed=$("worldFeed");feed.replaceChildren();
-  if(!db){const e=document.createElement("div");e.className="empty";e.textContent="Firebase setup required.";feed.appendChild(e);return}
-  const loading=document.createElement("div");loading.className="empty";loading.textContent="Discovering worlds…";feed.appendChild(loading);
-  try{
-    const snap=await getDocs(query(collection(db,"worlds"),orderBy("createdAt","desc"),limit(60)));
-    worlds=snap.docs.map(d=>({id:d.id,...d.data()}));
-    renderWorlds();
-  }catch(e){
-    feed.replaceChildren();const err=document.createElement("div");err.className="empty";err.textContent="Worlds load nahi huay: "+niceError(e);feed.appendChild(err);
+async function loadFollowing() {
+  const snap = await getDocs(query(
+    collection(db, "follows"),
+    where("followerUid", "==", currentUser.uid),
+    limit(500)
+  ));
+  followingIds = new Set(snap.docs.map(d => d.data().followingUid));
+}
+async function loadPosts() {
+  const list = $("posts");
+  list.innerHTML = '<p class="muted">Loading posts…</p>';
+  try {
+    const snap = await getDocs(query(
+      collection(db, "posts"), orderBy("createdAt", "desc"), limit(50)
+    ));
+    if (snap.empty) {
+      list.innerHTML = '<div class="panel"><h2>Be the first to post</h2><p class="muted">Your first update will appear here for the community.</p></div>';
+      return;
+    }
+    list.innerHTML = "";
+    snap.forEach(postDoc => {
+      const p = postDoc.data();
+      const article = document.createElement("article");
+      article.className = "post";
+      article.innerHTML = `
+        <div class="row">
+          <div class="avatar">${escapeHTML(avatar(p.authorName))}</div>
+          <div style="min-width:0;flex:1">
+            <strong>${escapeHTML(p.authorName || "NEXORA User")}</strong>
+            <div class="small">@${escapeHTML(p.authorUsername || "user")} · ${escapeHTML(safeDate(p.createdAt))}</div>
+          </div>
+        </div>
+        <div class="postbody">${escapeHTML(p.text)}</div>
+        <div class="postfoot">NEXORA community post</div>`;
+      list.appendChild(article);
+    });
+  } catch (error) {
+    list.innerHTML = "";
+    showMessage("globalNotice", errorText(error), true);
   }
 }
-function renderWorlds(){
-  const feed=$("worldFeed");feed.replaceChildren();
-  const term=$("searchWorlds").value.trim().toLowerCase();
-  const found=worlds.filter(w=>[w.name,w.description,w.creatorName,w.theme].some(x=>String(x||"").toLowerCase().includes(term)));
-  if(!found.length){
-    const empty=document.createElement("div");empty.className="empty";
-    empty.textContent=term?"Koi matching world nahi mili.":"Abhi koi world publish nahi hui. Login karke pehli duniya banao!";
-    feed.appendChild(empty);return;
+
+$("publishBtn").addEventListener("click", async () => {
+  if (!currentUser || !myProfile) return;
+  const text = cleanText($("postText").value, 2000);
+  if (!text) return showMessage("globalNotice", "Write something before publishing.", true);
+  $("publishBtn").disabled = true;
+  try {
+    await addDoc(collection(db, "posts"), {
+      ownerUid: currentUser.uid,
+      authorName: myProfile.name,
+      authorUsername: myProfile.username,
+      text,
+      createdAt: serverTimestamp()
+    });
+    $("postText").value = "";
+    hideMessage("globalNotice");
+    await loadPosts();
+  } catch (error) {
+    showMessage("globalNotice", errorText(error), true);
+  } finally {
+    $("publishBtn").disabled = false;
   }
-  found.forEach(w=>feed.appendChild(makeWorldCard(w)));
+});
+$("refreshPosts").addEventListener("click", loadPosts);
+
+function renderPeople() {
+  const queryText = cleanText($("peopleSearch").value, 80).toLowerCase();
+  const results = allPeople.filter(person => {
+    const haystack = [person.name, person.username, person.country, person.bio].join(" ").toLowerCase();
+    return haystack.includes(queryText);
+  });
+  const list = $("peopleList");
+  list.innerHTML = "";
+  if (!results.length) {
+    list.innerHTML = '<div class="panel"><p class="muted">No other profiles found yet. Invite someone to join NEXORA.</p></div>';
+    return;
+  }
+  results.forEach(person => {
+    const isFollowing = followingIds.has(person.uid);
+    const card = document.createElement("div");
+    card.className = "panel person";
+    card.innerHTML = `
+      <div class="avatar">${escapeHTML(avatar(person.name))}</div>
+      <div class="info">
+        <strong>${escapeHTML(person.name || "NEXORA User")}</strong>
+        <div class="small">@${escapeHTML(person.username || "user")} · ${escapeHTML(person.country || "Country not set")}</div>
+        <div class="small">${escapeHTML(person.bio || "")}</div>
+      </div>
+      <button class="btn ${isFollowing ? "secondary" : "primary"}">${isFollowing ? "Following" : "Follow"}</button>`;
+    card.querySelector("button").addEventListener("click", () => toggleFollow(person));
+    list.appendChild(card);
+  });
 }
-$("searchWorlds").addEventListener("input",renderWorlds);
+$("peopleSearch").addEventListener("input", renderPeople);
+
+async function toggleFollow(person) {
+  if (!currentUser || !person.uid || person.uid === currentUser.uid) return;
+  const followId = currentUser.uid + "_" + person.uid;
+  const ref = doc(db, "follows", followId);
+  try {
+    if (followingIds.has(person.uid)) {
+      await deleteDoc(ref);
+      followingIds.delete(person.uid);
+    } else {
+      await setDoc(ref, {
+        followerUid: currentUser.uid,
+        followingUid: person.uid,
+        createdAt: serverTimestamp()
+      });
+      followingIds.add(person.uid);
+    }
+    renderPeople();
+    await renderProfile();
+  } catch (error) {
+    showMessage("globalNotice", errorText(error), true);
+  }
+}
+
+async function renderProfile() {
+  if (!currentUser || !myProfile) return;
+  $("profileHeading").textContent = myProfile.name || "My profile";
+  $("profileHandle").textContent = "@" + (myProfile.username || "user") + " · " + (myProfile.country || "Other");
+  $("myAvatar").textContent = avatar(myProfile.name);
+  $("editName").value = myProfile.name || "";
+  $("editUsername").value = myProfile.username || "";
+  $("editBio").value = myProfile.bio || "";
+  $("editCountry").value = myProfile.country || "Other";
+  $("followingCount").textContent = followingIds.size;
+  try {
+    const followers = await getDocs(query(
+      collection(db, "follows"),
+      where("followingUid", "==", currentUser.uid),
+      limit(500)
+    ));
+    $("followersCount").textContent = followers.size;
+  } catch (error) {
+    $("followersCount").textContent = "—";
+  }
+}
+
+$("saveProfile").addEventListener("click", async () => {
+  if (!currentUser) return;
+  const name = cleanText($("editName").value, 40);
+  const username = cleanText($("editUsername").value, 20).toLowerCase();
+  const country = $("editCountry").value;
+  const bio = cleanText($("editBio").value, 250);
+  if (!name) return showMessage("profileMsg", "Display name is required.", true);
+  if (!validUsername(username)) return showMessage("profileMsg", "Username must be 3–20 letters, numbers or underscores.", true);
+  $("saveProfile").disabled = true;
+  try {
+    await updateDoc(doc(db, "users", currentUser.uid), { name, username, country, bio });
+    await updateProfile(currentUser, { displayName: name });
+    myProfile = { ...myProfile, name, username, country, bio };
+    $("headerUser").textContent = name;
+    await loadPeople();
+    renderPeople();
+    await loadPosts();
+    await renderProfile();
+    showMessage("profileMsg", "Profile saved successfully.");
+  } catch (error) {
+    showMessage("profileMsg", errorText(error), true);
+  } finally {
+    $("saveProfile").disabled = false;
+  }
+});
+
+function switchView(viewId) {
+  ["feedView", "discoverView", "profileView"].forEach(id => $(id).classList.toggle("hidden", id !== viewId));
+  document.querySelectorAll(".nav").forEach(button => button.classList.toggle("active", button.dataset.view === viewId));
+  if (viewId === "discoverView") renderPeople();
+}
+document.querySelectorAll(".nav").forEach(button => button.addEventListener("click", () => switchView(button.dataset.view)));
+document.querySelectorAll("[data-jump]").forEach(button => button.addEventListener("click", () => switchView(button.dataset.jump)));
 </script>
 </body>
 </html>
