@@ -3,115 +3,85 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NEXORA — Made in Mian Abdullah</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#ffffff">
+<title>NEXORA — Made in Mian Abdullah</title>
 <style>
-:root{
-  --bg:#f6f7fb;--card:#fff;--text:#171923;--muted:#73788b;
-  --line:#e8eaf2;--purple:#7047ff;--blue:#3284ff;
-  --soft:#f0edff;--shadow:0 8px 30px #2220330b
-}
+:root{--bg:#f6f7fb;--card:#fff;--text:#171923;--muted:#777b8e;--line:#e7e9f1;--purple:#7047ff;--blue:#3284ff;--soft:#f0edff}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);
-font-family:Inter,Arial,sans-serif}
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
-.topbar{height:68px;position:sticky;top:0;z-index:10;background:#ffffffed;
-backdrop-filter:blur(16px);border-bottom:1px solid var(--line);
-display:flex;align-items:center;gap:18px;padding:0 4%}
-.logo{font-size:25px;font-weight:950;letter-spacing:-1px;
-background:linear-gradient(100deg,var(--purple),var(--blue));
-color:transparent;background-clip:text}
-.brand-small{font-size:10px;color:var(--muted);margin-top:3px}
-.search{flex:1;max-width:530px;background:#f3f4f9;border:1px solid var(--line);
-border-radius:15px;padding:12px 15px;outline:none}
-.avatar{width:37px;height:37px;border-radius:50%;object-fit:cover;
-background:var(--soft);display:inline-flex;align-items:center;
-justify-content:center;font-weight:bold;flex-shrink:0}
-.layout{max-width:1400px;margin:auto;display:grid;
-grid-template-columns:215px minmax(0,650px) 260px;gap:22px;padding:23px 18px}
-.sidebar{position:sticky;top:88px;height:calc(100vh - 110px)}
-.navbtn{width:100%;display:flex;align-items:center;gap:12px;padding:13px;
-margin:4px 0;border:0;border-radius:13px;background:transparent;
-text-align:left;color:#55596b;font-weight:650}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+button,input,textarea,select{font:inherit}button{cursor:pointer}
+.topbar{height:66px;background:#ffffffed;backdrop-filter:blur(14px);position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;padding:0 4%;border-bottom:1px solid var(--line)}
+.logo{font-size:25px;font-weight:950;letter-spacing:-1px;background:linear-gradient(100deg,var(--purple),var(--blue));color:transparent;background-clip:text}
+.brand{font-size:10px;color:var(--muted);margin-top:3px}
+.search{width:100%;max-width:480px;flex:1;background:#f3f4f9;border:1px solid var(--line);border-radius:14px;padding:11px 14px;outline:none}
+.avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;background:var(--soft);flex-shrink:0}
+.layout{max-width:1400px;margin:auto;padding:22px 18px;display:grid;grid-template-columns:205px minmax(0,650px) 245px;gap:20px}
+.sidebar{position:sticky;top:85px;height:calc(100vh - 100px)}
+.navbtn{display:flex;align-items:center;gap:13px;border:0;background:transparent;border-radius:13px;padding:13px;width:100%;text-align:left;color:#55596b;font-weight:650;margin:4px 0}
 .navbtn.active,.navbtn:hover{background:var(--soft);color:var(--purple)}
-.navicon{font-size:20px;width:27px;text-align:center}
-.panel,.post,.storybox{background:var(--card);border:1px solid var(--line);
-border-radius:20px;box-shadow:var(--shadow);margin-bottom:17px}
-.panel{padding:17px}
-h2{font-size:20px;margin:0 0 14px}
-h3{font-size:15px;margin:0}
-.muted{color:var(--muted);font-size:13px}
-.btn{border:0;border-radius:12px;padding:11px 15px;font-weight:750;
-background:var(--soft);color:var(--purple)}
-.btn.primary{background:linear-gradient(100deg,var(--purple),var(--blue));color:white}
-.btn.dark{background:#191923;color:white}
-.btn:disabled{opacity:.55;cursor:not-allowed}
-.field{width:100%;border:1px solid var(--line);background:#fafbff;
-border-radius:12px;padding:12px;margin:5px 0 12px;outline:none}
+.navicon{width:27px;text-align:center;font-size:22px}
+.panel,.post{background:var(--card);border:1px solid var(--line);border-radius:19px;padding:16px;margin-bottom:16px;box-shadow:0 6px 25px #1c183408}
+.post{padding:0;overflow:hidden}
+h2{font-size:20px;margin:0 0 14px}h3{font-size:15px;margin:0 0 7px}
+p{line-height:1.5}.muted{font-size:13px;color:var(--muted)}
+.btn{border:0;border-radius:12px;padding:11px 15px;background:var(--soft);color:var(--purple);font-weight:700}
+.primary{background:linear-gradient(100deg,var(--purple),var(--blue));color:white}
+.dark{background:#191923;color:white}
+.field{width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fafbff;margin:5px 0 12px;outline:none}
 .field:focus{border-color:var(--purple)}
-textarea.field{resize:vertical;min-height:80px}
-.row{display:flex;align-items:center;gap:10px}
-.between{justify-content:space-between}
-.grow{flex:1;min-width:0}
-.hidden{display:none!important}
-.authwrap{min-height:100vh;display:grid;place-items:center;padding:20px;
-background:radial-gradient(circle at top left,#e6ddff,transparent 48%),var(--bg)}
-.authcard{width:min(100%,440px);padding:30px;background:white;
-border:1px solid var(--line);border-radius:25px;box-shadow:var(--shadow)}
-.authcard .logo{font-size:36px}
-.post{overflow:hidden}
-.posthead{padding:16px;display:flex;align-items:center;gap:11px}
-.postbody{padding:0 16px 14px;white-space:pre-wrap;overflow-wrap:anywhere}
-.postmedia{width:100%;max-height:560px;object-fit:contain;background:#111}
-.postactions{display:flex;gap:6px;padding:10px 12px;border-top:1px solid var(--line)}
-.action{border:0;background:transparent;padding:9px;border-radius:10px;color:#55596b}
+textarea.field{min-height:85px;resize:vertical}
+.row{display:flex;align-items:center;gap:10px}.grow{flex:1;min-width:0}
+.between{justify-content:space-between}.hidden{display:none!important}
+.authwrap{min-height:100vh;display:grid;place-items:center;padding:18px;background:radial-gradient(circle at top left,#e8e0ff,transparent 50%),var(--bg)}
+.authcard{width:min(100%,430px);padding:28px;background:white;border:1px solid var(--line);border-radius:24px}
+.stories{display:flex;gap:13px;overflow-x:auto;padding:5px 0 13px}
+.story{min-width:70px;text-align:center;cursor:pointer}
+.ring{width:61px;height:61px;border-radius:50%;padding:3px;background:linear-gradient(135deg,#ff9c00,#ec277c,#7047ff);margin:0 auto 7px}
+.ringinner{height:100%;border-radius:50%;border:3px solid white;background:var(--soft);display:grid;place-items:center;overflow:hidden}
+.ringinner img{width:100%;height:100%;object-fit:cover}
+.storyname{font-size:12px;overflow-wrap:anywhere}
+.posthead{display:flex;align-items:center;gap:10px;padding:15px}
+.postbody{padding:0 15px 14px;white-space:pre-wrap;overflow-wrap:anywhere}
+.postmedia{width:100%;max-height:570px;object-fit:contain;background:#111}
+.actions{display:flex;gap:4px;padding:8px 10px;border-top:1px solid var(--line);flex-wrap:wrap}
+.action{border:0;background:transparent;padding:9px;border-radius:10px;color:#565a6a}
 .action:hover{background:var(--soft);color:var(--purple)}
-.stories{display:flex;gap:13px;overflow-x:auto;padding:5px 1px 15px}
-.story{min-width:75px;text-align:center;cursor:pointer}
-.storyring{width:62px;height:62px;border-radius:50%;padding:3px;
-background:linear-gradient(135deg,#ff8a00,#e52e71,#7047ff);margin:auto auto 7px}
-.storyinner{height:100%;border:3px solid white;border-radius:50%;
-display:grid;place-items:center;background:#eee8ff;overflow:hidden}
-.storyinner img{width:100%;height:100%;object-fit:cover}
-.storytext{font-size:12px;overflow-wrap:anywhere}
-.commentlist{padding:0 15px 12px}
-.comment{padding:7px 0;font-size:13px;overflow-wrap:anywhere}
-.profilehero{text-align:center;padding:23px}
-.profilehero .avatar{width:90px;height:90px;font-size:28px}
-.statrow{display:flex;justify-content:center;gap:28px;margin:17px 0}
-.stat{text-align:center}.stat strong{display:block;font-size:18px}
-.section-title{display:flex;align-items:center;justify-content:space-between;
-margin:2px 0 15px}
-.badge{font-size:11px;padding:5px 9px;border-radius:20px;
-background:#f0edff;color:var(--purple);font-weight:bold}
-.featuregrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.feature{border:1px solid var(--line);border-radius:15px;padding:15px}
-.feature .emoji{font-size:25px;margin-bottom:9px}
-.status{font-size:12px;color:#7b8092}
+.comments{padding:8px 12px}.comment{font-size:13px;padding:6px 0;overflow-wrap:anywhere}
+.profilehero{text-align:center;padding:22px}
+.profilehero .avatar{width:88px;height:88px}
+.stats{display:flex;justify-content:center;gap:28px;margin:15px}
+.stats strong{display:block;font-size:18px}
+.badge{display:inline-block;border-radius:20px;background:var(--soft);color:var(--purple);padding:5px 9px;font-size:11px;font-weight:bold}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.feature{border:1px solid var(--line);border-radius:15px;padding:14px}
+#reelsFeed{height:calc(100vh - 110px);overflow-y:auto;scroll-snap-type:y mandatory;background:#08080b;border-radius:16px}
+.reel{height:calc(100vh - 110px);min-height:420px;position:relative;scroll-snap-align:start;background:#08080b;color:white;display:flex;justify-content:center;align-items:center;overflow:hidden}
+.reel video{width:100%;height:100%;object-fit:contain;background:#08080b}
+.reelbottom{position:absolute;bottom:0;left:0;right:0;padding:65px 75px 20px 16px;background:linear-gradient(transparent,#000b);pointer-events:none}
+.reelbottom button{pointer-events:auto}
+.reelactions{position:absolute;right:12px;bottom:65px;display:grid;gap:13px}
+.reelaction{width:45px;height:45px;border:0;border-radius:50%;background:#333a;color:white;font-size:20px}
+.reelaction small{display:block;font-size:10px}
+.camera{position:fixed;inset:0;z-index:100;background:#08080b;color:white;display:flex;flex-direction:column}
+.camtop,.cambottom{padding:12px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.camtop button,.cambottom button,.filters button{border:1px solid #ffffff44;border-radius:22px;background:#292932;color:white;padding:10px 13px}
+.camstage{flex:1;min-height:0;display:grid;place-items:center;overflow:hidden}
+#cameraVideo{width:100%;height:100%;object-fit:contain}
+.filters{display:flex;gap:8px;overflow-x:auto;padding:10px}
+.filters button.selected{background:var(--purple)}
+.capture{height:62px;width:62px;border:5px solid white!important;border-radius:50%!important;background:var(--purple)!important}
+#toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);background:#191923;color:white;padding:12px 18px;border-radius:12px;z-index:200;max-width:92%;text-align:center}
 .mobilebar{display:none}
-#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
-background:#191923;color:white;padding:12px 18px;border-radius:13px;
-z-index:99;max-width:90%;text-align:center}
-a{color:var(--purple)}
-@media(max-width:1050px){
-.layout{grid-template-columns:190px minmax(0,1fr)}
-.rightcol{display:none}
-}
+@media(max-width:1050px){.layout{grid-template-columns:180px minmax(0,1fr)}.rightcol{display:none}}
 @media(max-width:680px){
-.topbar{height:60px;padding:0 12px;gap:10px}
-.logo{font-size:22px}.brand-small{display:none}.search{padding:10px;min-width:0}
-.layout{display:block;padding:12px 10px 85px}
-.sidebar{display:none}.rightcol{display:block}
-.mobilebar{position:fixed;bottom:0;left:0;right:0;z-index:20;
-display:flex;justify-content:space-around;background:#ffffffef;
-backdrop-filter:blur(15px);border-top:1px solid var(--line);padding:8px 3px}
-.mobilebar button{border:0;background:none;display:grid;gap:3px;
-justify-items:center;font-size:19px;color:#6c7080}
-.mobilebar span{font-size:10px}
-.panel,.post,.storybox{border-radius:16px}
-.featuregrid{grid-template-columns:1fr}
+.topbar{height:59px;padding:0 10px;gap:10px}.logo{font-size:22px}.brand{display:none}
+.layout{display:block;padding:12px 9px 82px}.sidebar{display:none}
+.mobilebar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:20;justify-content:space-around;background:#ffffffef;backdrop-filter:blur(15px);border-top:1px solid var(--line);padding:7px 2px}
+.mobilebar button{border:0;background:transparent;display:grid;gap:3px;justify-items:center;color:#696d7c;font-size:19px;min-width:48px}
+.mobilebar button span{font-size:10px}.mobilebar button.active{color:var(--purple)}
+#reelsFeed{height:calc(100dvh - 135px)}.reel{height:calc(100dvh - 135px)}
+.grid2{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -119,691 +89,484 @@ justify-items:center;font-size:19px;color:#6c7080}
 
 <div id="authScreen" class="authwrap">
   <div class="authcard">
-    <div class="logo">NEXORA</div>
+    <div class="logo" style="font-size:36px">NEXORA</div>
     <p class="muted">MADE IN MIAN ABDULLAH</p>
     <h2 id="authHeading">Welcome to your world</h2>
-    <p class="muted">Connect. Create. Discover.</p>
     <form id="authForm">
-      <input class="field" id="authName" placeholder="Your name (for signup)">
-      <input class="field" id="authEmail" type="email" placeholder="Email address" required>
-      <input class="field" id="authPassword" type="password" placeholder="Password (6+ characters)" minlength="6" required>
-      <button class="btn primary" id="authSubmit" style="width:100%">Create account</button>
+      <input id="authName" class="field" placeholder="Your name">
+      <input id="authEmail" class="field" type="email" placeholder="Email address" required>
+      <input id="authPassword" class="field" type="password" minlength="6" placeholder="Password (6+ characters)" required>
+      <button id="authSubmit" class="btn primary" style="width:100%">Create account</button>
     </form>
-    <button class="btn" id="toggleAuth" style="width:100%;margin-top:10px">Already have an account? Log in</button>
-    <p class="muted" id="authError"></p>
-    <p class="muted">Your account and content use your Firebase project.</p>
+    <button id="toggleAuth" class="btn" style="width:100%;margin-top:10px">Already have an account? Log in</button>
+    <p id="authError" class="muted"></p>
   </div>
 </div>
 
 <div id="app" class="hidden">
 <header class="topbar">
-  <div><div class="logo">NEXORA</div><div class="brand-small">MADE IN MIAN ABDULLAH</div></div>
-  <input id="globalSearch" class="search" placeholder="Search people, posts..." aria-label="Search">
-  <img id="topAvatar" class="avatar" alt="Profile" src="https://placehold.co/80x80/ece7ff/7047ff?text=N">
+  <div><div class="logo">NEXORA</div><div class="brand">MADE IN MIAN ABDULLAH</div></div>
+  <input id="globalSearch" class="search" placeholder="Search posts...">
+  <img id="topAvatar" class="avatar" alt="Profile">
 </header>
 
 <div class="layout">
-  <aside class="sidebar">
-    <button class="navbtn active" data-page="home"><span class="navicon">⌂</span>Home Feed</button>
-    <button class="navbtn" data-page="reels"><span class="navicon">▶</span>Reels & Videos</button>
-    <button class="navbtn" data-page="discover"><span class="navicon">⌕</span>Discover People</button>
-    <button class="navbtn" data-page="create"><span class="navicon">＋</span>Create Post</button>
-    <button class="navbtn" data-page="profile"><span class="navicon">◎</span>My Profile</button>
-    <button class="navbtn" data-page="market"><span class="navicon">◇</span>Marketplace</button>
-    <button class="navbtn" data-page="messages"><span class="navicon">✉</span>Messages</button>
-    <button class="navbtn" data-page="explore"><span class="navicon">✦</span>Explore</button>
-    <button class="navbtn" data-page="settings"><span class="navicon">⚙</span>Settings</button>
-    <div class="panel" style="margin-top:24px">
-      <b>NEXORA</b><p class="muted">Your ideas, your community.</p>
-      <span class="badge">Phase 1</span>
+<aside class="sidebar">
+  <button class="navbtn active" data-page="home"><span class="navicon">⌂</span>Home</button>
+  <button class="navbtn" data-page="reels"><span class="navicon">▶</span>Reels</button>
+  <button class="navbtn" data-page="discover"><span class="navicon">⌕</span>Discover</button>
+  <button class="navbtn" data-page="create"><span class="navicon">＋</span>Create / Camera</button>
+  <button class="navbtn" data-page="messages"><span class="navicon">✉</span>Messages</button>
+  <button class="navbtn" data-page="profile"><span class="navicon">◎</span>Profile</button>
+  <button class="navbtn" data-page="market"><span class="navicon">◇</span>Marketplace</button>
+  <button class="navbtn" data-page="explore"><span class="navicon">✦</span>Explore</button>
+  <button class="navbtn" data-page="settings"><span class="navicon">⚙</span>Settings</button>
+</aside>
+
+<main>
+<section id="page-home">
+  <div class="panel">
+    <div class="row between"><h2>Stories</h2><span class="badge">24 hours</span></div>
+    <div id="storiesList" class="stories">Loading stories...</div>
+    <button id="addStory" class="btn">＋ Add Story</button>
+  </div>
+  <div class="panel">
+    <div class="row">
+      <img id="composerAvatar" class="avatar" alt="">
+      <button id="openCreate" class="field grow" style="text-align:left;margin:0">What's on your mind?</button>
     </div>
-  </aside>
-
-  <main>
-    <section id="page-home">
-      <div class="panel">
-        <div class="section-title"><h2>Stories</h2><span class="badge">24 hours</span></div>
-        <div class="stories" id="storiesList"><span class="muted">Loading stories...</span></div>
-        <button class="btn" id="addStory">＋ Add text story</button>
-      </div>
-      <div class="panel">
-        <div class="row">
-          <img id="composerAvatar" class="avatar" alt="">
-          <button class="field grow" id="openComposer" style="text-align:left;margin:0">What's on your mind?</button>
-        </div>
-        <div class="row" style="margin-top:12px;flex-wrap:wrap">
-          <button class="btn" id="quickPhoto">▧ Photo URL</button>
-          <button class="btn" id="quickVideo">▶ Video URL</button>
-          <button class="btn" id="quickCreate">＋ Create</button>
-        </div>
-      </div>
-      <div class="section-title"><h2>Your Feed</h2><span id="feedCount" class="muted"></span></div>
-      <div id="feed"><div class="panel">Feed load ho rahi hai...</div></div>
-    </section>
-
-    <section id="page-create" class="hidden">
-      <div class="panel">
-        <h2>Create a post</h2>
-        <p class="muted">Text, image URL ya video URL share karein.</p>
-        <textarea id="postText" class="field" maxlength="2000" placeholder="Share your idea with the world..."></textarea>
-        <input id="mediaURL" class="field" type="url" placeholder="Image/video URL (optional)">
-        <select id="mediaType" class="field">
-          <option value="image">Image URL</option><option value="video">Video URL</option>
-        </select>
-        <button class="btn primary" id="publishPost">Publish post</button>
-        <p class="muted">Note: URL share karna direct file upload nahi hai.</p>
-      </div>
-    </section>
-
-    <section id="page-reels" class="hidden">
-      <div class="section-title"><h2>Reels & Videos</h2><span class="badge">Video feed</span></div>
-      <p class="muted">Yahan NEXORA par share ki gayi video-URL posts nazar aayengi.</p>
-      <div id="reelsFeed"></div>
-    </section>
-
-    <section id="page-discover" class="hidden">
-      <h2>Discover People</h2>
-      <input id="peopleSearch" class="field" placeholder="Search by name or username">
-      <div id="peopleList"></div>
-    </section>
-
-    <section id="page-profile" class="hidden">
-      <div class="panel profilehero">
-        <img id="profileAvatar" class="avatar" alt="Your profile">
-        <h2 id="profileName" style="margin-top:12px">Your profile</h2>
-        <p id="profileUsername" class="muted"></p>
-        <p id="profileBio"></p>
-        <div class="statrow">
-          <div class="stat"><strong id="myPostsCount">0</strong><span class="muted">Posts</span></div>
-          <div class="stat"><strong id="myFollowersCount">0</strong><span class="muted">Followers*</span></div>
-          <div class="stat"><strong id="myFollowingCount">0</strong><span class="muted">Following*</span></div>
-        </div>
-        <p class="muted">*Counts depend on successful Firestore reads.</p>
-      </div>
-      <div class="panel">
-        <h2>Edit profile</h2>
-        <label class="muted">Display name</label><input id="editName" class="field" maxlength="40">
-        <label class="muted">Username (3–20 characters)</label><input id="editUsername" class="field" maxlength="20">
-        <label class="muted">Country</label>
-        <select id="editCountry" class="field">
-          <option>Pakistan</option><option>United Kingdom</option><option>United States</option>
-          <option>Saudi Arabia</option><option>United Arab Emirates</option><option>India</option>
-          <option>Canada</option><option>Australia</option><option>Other</option>
-        </select>
-        <label class="muted">Bio</label><textarea id="editBio" class="field" maxlength="250"></textarea>
-        <label class="muted">Profile picture URL</label><input id="editPhoto" class="field" type="url" placeholder="https://...">
-        <button class="btn primary" id="saveProfile">Save profile</button>
-      </div>
-      <h2>Your posts</h2><div id="myPosts"></div>
-    </section>
-
-    <section id="page-market" class="hidden">
-      <div class="panel">
-        <h2>Creator Marketplace</h2>
-        <p class="muted">Skills, services aur opportunities share karein.</p>
-        <input id="marketTitle" class="field" maxlength="80" placeholder="Listing title">
-        <select id="marketCategory" class="field">
-          <option>Digital Services</option><option>Design</option><option>Programming</option>
-          <option>Education</option><option>Products</option><option>Other</option>
-        </select>
-        <textarea id="marketDescription" class="field" maxlength="1000" placeholder="Describe your service or opportunity"></textarea>
-        <input id="marketContact" class="field" maxlength="150" placeholder="Contact email (optional)">
-        <button id="publishListing" class="btn primary">Publish listing</button>
-      </div>
-      <h2>Community listings</h2><div id="marketList"></div>
-    </section>
-
-    <section id="page-messages" class="hidden">
-      <div class="panel">
-        <h2>Messages</h2>
-        <p>Private real-time messaging ko launch karne ke liye conversation database aur secure participant rules connect karna zaroori hai.</p>
-        <span class="badge">Backend integration required</span>
-        <p class="muted">Abhi is screen par real private chat ya calls active nahi hain.</p>
-        <button class="btn primary" id="findPeople">Discover people</button>
-      </div>
-      <div class="panel">
-        <h3>Upcoming communication features</h3>
-        <p class="muted">Private chat · Voice/video calls · Online status · Chat media</p>
-      </div>
-    </section>
-
-    <section id="page-explore" class="hidden">
-      <h2>Explore NEXORA</h2>
-      <div class="featuregrid">
-        <div class="feature"><div class="emoji">🌍</div><h3>Global Communities</h3><p class="muted">Country selection is available in profile.</p></div>
-        <div class="feature"><div class="emoji">📰</div><h3>Country News</h3><p class="muted">Live news API is not connected yet.</p></div>
-        <div class="feature"><div class="emoji">⚽</div><h3>Sports</h3><p class="muted">Live scores/streaming provider is not connected yet.</p></div>
-        <div class="feature"><div class="emoji">🌐</div><h3>Translation</h3><p class="muted">Translation API is not connected yet.</p></div>
-        <div class="feature"><div class="emoji">📡</div><h3>Live Streaming</h3><p class="muted">Requires a streaming service and moderation.</p></div>
-        <div class="feature"><div class="emoji">💳</div><h3>Creator Earnings</h3><p class="muted">Payments and payouts need a verified provider.</p></div>
-      </div>
-    </section>
-
-    <section id="page-settings" class="hidden">
-      <div class="panel">
-        <h2>Settings & Account</h2>
-        <p class="muted">Account: <span id="accountEmail"></span></p>
-        <p class="muted">Firebase: <span id="connectionStatus">Connecting...</span></p>
-        <p class="muted">Theme: White + Black + Purple/Blue</p>
-        <button id="refreshApp" class="btn">Refresh data</button>
-        <button id="logout" class="btn dark" style="margin-top:10px">Log out</button>
-      </div>
-      <div class="panel">
-        <h3>Security reminder</h3>
-        <p class="muted">Public launch se pehle Firestore Rules, spam protection, account reporting aur privacy controls test karein.</p>
-      </div>
-    </section>
-  </main>
-
-  <aside class="rightcol">
-    <div class="panel">
-      <h3>Welcome to NEXORA ✦</h3>
-      <p class="muted">Create. Connect. Discover opportunities.</p>
+    <div class="row" style="margin-top:12px;flex-wrap:wrap">
+      <button id="openCamera" class="btn">◎ Camera</button>
+      <button id="quickVideo" class="btn">▶ Video URL</button>
+      <button id="quickCreate" class="btn">＋ Post</button>
     </div>
-    <div class="panel">
-      <h3>Platform roadmap</h3>
-      <p class="muted">✓ Accounts & profiles</p>
-      <p class="muted">✓ Posts, likes & comments</p>
-      <p class="muted">✓ Follow & text stories</p>
-      <p class="muted">✓ Community listings</p>
-      <p class="muted">○ Private chat & calls</p>
-      <p class="muted">○ Direct uploads & streaming</p>
-      <p class="muted">○ News, sports & payments</p>
-    </div>
-    <div class="panel">
-      <h3>Creator note</h3>
-      <p class="muted">Sirf apna content ya woh media share karein jiske liye aapke paas permission ho.</p>
-    </div>
-  </aside>
+  </div>
+  <div class="row between"><h2>Your Feed</h2><span id="feedCount" class="muted"></span></div>
+  <div id="feed"></div>
+</section>
+
+<section id="page-create" class="hidden">
+  <div class="panel">
+    <h2>Create a post</h2>
+    <textarea id="postText" class="field" maxlength="2000" placeholder="Share your thoughts..."></textarea>
+    <input id="mediaURL" class="field" type="url" placeholder="Optional image/video URL">
+    <select id="mediaType" class="field"><option value="image">Image URL</option><option value="video">Video URL</option></select>
+    <button id="publishPost" class="btn primary">Publish post</button>
+    <p class="muted">Direct file upload is not connected; use a public HTTPS media URL.</p>
+    <button id="createCamera" class="btn">◎ Open Camera</button>
+  </div>
+</section>
+
+<section id="page-reels" class="hidden">
+  <div class="row between"><h2>Reels</h2><span class="badge">Vertical video</span></div>
+  <div id="reelsFeed"></div>
+</section>
+
+<section id="page-discover" class="hidden">
+  <h2>Discover people</h2>
+  <input id="peopleSearch" class="field" placeholder="Search name or username">
+  <div id="peopleList"></div>
+</section>
+
+<section id="page-profile" class="hidden">
+  <div class="panel profilehero">
+    <img id="profileAvatar" class="avatar" alt="">
+    <h2 id="profileName" style="margin-top:12px">My Profile</h2>
+    <p id="profileUsername" class="muted"></p><p id="profileBio"></p>
+    <div class="stats"><div><strong id="myPostsCount">0</strong><span class="muted">Posts</span></div></div>
+  </div>
+  <div class="panel">
+    <h2>Edit profile</h2>
+    <label class="muted">Name</label><input id="editName" class="field" maxlength="40">
+    <label class="muted">Username</label><input id="editUsername" class="field" maxlength="20">
+    <label class="muted">Country</label>
+    <select id="editCountry" class="field">
+      <option>Pakistan</option><option>United Kingdom</option><option>United States</option>
+      <option>Saudi Arabia</option><option>United Arab Emirates</option><option>India</option>
+      <option>Canada</option><option>Australia</option><option>Other</option>
+    </select>
+    <label class="muted">Bio</label><textarea id="editBio" class="field" maxlength="250"></textarea>
+    <label class="muted">Profile photo URL</label><input id="editPhoto" class="field" type="url" placeholder="https://...">
+    <button id="saveProfile" class="btn primary">Save profile</button>
+  </div>
+  <h2>Your posts</h2><div id="myPosts"></div>
+</section>
+
+<section id="page-market" class="hidden">
+  <div class="panel">
+    <h2>Creator Marketplace</h2>
+    <input id="marketTitle" class="field" maxlength="80" placeholder="Listing title">
+    <select id="marketCategory" class="field"><option>Digital Services</option><option>Design</option><option>Programming</option><option>Education</option><option>Products</option><option>Other</option></select>
+    <textarea id="marketDescription" class="field" maxlength="1000" placeholder="Describe your service"></textarea>
+    <input id="marketContact" class="field" placeholder="Contact email (optional)">
+    <button id="publishListing" class="btn primary">Publish listing</button>
+  </div>
+  <h2>Listings</h2><div id="marketList"></div>
+</section>
+
+<section id="page-messages" class="hidden">
+  <div class="panel"><h2>Messages</h2>
+    <p>Private real-time chat aur voice/video calls abhi connected nahi hain.</p>
+    <button id="findPeople" class="btn primary">Discover people</button>
+  </div>
+</section>
+
+<section id="page-explore" class="hidden">
+  <h2>Explore</h2>
+  <div class="grid2">
+    <div class="feature"><h3>🌍 Communities</h3><p class="muted">Country profile mein select karein.</p></div>
+    <div class="feature"><h3>📰 News</h3><p class="muted">Live news API required.</p></div>
+    <div class="feature"><h3>⚽ Sports</h3><p class="muted">Sports data provider required.</p></div>
+    <div class="feature"><h3>🌐 Translation</h3><p class="muted">Translation API required.</p></div>
+    <div class="feature"><h3>📡 Live</h3><p class="muted">Streaming provider required.</p></div>
+    <div class="feature"><h3>💳 Earnings</h3><p class="muted">Payment provider required.</p></div>
+  </div>
+</section>
+
+<section id="page-settings" class="hidden">
+  <div class="panel"><h2>Settings</h2><p class="muted">Account: <span id="accountEmail"></span></p>
+    <p class="muted">Database: <span id="connectionStatus">Connecting...</span></p>
+    <button id="refreshApp" class="btn">Refresh data</button>
+    <button id="logout" class="btn dark" style="margin-top:10px">Log out</button>
+  </div>
+  <div class="panel"><h3>Before public launch</h3><p class="muted">Secure Firestore Rules, privacy, moderation, uploads aur Android packaging ko test karna hoga.</p></div>
+</section>
+</main>
+
+<aside class="rightcol">
+  <div class="panel"><h3>Welcome to NEXORA ✦</h3><p class="muted">Connect. Create. Discover.</p></div>
+  <div class="panel"><h3>Features</h3><p class="muted">✓ Accounts & profiles</p><p class="muted">✓ Posts, likes, comments</p><p class="muted">✓ Text stories</p><p class="muted">✓ Video URL feed</p><p class="muted">✓ Camera filters</p><p class="muted">○ Chat, calls, streaming</p><p class="muted">○ Direct uploads & payments</p></div>
+</aside>
 </div>
 
 <nav class="mobilebar">
   <button data-page="home">⌂<span>Home</span></button>
   <button data-page="reels">▶<span>Reels</span></button>
-  <button data-page="create">＋<span>Create</span></button>
-  <button data-page="discover">⌕<span>Discover</span></button>
-  <button data-page="profile">◎<span>Profile</span></button>
+  <button data-page="create">◎<span>Camera</span></button>
+  <button data-page="discover">⌕<span>Search</span></button>
+  <button data-page="profile">♙<span>Profile</span></button>
 </nav>
 </div>
 
+<div id="cameraModal" class="camera hidden">
+  <div class="camtop"><button id="closeCamera">✕ Close</button><b>NEXORA CAMERA</b><button id="switchCamera">↻ Flip</button></div>
+  <div class="camstage"><video id="cameraVideo" autoplay playsinline muted></video><canvas id="cameraCanvas" class="hidden"></canvas></div>
+  <div class="filters">
+    <button class="selected" data-filter="none">Normal</button>
+    <button data-filter="grayscale(1)">B&W</button>
+    <button data-filter="sepia(.8)">Vintage</button>
+    <button data-filter="brightness(1.3) saturate(1.3)">Bright</button>
+    <button data-filter="saturate(1.8) hue-rotate(-10deg)">Warm</button>
+    <button data-filter="contrast(1.3) saturate(1.2)">Pop</button>
+  </div>
+  <div class="cambottom"><span id="cameraStatus" class="muted">Allow camera permission</span><button id="capturePhoto" class="capture" aria-label="Capture photo"></button><button id="downloadPhoto">Save photo</button></div>
+</div>
 <div id="toast" class="hidden" role="status"></div>
 
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-import {
-  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
-  onAuthStateChanged, signOut
-} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-import {
-  getFirestore, collection, doc, getDoc, getDocs, setDoc, addDoc,
-  updateDoc, deleteDoc, query, orderBy, limit, where, onSnapshot,
-  serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+import {getFirestore,collection,doc,getDoc,getDocs,setDoc,addDoc,updateDoc,deleteDoc,query,orderBy,limit,onSnapshot,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
-/* Your Firebase project */
-const firebaseConfig = {
-  apiKey: "AIzaSyAeKz8eAz5UbGR8Oz3iuG0qjcGZdrfbPg4",
-  authDomain: "mirrora-d7575.firebaseapp.com",
-  projectId: "mirrora-d7575",
-  storageBucket: "mirrora-d7575.firebasestorage.app",
-  messagingSenderId: "952045844134",
-  appId: "1:952045844134:web:556d0c465ea4bc4c02e667",
-  measurementId: "G-XFDTQLW0Q5"
+const firebaseConfig={
+ apiKey:"AIzaSyAeKz8eAz5UbGR8Oz3iuG0qjcGZdrfbPg4",
+ authDomain:"mirrora-d7575.firebaseapp.com",
+ projectId:"mirrora-d7575",
+ storageBucket:"mirrora-d7575.firebasestorage.app",
+ messagingSenderId:"952045844134",
+ appId:"1:952045844134:web:556d0c465ea4bc4c02e667",
+ measurementId:"G-XFDTQLW0Q5"
+};
+const appFirebase=initializeApp(firebaseConfig);
+const auth=getAuth(appFirebase),db=getFirestore(appFirebase);
+const $=id=>document.getElementById(id);
+const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safeURL=v=>{try{const u=new URL(v);return ["https:","http:"].includes(u.protocol)?u.href:""}catch{return ""}};
+const photo=u=>safeURL(u?.photoURL)||"https://placehold.co/100x100/ece7ff/7047ff?text=N";
+let user=null,profile=null,posts=[],stories=[],users=[],listings=[],feedStop=null;
+let signup=true,stream=null,facing="user",filter="none",captured=null;
+
+function toast(t){$("toast").textContent=t;$("toast").classList.remove("hidden");setTimeout(()=>$("toast").classList.add("hidden"),3200)}
+function error(e,where="Error"){console.error(where,e);toast(where+": "+(e.code==="permission-denied"?"Firestore Rules ne request rok di.":e.code==="auth/unauthorized-domain"?"Firebase mein website domain authorize karein.":e.message||"Unknown error"))}
+function page(p){
+ document.querySelectorAll("main section").forEach(s=>s.classList.add("hidden"));
+ $("page-"+p)?.classList.remove("hidden");
+ document.querySelectorAll("[data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===p));
+ if(p==="discover")renderUsers();
+ if(p==="profile")renderProfile();
+ if(p==="market")renderListings();
+ if(p==="reels")renderReels();
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+document.querySelectorAll("[data-page]").forEach(b=>b.onclick=()=>{
+ if(b.dataset.page==="create")openCamera();else page(b.dataset.page);
+});
+$("openCamera").onclick=$("createCamera").onclick=()=>openCamera();
+$("openCreate").onclick=$("quickCreate").onclick=()=>page("create");
+$("quickVideo").onclick=()=>{page("create");$("mediaType").value="video";$("mediaURL").focus()};
+$("findPeople").onclick=()=>page("discover");
+
+$("toggleAuth").onclick=()=>{
+ signup=!signup;$("authName").classList.toggle("hidden",!signup);
+ $("authHeading").textContent=signup?"Welcome to your world":"Welcome back";
+ $("authSubmit").textContent=signup?"Create account":"Log in";
+ $("toggleAuth").textContent=signup?"Already have an account? Log in":"New here? Create account";
+};
+$("authForm").onsubmit=async e=>{
+ e.preventDefault();$("authSubmit").disabled=true;
+ try{
+  const email=$("authEmail").value.trim(),password=$("authPassword").value;
+  if(signup){
+   const c=await createUserWithEmailAndPassword(auth,email,password);
+   await setDoc(doc(db,"users",c.user.uid),{
+    uid:c.user.uid,name:$("authName").value.trim()||"NEXORA Creator",
+    username:"user_"+c.user.uid.slice(0,8),country:"Pakistan",bio:"",photoURL:"",createdAt:serverTimestamp()
+   });
+  }else await signInWithEmailAndPassword(auth,email,password);
+ }catch(e){$("authError").textContent=e.message}
+ finally{$("authSubmit").disabled=false}
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-const $ = id => document.getElementById(id);
-const esc = value => String(value ?? "").replace(/[&<>"']/g, c =>
-  ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const safeURL = value => {
-  try {
-    const u = new URL(value);
-    return ["https:","http:"].includes(u.protocol) ? u.href : "";
-  } catch { return ""; }
-};
-const avatarURL = user => safeURL(user?.photoURL) ||
-  "https://placehold.co/100x100/ece7ff/7047ff?text=N";
-let currentUser = null, profile = null, isSignup = true, feedUnsub = null;
-let cachedPosts = [], cachedStories = [], cachedListings = [], cachedUsers = [];
-let busy = false, toastTimer;
-
-function toast(message) {
-  $("toast").textContent = message;
-  $("toast").classList.remove("hidden");
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => $("toast").classList.add("hidden"), 3200);
-}
-function fail(error, prefix = "Error") {
-  console.error(prefix, error);
-  const msg = error?.code === "permission-denied"
-    ? "Firebase Firestore Rules ne request rok di. Rules aur database setup check karein."
-    : error?.code === "auth/unauthorized-domain"
-    ? "Firebase Authentication mein apni website domain authorize karein."
-    : error?.message || "Unknown error";
-  toast(prefix + ": " + msg);
-}
-function setBusy(button, value) {
-  button.disabled = value;
-  button.style.opacity = value ? ".6" : "1";
-}
-function setPage(page) {
-  document.querySelectorAll("main section").forEach(el => el.classList.add("hidden"));
-  $("page-" + page)?.classList.remove("hidden");
-  document.querySelectorAll("[data-page]").forEach(btn =>
-    btn.classList.toggle("active", btn.dataset.page === page));
-  if (page === "discover") renderPeople();
-  if (page === "profile") renderProfile();
-  if (page === "market") renderListings();
-  if (page === "reels") renderReels();
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-document.querySelectorAll("[data-page]").forEach(btn =>
-  btn.addEventListener("click", () => setPage(btn.dataset.page)));
-
-$("toggleAuth").onclick = () => {
-  isSignup = !isSignup;
-  $("authName").classList.toggle("hidden", !isSignup);
-  $("authHeading").textContent = isSignup ? "Welcome to your world" : "Welcome back";
-  $("authSubmit").textContent = isSignup ? "Create account" : "Log in";
-  $("toggleAuth").textContent = isSignup ? "Already have an account? Log in" : "New here? Create account";
-  $("authError").textContent = "";
-};
-$("authForm").addEventListener("submit", async e => {
-  e.preventDefault();
-  const button = $("authSubmit");
-  setBusy(button,true);
-  try {
-    const email = $("authEmail").value.trim();
-    const password = $("authPassword").value;
-    if (isSignup) {
-      const credential = await createUserWithEmailAndPassword(auth,email,password);
-      const name = $("authName").value.trim() || "NEXORA Creator";
-      await setDoc(doc(db,"users",credential.user.uid),{
-        uid:credential.user.uid,name,username:"user_"+credential.user.uid.slice(0,8),
-        country:"Pakistan",bio:"",photoURL:"",createdAt:serverTimestamp()
-      });
-    } else {
-      await signInWithEmailAndPassword(auth,email,password);
-    }
-  } catch(error) {
-    $("authError").textContent = error.message;
-  } finally { setBusy(button,false); }
+onAuthStateChanged(auth,async u=>{
+ user=u;
+ if(!u){if(feedStop)feedStop();$("app").classList.add("hidden");$("authScreen").classList.remove("hidden");return}
+ try{
+  const ref=doc(db,"users",u.uid);let snap=await getDoc(ref);
+  if(!snap.exists()){
+   await setDoc(ref,{uid:u.uid,name:u.displayName||"NEXORA Creator",username:"user_"+u.uid.slice(0,8),country:"Pakistan",bio:"",photoURL:"",createdAt:serverTimestamp()});
+   snap=await getDoc(ref);
+  }
+  profile=snap.data();$("authScreen").classList.add("hidden");$("app").classList.remove("hidden");
+  $("accountEmail").textContent=u.email||"";updateProfileUI();
+  await Promise.all([loadUsers(),loadStories(),loadListings()]);
+  startFeed();$("connectionStatus").textContent="Signed in";
+ }catch(e){error(e,"Account setup")}
 });
 
-onAuthStateChanged(auth, async user => {
-  currentUser = user;
-  if (!user) {
-    if (feedUnsub) feedUnsub();
-    $("app").classList.add("hidden");
-    $("authScreen").classList.remove("hidden");
-    return;
-  }
-  try {
-    const ref = doc(db,"users",user.uid);
-    const snap = await getDoc(ref);
-    if (!snap.exists()) {
-      await setDoc(ref,{
-        uid:user.uid,name:user.displayName || "NEXORA Creator",
-        username:"user_"+user.uid.slice(0,8),country:"Pakistan",
-        bio:"",photoURL:"",createdAt:serverTimestamp()
-      });
-      profile = (await getDoc(ref)).data();
-    } else profile = snap.data();
-    $("authScreen").classList.add("hidden");
-    $("app").classList.remove("hidden");
-    $("accountEmail").textContent = user.email || "";
-    $("connectionStatus").textContent = "Signed in; checking database...";
-    updateProfileUI();
-    await Promise.all([loadUsers(),loadStories(),loadListings()]);
-    startFeed();
-    $("connectionStatus").textContent = "Signed in; data requests completed";
-    toast("Welcome to NEXORA!");
-  } catch(error) { fail(error,"Account setup"); }
-});
-
-function updateProfileUI() {
-  if (!profile) return;
-  $("topAvatar").src = avatarURL(profile);
-  $("composerAvatar").src = avatarURL(profile);
-  $("profileAvatar").src = avatarURL(profile);
-  $("profileName").textContent = profile.name || "Creator";
-  $("profileUsername").textContent = "@" + (profile.username || "creator") + " · " + (profile.country || "");
-  $("profileBio").textContent = profile.bio || "Add a bio to tell your story.";
-  $("editName").value = profile.name || "";
-  $("editUsername").value = profile.username || "";
-  $("editCountry").value = profile.country || "Pakistan";
-  $("editBio").value = profile.bio || "";
-  $("editPhoto").value = profile.photoURL || "";
+function updateProfileUI(){
+ if(!profile)return;
+ $("topAvatar").src=photo(profile);$("composerAvatar").src=photo(profile);$("profileAvatar").src=photo(profile);
+ $("profileName").textContent=profile.name||"Creator";
+ $("profileUsername").textContent="@"+(profile.username||"creator")+" · "+(profile.country||"");
+ $("profileBio").textContent=profile.bio||"Add your bio.";
+ $("editName").value=profile.name||"";$("editUsername").value=profile.username||"";
+ $("editCountry").value=profile.country||"Pakistan";$("editBio").value=profile.bio||"";
+ $("editPhoto").value=profile.photoURL||"";
 }
-$("saveProfile").onclick = async () => {
-  if (!currentUser) return;
-  const name = $("editName").value.trim();
-  const username = $("editUsername").value.trim();
-  const bio = $("editBio").value.trim();
-  const photoURL = $("editPhoto").value.trim();
-  if (!name || !/^[A-Za-z0-9_]{3,20}$/.test(username)) {
-    return toast("Name dein aur username 3–20 letters/numbers/_ ka rakhein.");
-  }
-  if (photoURL && !safeURL(photoURL)) return toast("Photo URL http/https hona chahiye.");
-  try {
-    const updated = { ...profile, name, username, bio, photoURL, country:$("editCountry").value };
-    await updateDoc(doc(db,"users",currentUser.uid),{
-      name,username,bio,photoURL,country:updated.country
-    });
-    profile = updated;
-    updateProfileUI();
-    toast("Profile save ho gayi.");
-  } catch(error) { fail(error,"Profile save"); }
+$("saveProfile").onclick=async()=>{
+ const name=$("editName").value.trim(),username=$("editUsername").value.trim(),bio=$("editBio").value.trim(),photoURL=$("editPhoto").value.trim();
+ if(!name||!/^[A-Za-z0-9_]{3,20}$/.test(username))return toast("Name aur valid username dein (3–20 characters).");
+ if(photoURL&&!safeURL(photoURL))return toast("Photo URL http/https hona chahiye.");
+ try{
+  const country=$("editCountry").value;
+  await updateDoc(doc(db,"users",user.uid),{name,username,bio,photoURL,country});
+  profile={...profile,name,username,bio,photoURL,country};updateProfileUI();toast("Profile saved.");
+ }catch(e){error(e,"Save profile")}
 };
 
-function startFeed() {
-  if (feedUnsub) feedUnsub();
-  const q = query(collection(db,"posts"),orderBy("createdAt","desc"),limit(50));
-  feedUnsub = onSnapshot(q,snapshot => {
-    cachedPosts = snapshot.docs.map(d=>({id:d.id,...d.data()}));
-    renderFeed();
-    renderReels();
-    renderProfile();
-  },error=>fail(error,"Feed load"));
+function startFeed(){
+ if(feedStop)feedStop();
+ feedStop=onSnapshot(query(collection(db,"posts"),orderBy("createdAt","desc"),limit(50)),s=>{
+  posts=s.docs.map(d=>({id:d.id,...d.data()}));renderFeed();renderReels();renderProfile();
+ },e=>error(e,"Feed"));
 }
-$("publishPost").onclick = async () => {
-  const text = $("postText").value.trim();
-  const mediaURL = $("mediaURL").value.trim();
-  const mediaType = $("mediaType").value;
-  if (!text && !mediaURL) return toast("Text ya valid media URL add karein.");
-  if (mediaURL && !safeURL(mediaURL)) return toast("Media URL http/https hona chahiye.");
-  const btn = $("publishPost"); setBusy(btn,true);
-  try {
-    await addDoc(collection(db,"posts"),{
-      ownerUid:currentUser.uid,
-      authorName:profile.name || "Creator",
-      authorUsername:profile.username || "creator",
-      authorPhoto:profile.photoURL || "",
-      text:text.slice(0,2000),
-      imageURL:mediaType === "image" ? mediaURL : "",
-      videoURL:mediaType === "video" ? mediaURL : "",
-      likes:[],createdAt:serverTimestamp()
-    });
-    $("postText").value=""; $("mediaURL").value="";
-    setPage("home"); toast("Post publish ho gayi.");
-  } catch(error) { fail(error,"Post publish"); }
-  finally { setBusy(btn,false); }
+$("publishPost").onclick=async()=>{
+ const text=$("postText").value.trim(),url=$("mediaURL").value.trim(),type=$("mediaType").value;
+ if(!text&&!url)return toast("Text ya media URL add karein.");
+ if(url&&!safeURL(url))return toast("Valid http/https URL dein.");
+ try{
+  await addDoc(collection(db,"posts"),{
+   ownerUid:user.uid,authorName:profile.name||"Creator",authorUsername:profile.username||"creator",
+   authorPhoto:profile.photoURL||"",text:text.slice(0,2000),
+   imageURL:type==="image"?url:"",videoURL:type==="video"?url:"",
+   likes:[],createdAt:serverTimestamp()
+  });
+  $("postText").value="";$("mediaURL").value="";page("home");toast("Post published.");
+ }catch(e){error(e,"Publish post")}
 };
-$("openComposer").onclick = $("quickCreate").onclick = () => setPage("create");
-$("quickPhoto").onclick = () => { setPage("create"); $("mediaType").value="image"; $("mediaURL").focus(); };
-$("quickVideo").onclick = () => { setPage("create"); $("mediaType").value="video"; $("mediaURL").focus(); };
+function when(ts){try{return ts?.toDate?ts.toDate().toLocaleString():"Just now"}catch{return ""}}
+function media(p){
+ const v=safeURL(p.videoURL||""),i=safeURL(p.imageURL||"");
+ if(v)return `<video class="postmedia" controls playsinline preload="metadata" src="${esc(v)}"></video>`;
+ if(i)return `<img class="postmedia" loading="lazy" alt="Post media" src="${esc(i)}">`;
+ return "";
+}
+function postHTML(p){
+ const likes=Array.isArray(p.likes)?p.likes:[];
+ return `<article class="post" data-post="${esc(p.id)}">
+ <div class="posthead"><img class="avatar" src="${esc(safeURL(p.authorPhoto)||photo({}))}" alt="">
+ <div class="grow"><b>${esc(p.authorName||"Creator")}</b><div class="muted">@${esc(p.authorUsername||"creator")} · ${esc(when(p.createdAt))}</div></div>
+ ${p.ownerUid===user.uid?'<button class="action" data-delete>Delete</button>':""}</div>
+ ${p.text?`<div class="postbody">${esc(p.text)}</div>`:""}${media(p)}
+ <div class="actions"><button class="action" data-like>${likes.includes(user.uid)?"💜":"♡"} ${likes.length} Like</button><button class="action" data-comments-toggle>▢ Comment</button><button class="action" data-share>↗ Share</button></div>
+ <div class="comments hidden"><div data-comment-list class="muted">Open comments to load.</div>
+ <div class="row"><input class="field grow" data-comment-input maxlength="500" placeholder="Write a comment..."><button class="btn" data-comment-send>Send</button></div></div>
+ </article>`;
+}
+function renderFeed(){
+ const term=$("globalSearch").value.trim().toLowerCase();
+ const filtered=posts.filter(p=>!term||(p.text||"").toLowerCase().includes(term)||(p.authorName||"").toLowerCase().includes(term)||(p.authorUsername||"").toLowerCase().includes(term));
+ $("feedCount").textContent=filtered.length+" posts";
+ $("feed").innerHTML=filtered.length?filtered.map(postHTML).join(""):'<div class="panel">No posts yet. Share the first one!</div>';
+}
+$("globalSearch").oninput=renderFeed;
 
-function dateLabel(ts) {
-  try {
-    const date = ts?.toDate ? ts.toDate() : null;
-    return date ? date.toLocaleString() : "Just now";
-  } catch { return ""; }
-}
-function mediaHTML(post) {
-  const video = safeURL(post.videoURL || "");
-  const image = safeURL(post.imageURL || "");
-  if (video) return `<video class="postmedia" controls playsinline preload="metadata" src="${esc(video)}"></video>`;
-  if (image) return `<img class="postmedia" loading="lazy" src="${esc(image)}" alt="Post media" onerror="this.style.display='none'">`;
-  return "";
-}
-function postHTML(post) {
-  const liked = Array.isArray(post.likes) && post.likes.includes(currentUser.uid);
-  return `<article class="post" data-post="${esc(post.id)}">
-    <div class="posthead">
-      <img class="avatar" alt="" src="${esc(safeURL(post.authorPhoto)||"https://placehold.co/80x80/ece7ff/7047ff?text=N")}">
-      <div class="grow"><b>${esc(post.authorName||"Creator")}</b>
-      <div class="muted">@${esc(post.authorUsername||"creator")} · ${esc(dateLabel(post.createdAt))}</div></div>
-      ${post.ownerUid===currentUser.uid?'<button class="action" data-delete-post>Delete</button>':''}
-    </div>
-    ${post.text ? `<div class="postbody">${esc(post.text)}</div>`:""}
-    ${mediaHTML(post)}
-    <div class="postactions">
-      <button class="action" data-like>${liked?"💜":"♡"} ${Array.isArray(post.likes)?post.likes.length:0} Like</button>
-      <button class="action" data-comment-toggle>▢ Comment</button>
-      <button class="action" data-share>↗ Share</button>
-    </div>
-    <div class="commentarea hidden">
-      <div class="commentlist" data-comments>Loading comments...</div>
-      <div class="row" style="padding:0 12px 12px">
-        <input class="field grow" data-comment-input maxlength="500" placeholder="Write a comment..." style="margin:0">
-        <button class="btn" data-comment-send>Send</button>
-      </div>
-    </div>
-  </article>`;
-}
-function renderFeed() {
-  $("feedCount").textContent = cachedPosts.length + " posts";
-  const search = $("globalSearch").value.trim().toLowerCase();
-  const posts = cachedPosts.filter(p => !search ||
-    (p.text||"").toLowerCase().includes(search) ||
-    (p.authorName||"").toLowerCase().includes(search) ||
-    (p.authorUsername||"").toLowerCase().includes(search));
-  $("feed").innerHTML = posts.length ? posts.map(postHTML).join("") :
-    '<div class="panel">Abhi posts nahi hain. Pehli post aap share karein!</div>';
-}
-$("globalSearch").addEventListener("input",renderFeed);
-$("feed").addEventListener("click",async e=>{
-  const article = e.target.closest("[data-post]");
-  if (!article) return;
-  const id = article.dataset.post;
-  const post = cachedPosts.find(p=>p.id===id);
-  if (!post) return;
-  try {
-    if (e.target.closest("[data-like]")) {
-      const likes = Array.isArray(post.likes)?post.likes:[];
-      const next = likes.includes(currentUser.uid)
-        ? likes.filter(uid=>uid!==currentUser.uid) : [...likes,currentUser.uid];
-      await updateDoc(doc(db,"posts",id),{likes:next});
-    }
-    if (e.target.closest("[data-delete-post]")) {
-      if (post.ownerUid!==currentUser.uid || !confirm("Delete this post?")) return;
-      await deleteDoc(doc(db,"posts",id));
-      toast("Post deleted.");
-    }
-    if (e.target.closest("[data-share]")) {
-      await navigator.clipboard.writeText(location.href+"#post-"+id);
-      toast("Page link copied. Public link ke liye website deploy karein.");
-    }
-    if (e.target.closest("[data-comment-toggle]")) {
-      const area = article.querySelector(".commentarea");
-      area.classList.toggle("hidden");
-      if (!area.classList.contains("hidden")) loadComments(id,article);
-    }
-    if (e.target.closest("[data-comment-send]")) {
-      const input = article.querySelector("[data-comment-input]");
-      const text = input.value.trim();
-      if (!text) return;
-      await addDoc(collection(db,"posts",id,"comments"),{
-        ownerUid:currentUser.uid,text:text.slice(0,500),
-        authorName:profile.name||"Creator",createdAt:serverTimestamp()
-      });
-      input.value="";
-      await loadComments(id,article);
-      toast("Comment added.");
-    }
-  } catch(error) { fail(error,"Post action"); }
-});
-async function loadComments(postId,article) {
-  const box = article.querySelector("[data-comments]");
-  try {
-    const snap = await getDocs(query(collection(db,"posts",postId,"comments"),
-      orderBy("createdAt","asc"),limit(100)));
-    box.innerHTML = snap.empty ? '<span class="muted">No comments yet.</span>' :
-      snap.docs.map(d=>`<div class="comment"><b>${esc(d.data().authorName||"User")}:</b> ${esc(d.data().text)}</div>`).join("");
-  } catch(error) { box.textContent="Comments could not load. Check Firestore Rules."; }
-}
-function renderReels() {
-  const videos = cachedPosts.filter(p=>safeURL(p.videoURL||""));
-  $("reelsFeed").innerHTML = videos.length ? videos.map(postHTML).join("") :
-    '<div class="panel">Abhi video posts nahi hain. Create Post se video URL add karein.</div>';
-}
-$("reelsFeed").addEventListener("click",e=>{
-  const article=e.target.closest("[data-post]");
-  if (!article) return;
-  const post=cachedPosts.find(p=>p.id===article.dataset.post);
-  if (!post) return;
-  if(e.target.closest("[data-like]")) {
-    const likes=Array.isArray(post.likes)?post.likes:[];
-    updateDoc(doc(db,"posts",post.id),{likes:likes.includes(currentUser.uid)?
-      likes.filter(uid=>uid!==currentUser.uid):[...likes,currentUser.uid]})
-      .catch(error=>fail(error,"Like"));
+async function postAction(e,container){
+ const article=e.target.closest("[data-post]");if(!article)return;
+ const p=posts.find(x=>x.id===article.dataset.post);if(!p)return;
+ try{
+  if(e.target.closest("[data-like]")){
+   const likes=Array.isArray(p.likes)?p.likes:[];
+   await updateDoc(doc(db,"posts",p.id),{likes:likes.includes(user.uid)?likes.filter(x=>x!==user.uid):[...likes,user.uid]});
+  }else if(e.target.closest("[data-delete]")){
+   if(p.ownerUid===user.uid&&confirm("Delete this post?"))await deleteDoc(doc(db,"posts",p.id));
+  }else if(e.target.closest("[data-share]")){
+   await navigator.clipboard.writeText(location.href+"#post-"+p.id);toast("Page link copied.");
+  }else if(e.target.closest("[data-comments-toggle]")){
+   const box=article.querySelector(".comments");box.classList.toggle("hidden");
+   if(!box.classList.contains("hidden"))await loadComments(p.id,article);
+  }else if(e.target.closest("[data-comment-send]")){
+   const input=article.querySelector("[data-comment-input]"),text=input.value.trim();if(!text)return;
+   await addDoc(collection(db,"posts",p.id,"comments"),{ownerUid:user.uid,text:text.slice(0,500),authorName:profile.name||"Creator",createdAt:serverTimestamp()});
+   input.value="";await loadComments(p.id,article);
   }
-  if(e.target.closest("[data-comment-toggle]")) {
-    const area=article.querySelector(".commentarea");
-    area.classList.toggle("hidden");
-    if(!area.classList.contains("hidden")) loadComments(post.id,article);
-  }
-  if(e.target.closest("[data-comment-send]")) {
-    const input=article.querySelector("[data-comment-input]");
-    const text=input.value.trim();
-    if(!text)return;
-    addDoc(collection(db,"posts",post.id,"comments"),{
-      ownerUid:currentUser.uid,text:text.slice(0,500),
-      authorName:profile.name||"Creator",createdAt:serverTimestamp()
-    }).then(()=>{input.value="";loadComments(post.id,article);})
-      .catch(error=>fail(error,"Comment"));
-  }
-});
+ }catch(e){error(e,"Post action")}
+}
+async function loadComments(id,article){
+ try{
+  const s=await getDocs(query(collection(db,"posts",id,"comments"),orderBy("createdAt","asc"),limit(100)));
+  article.querySelector("[data-comment-list]").innerHTML=s.empty?"No comments yet.":s.docs.map(d=>`<div class="comment"><b>${esc(d.data().authorName)}:</b> ${esc(d.data().text)}</div>`).join("");
+ }catch(e){article.querySelector("[data-comment-list]").textContent="Comments unavailable; check Rules."}
+}
+$("feed").addEventListener("click",e=>postAction(e,$("feed")));
+$("myPosts").addEventListener("click",e=>postAction(e,$("myPosts")));
 
-async function loadUsers() {
-  try {
-    const snap=await getDocs(query(collection(db,"users"),limit(100)));
-    cachedUsers=snap.docs.map(d=>d.data()).filter(u=>u.uid!==currentUser.uid);
-    renderPeople();
-  } catch(error) { fail(error,"Users load"); }
+function renderReels(){
+ const videos=posts.filter(p=>safeURL(p.videoURL||""));
+ $("reelsFeed").innerHTML=videos.length?videos.map(p=>`
+ <section class="reel" data-post="${esc(p.id)}">
+ <video src="${esc(safeURL(p.videoURL))}" controls playsinline preload="metadata"></video>
+ <div class="reelbottom"><b>@${esc(p.authorUsername||"creator")}</b><p>${esc(p.text||"")}</p></div>
+ <div class="reelactions"><button class="reelaction" data-like>♡<small>${Array.isArray(p.likes)?p.likes.length:0} Likes</small></button>
+ <button class="reelaction" data-comments-toggle>▢<small>Comment</small></button><button class="reelaction" data-share>↗<small>Share</small></button></div>
+ <div class="comments hidden" style="position:absolute;bottom:0;background:white;color:#111;width:100%" data-reel-comments>
+ <div data-comment-list></div><div class="row"><input class="field grow" data-comment-input maxlength="500" placeholder="Comment"><button class="btn" data-comment-send>Send</button></div></div>
+ </section>`).join(""):'<div class="reel"><p>No videos yet.<br>Create a post with a video URL.</p></div>';
 }
-function renderPeople() {
-  const box=$("peopleList"); if(!box)return;
-  const search=($("peopleSearch")?.value||"").trim().toLowerCase();
-  const users=cachedUsers.filter(u=>(u.name||"").toLowerCase().includes(search)||
-    (u.username||"").toLowerCase().includes(search));
-  box.innerHTML=users.length?users.map(u=>`<div class="panel row">
-    <img class="avatar" src="${esc(avatarURL(u))}" alt="">
-    <div class="grow"><b>${esc(u.name||"Creator")}</b>
-    <div class="muted">@${esc(u.username||"creator")} · ${esc(u.country||"")}</div></div>
-    <button class="btn" data-follow="${esc(u.uid)}">Follow</button></div>`).join("") :
-    '<div class="panel">No matching profiles found.</div>';
-  box.querySelectorAll("[data-follow]").forEach(btn=>btn.onclick=()=>followUser(btn.dataset.follow));
+$("reelsFeed").addEventListener("click",async e=>{
+ const reel=e.target.closest("[data-post]");if(!reel)return;
+ const p=posts.find(x=>x.id===reel.dataset.post);if(!p)return;
+ try{
+  if(e.target.closest("[data-like]")){
+   const likes=Array.isArray(p.likes)?p.likes:[];
+   await updateDoc(doc(db,"posts",p.id),{likes:likes.includes(user.uid)?likes.filter(x=>x!==user.uid):[...likes,user.uid]});
+  }else if(e.target.closest("[data-comments-toggle]")){
+   const box=reel.querySelector("[data-reel-comments]");box.classList.toggle("hidden");if(!box.classList.contains("hidden"))await loadComments(p.id,reel);
+  }else if(e.target.closest("[data-comment-send]")){
+   const input=reel.querySelector("[data-comment-input]"),text=input.value.trim();if(!text)return;
+   await addDoc(collection(db,"posts",p.id,"comments"),{ownerUid:user.uid,text:text.slice(0,500),authorName:profile.name||"Creator",createdAt:serverTimestamp()});
+   input.value="";await loadComments(p.id,reel);
+  }else if(e.target.closest("[data-share]")){
+   await navigator.clipboard.writeText(location.href);toast("Link copied.");
+  }
+ }catch(e){error(e,"Reel action")}
+});
+// Play the visible reel and pause the others.
+const reelObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+ const video=entry.target.querySelector("video");if(!video)return;
+ if(entry.isIntersecting){video.play().catch(()=>{});}else video.pause();
+}),{threshold:.65});
+const reelMutation=new MutationObserver(()=>document.querySelectorAll("#reelsFeed .reel").forEach(r=>reelObserver.observe(r)));
+reelMutation.observe($("reelsFeed"),{childList:true});
+
+async function loadUsers(){
+ try{const s=await getDocs(query(collection(db,"users"),limit(100)));users=s.docs.map(d=>d.data()).filter(u=>u.uid!==user.uid);renderUsers()}
+ catch(e){error(e,"Users")}
 }
-$("peopleSearch").addEventListener("input",renderPeople);
-async function followUser(targetUid) {
-  try {
-    const followId=currentUser.uid+"_"+targetUid;
-    const ref=doc(db,"follows",followId);
-    const existing=await getDoc(ref);
-    if(existing.exists()) {
-      await deleteDoc(ref);
-      toast("Unfollowed.");
-    } else {
-      await setDoc(ref,{followerUid:currentUser.uid,followingUid:targetUid,createdAt:serverTimestamp()});
-      toast("Following!");
-    }
-  } catch(error) { fail(error,"Follow"); }
+function renderUsers(){
+ const term=($("peopleSearch").value||"").toLowerCase();
+ const list=users.filter(u=>(u.name||"").toLowerCase().includes(term)||(u.username||"").toLowerCase().includes(term));
+ $("peopleList").innerHTML=list.length?list.map(u=>`<div class="panel row"><img class="avatar" src="${esc(photo(u))}" alt=""><div class="grow"><b>${esc(u.name||"Creator")}</b><div class="muted">@${esc(u.username||"creator")} · ${esc(u.country||"")}</div></div><button class="btn" data-follow="${esc(u.uid)}">Follow</button></div>`).join(""):'<div class="panel">No matching profiles.</div>';
+ $("peopleList").querySelectorAll("[data-follow]").forEach(b=>b.onclick=async()=>{
+  const target=b.dataset.follow,ref=doc(db,"follows",user.uid+"_"+target);
+  try{const s=await getDoc(ref);if(s.exists()){await deleteDoc(ref);toast("Unfollowed.")}else{await setDoc(ref,{followerUid:user.uid,followingUid:target,createdAt:serverTimestamp()});toast("Following.")}}
+  catch(e){error(e,"Follow")}
+ });
 }
-$("findPeople").onclick=()=>setPage("discover");
+$("peopleSearch").oninput=renderUsers;
 
 $("addStory").onclick=async()=>{
-  const text=prompt("Apni text story likhein (maximum 300 characters):");
-  if(!text?.trim())return;
-  try {
-    await addDoc(collection(db,"stories"),{
-      ownerUid:currentUser.uid,authorName:profile.name||"Creator",
-      authorPhoto:profile.photoURL||"",text:text.trim().slice(0,300),
-      expiresAt:Date.now()+24*60*60*1000,createdAt:serverTimestamp()
-    });
-    await loadStories();toast("Story added. It will be hidden after 24 hours.");
-  } catch(error) { fail(error,"Story"); }
+ const text=prompt("Write a text story (max 300 characters):");if(!text?.trim())return;
+ try{
+  await addDoc(collection(db,"stories"),{ownerUid:user.uid,authorName:profile.name||"Creator",authorPhoto:profile.photoURL||"",text:text.trim().slice(0,300),expiresAt:Date.now()+86400000,createdAt:serverTimestamp()});
+  await loadStories();toast("Story added.");
+ }catch(e){error(e,"Story")}
 };
-async function loadStories() {
-  try {
-    const snap=await getDocs(query(collection(db,"stories"),orderBy("createdAt","desc"),limit(100)));
-    cachedStories=snap.docs.map(d=>({id:d.id,...d.data()})).filter(s=>s.expiresAt>Date.now());
-    $("storiesList").innerHTML=cachedStories.length?cachedStories.map(s=>
-      `<div class="story" data-story="${esc(s.id)}">
-        <div class="storyring"><div class="storyinner">${s.authorPhoto&&safeURL(s.authorPhoto)?
-          `<img src="${esc(safeURL(s.authorPhoto))}" alt="">`:"✦"}</div></div>
-        <div class="storytext">${esc(s.authorName||"Creator")}</div></div>`).join("") :
-        '<span class="muted">No stories yet — add yours.</span>';
-    $("storiesList").querySelectorAll("[data-story]").forEach(el=>el.onclick=()=>{
-      const s=cachedStories.find(x=>x.id===el.dataset.story);
-      if(s)alert((s.authorName||"Creator")+":\n\n"+s.text);
-    });
-  } catch(error) { $("storiesList").textContent="Stories load nahi hui. Rules check karein."; }
+async function loadStories(){
+ try{
+  const s=await getDocs(query(collection(db,"stories"),orderBy("createdAt","desc"),limit(100)));
+  stories=s.docs.map(d=>({id:d.id,...d.data()})).filter(x=>x.expiresAt>Date.now());
+  $("storiesList").innerHTML=stories.length?stories.map(x=>`<div class="story" data-story="${esc(x.id)}"><div class="ring"><div class="ringinner">${safeURL(x.authorPhoto||"")?`<img src="${esc(safeURL(x.authorPhoto))}" alt="">`:"✦"}</div></div><div class="storyname">${esc(x.authorName||"Creator")}</div></div>`).join(""):'<span class="muted">No stories yet.</span>';
+  $("storiesList").querySelectorAll("[data-story]").forEach(el=>el.onclick=()=>{const s=stories.find(x=>x.id===el.dataset.story);if(s)alert((s.authorName||"Creator")+":\n\n"+s.text)});
+ }catch(e){error(e,"Stories")}
 }
 
 $("publishListing").onclick=async()=>{
-  const title=$("marketTitle").value.trim(), description=$("marketDescription").value.trim();
-  const category=$("marketCategory").value, contact=$("marketContact").value.trim();
-  if(!title||!description)return toast("Title aur description required hain.");
-  if(contact&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact))return toast("Contact email valid nahi.");
-  const btn=$("publishListing");setBusy(btn,true);
-  try{
-    await addDoc(collection(db,"marketListings"),{
-      ownerUid:currentUser.uid,title:title.slice(0,80),description:description.slice(0,1000),
-      category,contact,authorName:profile.name||"Creator",createdAt:serverTimestamp()
-    });
-    $("marketTitle").value="";$("marketDescription").value="";$("marketContact").value="";
-    await loadListings();toast("Listing published.");
-  }catch(error){fail(error,"Marketplace");}
-  finally{setBusy(btn,false);}
+ const title=$("marketTitle").value.trim(),description=$("marketDescription").value.trim(),contact=$("marketContact").value.trim();
+ if(!title||!description)return toast("Title aur description required hain.");
+ if(contact&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact))return toast("Valid email dein.");
+ try{
+  await addDoc(collection(db,"marketListings"),{ownerUid:user.uid,title:title.slice(0,80),description:description.slice(0,1000),category:$("marketCategory").value,contact,authorName:profile.name||"Creator",createdAt:serverTimestamp()});
+  $("marketTitle").value="";$("marketDescription").value="";$("marketContact").value="";
+  await loadListings();toast("Listing published.");
+ }catch(e){error(e,"Marketplace")}
 };
 async function loadListings(){
-  try{
-    const snap=await getDocs(query(collection(db,"marketListings"),orderBy("createdAt","desc"),limit(50)));
-    cachedListings=snap.docs.map(d=>({id:d.id,...d.data()}));renderListings();
-  }catch(error){fail(error,"Marketplace load");}
+ try{const s=await getDocs(query(collection(db,"marketListings"),orderBy("createdAt","desc"),limit(50)));listings=s.docs.map(d=>({id:d.id,...d.data()}));renderListings()}
+ catch(e){error(e,"Listings")}
 }
 function renderListings(){
-  $("marketList").innerHTML=cachedListings.length?cachedListings.map(l=>
-    `<div class="panel"><span class="badge">${esc(l.category)}</span>
-    <h3 style="margin-top:10px">${esc(l.title)}</h3>
-    <p>${esc(l.description)}</p><p class="muted">By ${esc(l.authorName||"Creator")}</p>
-    ${l.contact?`<a href="mailto:${encodeURIComponent(l.contact)}">Contact seller</a>`:""}
-    ${l.ownerUid===currentUser.uid?`<button class="btn" data-remove-listing="${esc(l.id)}">Delete</button>`:""}
-    </div>`).join(""):'<div class="panel">No listings yet.</div>';
-  $("marketList").querySelectorAll("[data-remove-listing]").forEach(btn=>btn.onclick=async()=>{
-    if(!confirm("Delete this listing?"))return;
-    try{await deleteDoc(doc(db,"marketListings",btn.dataset.removeListing));await loadListings();toast("Listing deleted.");}
-    catch(error){fail(error,"Delete listing");}
-  });
+ $("marketList").innerHTML=listings.length?listings.map(l=>`<div class="panel"><span class="badge">${esc(l.category)}</span><h3 style="margin-top:10px">${esc(l.title)}</h3><p>${esc(l.description)}</p><p class="muted">By ${esc(l.authorName||"Creator")}</p>${l.contact?`<a href="mailto:${esc(l.contact)}">Contact seller</a>`:""}${l.ownerUid===user.uid?`<button class="btn" data-remove="${esc(l.id)}">Delete</button>`:""}</div>`).join(""):'<div class="panel">No listings yet.</div>';
+ $("marketList").querySelectorAll("[data-remove]").forEach(b=>b.onclick=async()=>{if(!confirm("Delete listing?"))return;try{await deleteDoc(doc(db,"marketListings",b.dataset.remove));await loadListings()}catch(e){error(e,"Delete listing")}});
 }
 function renderProfile(){
-  if(!currentUser)return;
-  const mine=cachedPosts.filter(p=>p.ownerUid===currentUser.uid);
-  $("myPostsCount").textContent=mine.length;
-  $("myPosts").innerHTML=mine.length?mine.map(postHTML).join(""):'<div class="panel">Your posts will appear here.</div>';
-  $("myPostsCount").textContent=mine.length;
+ if(!user)return;const mine=posts.filter(p=>p.ownerUid===user.uid);
+ $("myPostsCount").textContent=mine.length;
+ $("myPosts").innerHTML=mine.length?mine.map(postHTML).join(""):'<div class="panel">You have not posted yet.</div>';
 }
-$("myPosts").addEventListener("click",async e=>{
-  const article=e.target.closest("[data-post]");
-  if(!article)return;
-  const post=cachedPosts.find(p=>p.id===article.dataset.post);
-  if(!post)return;
-  try{
-    if(e.target.closest("[data-delete-post]")){
-      if(confirm("Delete this post?")){await deleteDoc(doc(db,"posts",post.id));toast("Deleted.");}
-    }else if(e.target.closest("[data-like]")){
-      const likes=Array.isArray(post.likes)?post.likes:[];
-      await updateDoc(doc(db,"posts",post.id),{likes:likes.includes(currentUser.uid)?
-        likes.filter(uid=>uid!==currentUser.uid):[...likes,currentUser.uid]});
-    }else if(e.target.closest("[data-comment-toggle]")){
-      const area=article.querySelector(".commentarea");area.classList.toggle("hidden");
-      if(!area.classList.contains("hidden"))loadComments(post.id,article);
-    }else if(e.target.closest("[data-comment-send]")){
-      const input=article.querySelector("[data-comment-input]"),text=input.value.trim();if(!text)return;
-      await addDoc(collection(db,"posts",post.id,"comments"),{
-        ownerUid:currentUser.uid,text:text.slice(0,500),
-        authorName:profile.name||"Creator",createdAt:serverTimestamp()
-      });input.value="";loadComments(post.id,article);
-    }
-  }catch(error){fail(error,"Profile post action");}
+$("refreshApp").onclick=async()=>{await loadUsers();await loadStories();await loadListings();toast("Data refreshed.")};
+$("logout").onclick=()=>signOut(auth).catch(e=>error(e,"Logout"));
+
+async function openCamera(){
+ $("cameraModal").classList.remove("hidden");$("cameraStatus").textContent="Opening camera...";
+ if(!navigator.mediaDevices?.getUserMedia){$("cameraStatus").textContent="Use HTTPS or localhost to access camera.";return}
+ try{
+  stopCamera();
+  stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing,width:{ideal:1280},height:{ideal:720}},audio:false});
+  $("cameraVideo").srcObject=stream;$("cameraVideo").style.filter=filter;
+  await $("cameraVideo").play();$("cameraStatus").textContent="Camera ready — choose a filter.";
+ }catch(e){console.error(e);$("cameraStatus").textContent="Camera unavailable. Allow permission and check your camera."}
+}
+function stopCamera(){if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}$("cameraVideo").srcObject=null}
+$("closeCamera").onclick=()=>{stopCamera();$("cameraModal").classList.add("hidden")};
+$("switchCamera").onclick=async()=>{facing=facing==="user"?"environment":"user";await openCamera()};
+document.querySelectorAll("[data-filter]").forEach(b=>b.onclick=()=>{
+ filter=b.dataset.filter;$("cameraVideo").style.filter=filter;
+ document.querySelectorAll("[data-filter]").forEach(x=>x.classList.toggle("selected",x===b));
 });
-$("myFollowersCount").textContent="—";
-$("myFollowingCount").textContent="—";
-$("refreshApp").onclick=async()=>{await loadUsers();await loadStories();await loadListings();toast("Data refreshed.");};
-$("logout").onclick=async()=>{try{await signOut(auth);}catch(error){fail(error,"Logout");}};
+$("capturePhoto").onclick=()=>{
+ const v=$("cameraVideo");if(!v.videoWidth)return toast("Camera abhi ready nahi.");
+ const c=$("cameraCanvas");c.width=v.videoWidth;c.height=v.videoHeight;
+ const ctx=c.getContext("2d");ctx.filter=filter;
+ if(facing==="user"){ctx.translate(c.width,0);ctx.scale(-1,1)}
+ ctx.drawImage(v,0,0,c.width,c.height);ctx.filter="none";
+ captured=c.toDataURL("image/jpeg",.9);$("cameraStatus").textContent="Photo captured. Save photo dabayein.";
+};
+$("downloadPhoto").onclick=()=>{
+ if(!captured)return toast("Pehle photo capture karein.");
+ const a=document.createElement("a");a.href=captured;a.download="nexora-photo.jpg";a.click();toast("Photo download requested.");
+};
 </script>
 </body>
 </html>
+
